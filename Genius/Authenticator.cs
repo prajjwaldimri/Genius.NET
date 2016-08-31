@@ -43,9 +43,8 @@ namespace Genius
         public static string State { private get; set; }
 
         //Should always be set to "code" as defined in Genius API docs
-        private const string ResponseType = "code";
+        private static string _responseType = "code";
 
-        public static string ReturnedUrl { private get; set; }
         private const string GrantType = "authorization_code";
 
 
@@ -65,8 +64,35 @@ namespace Genius
                 throw new ArgumentNullException(ClientId, "Required Parameters cannot be null");
             }
             var queryToAppend = $"client_id={ClientId}&redirect_uri={RedirectUri}&scope={Scope}&" +
-                                $"state={State}&response_type={ResponseType}";
+                                $"state={State}&response_type={_responseType}";
             uriBuilder.Query = queryToAppend;
+            return uriBuilder.Uri;
+        }
+
+        /// <summary>
+        /// An alternative authentication flow is available for browser-based, client-only applications. 
+        /// This mechanism is much less secure than the full code exchange process and should only be used by applications without a server
+        /// or native platform to execute the full code flow.
+        /// 
+        /// Instead of being redirected with a code that your application exchanges for an access token,
+        ///  the user is redirected to https://REDIRECT_URI/#access_token=ACCESS_TOKEN&state=STATE. 
+        /// Extract the access token from the URL hash fragment and use it to make requests.
+        /// </summary>
+        /// <returns></returns>
+        public static Uri GetAuthenticationUrlClientOnly()
+        {
+            _responseType = "token";
+            var uriBuilder = new UriBuilder("https://api.genius.com/oauth/authorize");
+
+            if ((ClientId ?? RedirectUri ?? Scope ?? State) == null)
+            {
+                //TODO: Throw different exception for every parameter.
+                throw new ArgumentNullException(ClientId, "Required Parameters cannot be null");
+            }
+            var queryToAppend = $"client_id={ClientId}&redirect_uri={RedirectUri}&scope={Scope}&" +
+                                $"state={State}&response_type={_responseType}";
+            uriBuilder.Query = queryToAppend;
+            _responseType = "code";
             return uriBuilder.Uri;
         }
 
@@ -98,7 +124,7 @@ namespace Genius
                         client_id = ClientId,
                         client_secret = ClientSecret,
                         redirect_uri = RedirectUri,
-                        response_type = ResponseType,
+                        response_type = _responseType,
                         grant_type = "authorization_code"
                     };
 
