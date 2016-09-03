@@ -161,6 +161,7 @@ namespace Genius
             return keyValues;
         }
 
+
     }
 
     internal class AuthenticationRequestBody
@@ -173,7 +174,7 @@ namespace Genius
         public string grant_type;
     }
 
-    internal class AccessToken
+    internal abstract class AccessToken
     {
         public string access_token;
     }

@@ -35,7 +35,19 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Authenticator.cs" />
+    <Compile Include="ContentPoster.cs" />
+    <Compile Include="ContentRetriever.cs" />
+    <Compile Include="Genius-DataObjects\Account.cs" />
+    <Compile Include="Genius-DataObjects\Annotation.cs" />
+    <Compile Include="Genius-DataObjects\Artist.cs" />
+    <Compile Include="Genius-DataObjects\Author.cs" />
+    <Compile Include="Genius-DataObjects\Avatar.cs" />
+    <Compile Include="Genius-DataObjects\Referent.cs" />
+    <Compile Include="Genius-DataObjects\Song.cs" />
+    <Compile Include="Genius-DataObjects\User.cs" />
+    <Compile Include="Genius-DataObjects\WebPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Search.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -46,6 +58,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

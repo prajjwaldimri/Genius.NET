@@ -1,0 +1,6 @@
+﻿namespace Genius
+{
+    class WebPage
+    {
+    }
+}

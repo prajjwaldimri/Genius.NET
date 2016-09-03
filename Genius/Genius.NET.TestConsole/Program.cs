@@ -10,7 +10,9 @@ namespace Genius.NET.TestConsole
     {
         static void Main(string[] args)
         {
-
+            ContentRetriever.AuthorizationToken = "ldslsxMqENSqAk5u1xExamNhiKVRv_IaVz_xQU2q--QYdhi-jlxGZ9LAM0Pvyffe";
+            ContentRetriever.GetAnnotation(10225840);
+            Console.ReadLine();
         }
     }
 }
