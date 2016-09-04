@@ -13,6 +13,7 @@ namespace Genius
     public class ContentRetriever
     {
         public static string AuthorizationToken { get; set; }
+        public static string TextFormat { get; set; }
         /// <summary>
         /// Returns object containing Annotation and Referent returned by "GET /annotations/:artistId"
         /// Annotation data returned from the API includes both the substance of the annotation and the necessary
@@ -25,7 +26,8 @@ namespace Genius
         {
             using (var client = new HttpClient())
             {
-                var baseAddress = new Uri($"https://api.genius.com/annotations/{annotationId}");
+                TextFormat = "dom";
+                var baseAddress = new Uri($"https://api.genius.com/annotations/{annotationId}?text_format={TextFormat}");
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", AuthorizationToken);
@@ -55,7 +57,8 @@ namespace Genius
         {
             using (var client = new HttpClient())
             {
-                var baseAddress = new Uri($"https://api.genius.com/referents?song_id={songId}&created_by_id={createdById}");
+                TextFormat = "dom";
+                var baseAddress = new Uri($"https://api.genius.com/referents?text_format={TextFormat}&song_id={songId}&created_by_id={createdById}");
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", AuthorizationToken);
@@ -82,7 +85,8 @@ namespace Genius
         {
             using (var client = new HttpClient())
             {
-                var baseAddress = new Uri($"https://api.genius.com/referents?created_by_id={createdById}&web_page_id={webPageId}");
+                TextFormat = "dom";
+                var baseAddress = new Uri($"https://api.genius.com/referents?text_format={TextFormat}&created_by_id={createdById}&web_page_id={webPageId}");
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", AuthorizationToken);
@@ -107,7 +111,8 @@ namespace Genius
         {
             using (var client = new HttpClient())
             {
-                var baseAddress = new Uri($"https://api.genius.com/songs/{songId}");
+                TextFormat = "dom";
+                var baseAddress = new Uri($"https://api.genius.com/songs/{songId}?text_format={TextFormat}");
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", AuthorizationToken);
@@ -132,7 +137,8 @@ namespace Genius
         {
             using (var client = new HttpClient())
             {
-                var baseAddress = new Uri($"https://api.genius.com/artists/{artistId}");
+                TextFormat = "dom";
+                var baseAddress = new Uri($"https://api.genius.com/artists/{artistId}?text_format={TextFormat}");
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", AuthorizationToken);
@@ -200,7 +206,8 @@ namespace Genius
         {
             using (var client = new HttpClient())
             {
-                var baseAddress = new Uri($"https://api.genius.com/account");
+                TextFormat = "dom";
+                var baseAddress = new Uri($"https://api.genius.com/account?text_format={TextFormat}");
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", AuthorizationToken);
