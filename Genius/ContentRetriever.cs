@@ -98,6 +98,11 @@ namespace Genius
             }
         }
 
+        /// <summary>
+        /// Gets Data for a specific Song
+        /// </summary>
+        /// <param name="id">Id of the song</param>
+        /// <returns>A Song Object</returns>
         public static async Task<Song> GetSongbyId(string id)
         {
             using (var client = new HttpClient())
@@ -114,6 +119,31 @@ namespace Genius
                     var jsonSong = jToken.SelectToken("response").SelectToken("song");
                     var songObject = JsonConvert.DeserializeObject<Song>(jsonSong.ToString());
                     return songObject;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Gets Data for a specific artist using his/her Genius Id
+        /// </summary>
+        /// <param name="id">ID of the artist</param>
+        /// <returns>An Artist Object</returns>
+        public static async Task<Artist> GetArtistById(string id)
+        {
+            using (var client = new HttpClient())
+            {
+                var baseAddress = new Uri($"https://api.genius.com/artists/{id}");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", AuthorizationToken);
+                var response = await client.GetAsync(baseAddress);
+                using (var content = response.Content)
+                {
+                    var result = await content.ReadAsStringAsync();
+                    var jToken = JToken.Parse(result);
+                    var jsonArtist = jToken.SelectToken("response").SelectToken("artist");
+                    var artistObject = JsonConvert.DeserializeObject<Artist>(jsonArtist.ToString());
+                    return artistObject;
                 }
             }
         }

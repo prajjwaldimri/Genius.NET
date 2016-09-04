@@ -14,9 +14,12 @@ namespace Genius.NET.TestConsole
             ContentRetriever.AuthorizationToken = "ldslsxMqENSqAk5u1xExamNhiKVRv_IaVz_xQU2q--QYdhi-jlxGZ9LAM0Pvyffe";
             //ContentRetriever.GetAnnotationbyId("10225840");
             //ContentRetriever.GetReferentsbySongId("12");
-            var song = ContentRetriever.GetSongbyId("378195");
+
+            ContentRetriever.GetArtistById("16775");
+            /*
             try
             {
+                var song = ContentRetriever.GetSongbyId("378195");
                 Console.WriteLine(song.Result);
             }
             catch (AggregateException e)
@@ -27,6 +30,7 @@ namespace Genius.NET.TestConsole
             {
                 Debug.WriteLine(e);
             }
+            */
             Console.ReadLine();
         }
     }
