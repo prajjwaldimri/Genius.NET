@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace Genius
 {
@@ -13,23 +14,28 @@ namespace Genius
     /// </summary>
     public class Annotation
     {
-        public string Api_Path { get; set; }
+        [JsonProperty(PropertyName = "api_path")]
+        public string ApiPath { get; set; }
         /// <summary>
         /// The Content of The Annotation
         /// </summary>
-        public AnnotationBody body { get; set; }
+        public AnnotationBody Body { get; set; }
         /// <summary>
         /// Total Number of Comments in Annotation
         /// </summary>
-        public string Comment_Count { get; set; }
+        [JsonProperty(PropertyName = "comment_count")]
+        public string CommentCount { get; set; }
         public bool Community { get; set; }
-        public bool Has_Voters { get; set; }
+        [JsonProperty(PropertyName = "has_voters")]
+        public bool HasVoters { get; set; }
         /// <summary>
         /// ID of The Annotation
         /// </summary>
         public string Id { get; set; }
         public bool Pinned { get; set; }
-        public string Shared_Url { get; set; }
+
+        [JsonProperty(PropertyName = "shared_url")]
+        public string SharedUrl { get; set; }
         public string Source { get; set; }
         public string State { get; set; }
         /// <summary>
@@ -40,37 +46,73 @@ namespace Genius
         /// <summary>
         /// Total vote score "upvotes and downvotes"
         /// </summary>
-        public string Votes_Total { get; set; }
+
+        [JsonProperty(PropertyName = "votes_total")]
+        public string VotesTotal { get; set; }
         /// <summary>
         /// List of users who contributed to this annotation
         /// </summary>
         public List<Author> Authors { get; set; }
+
+        [JsonProperty(PropertyName = "cosigned_by")]
         /// <summary>
         /// List of users who have cosigned this annotation
         /// </summary>
-        public List<User> Cosigned_By { get; set; }
+        public List<User> CosignedBy { get; set; }
+
+        [JsonProperty(PropertyName = "verified_by")]
         /// <summary>
         /// Verified User that created this annotation
         /// </summary>
-        public User Verified_By { get; set; }
+        public User VerifiedBy { get; set; }
 
     }
 
+    #region Classes for body element of Annotation
     public class AnnotationBody
     {
-        public Dom dom { get; set; }
+        public AnnotationDom Dom { get; set; }
     }
 
-    public class Dom
+    public class AnnotationDom
     {
-        public string tag { get; set; }
-        public Child[] children { get; set; }
+        public string Tag { get; set; }
+        public AnnotationChild[] Children { get; set; }
     }
 
-    public class Child
+    public class AnnotationChild
     {
-        public string tag { get; set; }
-        public string[] children { get; set; }
+        public string Tag { get; set; }
+        public string[] Children { get; set; }
     }
+
+    #endregion
+
+    /// <summary>
+    /// A variation of Annotation used with Song Class
+    /// </summary>
+    public class SongAnnotation : Annotation
+    {
+        public new SongAnnotationBody Body { get; set; }
+    }
+
+    /* Derived Classes of Annotation Body because the body component for annotations is different when we are calling API using Song ID.
+     *  
+     */
+    public class SongAnnotationBody : AnnotationBody
+    {
+        public new SongAnnotationDom Dom { get; set; }
+    }
+
+    public class SongAnnotationDom : AnnotationDom
+    {
+        public new List<SongAnnotationChild> Children { get; set; }
+    }
+
+    public class SongAnnotationChild : AnnotationChild
+    {
+        public new List<object> Children { get; set; }
+    }
+
 
 }

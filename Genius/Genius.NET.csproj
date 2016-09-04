@@ -38,10 +38,13 @@
     <Compile Include="ContentPoster.cs" />
     <Compile Include="ContentRetriever.cs" />
     <Compile Include="Genius-DataObjects\Account.cs" />
+    <Compile Include="Genius-DataObjects\Album.cs" />
     <Compile Include="Genius-DataObjects\Annotation.cs" />
     <Compile Include="Genius-DataObjects\Artist.cs" />
     <Compile Include="Genius-DataObjects\Author.cs" />
     <Compile Include="Genius-DataObjects\Avatar.cs" />
+    <Compile Include="Genius-DataObjects\Contributors.cs" />
+    <Compile Include="Genius-DataObjects\Media.cs" />
     <Compile Include="Genius-DataObjects\Referent.cs" />
     <Compile Include="Genius-DataObjects\Song.cs" />
     <Compile Include="Genius-DataObjects\User.cs" />
