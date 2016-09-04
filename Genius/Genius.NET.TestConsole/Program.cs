@@ -16,7 +16,11 @@ namespace Genius.NET.TestConsole
             //ContentRetriever.GetReferentsbySongId("12");
 
             //ContentRetriever.GetArtistById("16775");
-            ContentRetriever.GetSongsbyArtist("16775");
+            //ContentRetriever.GetSongsbyArtist("16775");
+            //ContentRetriever.GetWebPagebyUrl("https://docs.genius.com");
+            Search.AuthenticationToken = "ldslsxMqENSqAk5u1xExamNhiKVRv_IaVz_xQU2q--QYdhi-jlxGZ9LAM0Pvyffe";
+            Search.SearchTerm = "Sia";
+            Search.DoSearch();
             /*
             try
             {

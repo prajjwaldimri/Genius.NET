@@ -175,6 +175,26 @@ namespace Genius
                 }
             }
         }
+
+        public static async Task<WebPage> GetWebPagebyUrl(string rawAnnotableUrl, string canonicalUrl = "", string ogUrl = "")
+        {
+            using (var client = new HttpClient())
+            {
+                var baseAddress = new Uri($"https://api.genius.com/web_pages/lookup?raw_annotatable_url={rawAnnotableUrl}&canoncial_url={canonicalUrl}&og_url={ogUrl}");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", AuthorizationToken);
+                var response = await client.GetAsync(baseAddress);
+                using (var content = response.Content)
+                {
+                    var result = await content.ReadAsStringAsync();
+                    var jToken = JToken.Parse(result);
+                    var jsonWebPage = jToken.SelectToken("response").SelectToken("web_page");
+                    var webPageObject = JsonConvert.DeserializeObject<WebPage>(jsonWebPage.ToString());
+                    return webPageObject;
+                }
+            }
+        }
     }
 
     /// <summary>
