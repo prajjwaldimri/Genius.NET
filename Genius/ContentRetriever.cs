@@ -195,6 +195,26 @@ namespace Genius
                 }
             }
         }
+
+        public static async Task<User> GetAccountInfo()
+        {
+            using (var client = new HttpClient())
+            {
+                var baseAddress = new Uri($"https://api.genius.com/account");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", AuthorizationToken);
+                var response = await client.GetAsync(baseAddress);
+                using (var content = response.Content)
+                {
+                    var result = await content.ReadAsStringAsync();
+                    var jToken = JToken.Parse(result);
+                    var jsonUser = jToken.SelectToken("response").SelectToken("user");
+                    var userObject = JsonConvert.DeserializeObject<User>(jsonUser.ToString());
+                    return userObject;
+                }
+            }
+        }
     }
 
     /// <summary>

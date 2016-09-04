@@ -101,15 +101,15 @@ namespace Genius
      */
     public class SongAnnotationBody : AnnotationBody
     {
-        public new SongAnnotationDom Dom { get; set; }
+        public new SongandUserAnnotationDom Dom { get; set; }
     }
 
-    public class SongAnnotationDom : AnnotationDom
+    public class SongandUserAnnotationDom : AnnotationDom
     {
-        public new List<SongAnnotationChild> Children { get; set; }
+        public new List<SongandUserAnnotationChild> Children { get; set; }
     }
 
-    public class SongAnnotationChild : AnnotationChild
+    public class SongandUserAnnotationChild : AnnotationChild
     {
         public new List<object> Children { get; set; }
     }
