@@ -20,7 +20,7 @@ namespace Genius.NET.TestConsole
             //ContentRetriever.GetWebPagebyUrl("https://docs.genius.com");
             Search.AuthenticationToken = "ldslsxMqENSqAk5u1xExamNhiKVRv_IaVz_xQU2q--QYdhi-jlxGZ9LAM0Pvyffe";
             Search.SearchTerm = "Sia";
-            Search.DoSearch();
+            //Search.DoSearch();
             /*
             try
             {
