@@ -15,7 +15,8 @@ namespace Genius.NET.TestConsole
             //ContentRetriever.GetAnnotationbyId("10225840");
             //ContentRetriever.GetReferentsbySongId("12");
 
-            ContentRetriever.GetArtistById("16775");
+            //ContentRetriever.GetArtistById("16775");
+            ContentRetriever.GetSongsbyArtist("16775");
             /*
             try
             {

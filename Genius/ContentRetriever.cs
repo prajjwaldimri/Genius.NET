@@ -14,18 +14,18 @@ namespace Genius
     {
         public static string AuthorizationToken { get; set; }
         /// <summary>
-        /// Returns object containing Annotation and Referent returned by "GET /annotations/:id"
+        /// Returns object containing Annotation and Referent returned by "GET /annotations/:artistId"
         /// Annotation data returned from the API includes both the substance of the annotation and the necessary
         /// information for displaying it in its original context.
         /// For more info see https://docs.genius.com/#annotations-h2
         /// </summary>
-        /// <param name="id">Id for the Annotation</param>
+        /// <param name="annotationId">Id for the Annotation</param>
         /// <returns></returns>
-        public static async Task<GetAnnotationResult> GetAnnotationbyId(string id)
+        public static async Task<GetAnnotationResult> GetAnnotationbyId(string annotationId)
         {
             using (var client = new HttpClient())
             {
-                var baseAddress = new Uri($"https://api.genius.com/annotations/{id}");
+                var baseAddress = new Uri($"https://api.genius.com/annotations/{annotationId}");
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", AuthorizationToken);
@@ -101,13 +101,13 @@ namespace Genius
         /// <summary>
         /// Gets Data for a specific Song
         /// </summary>
-        /// <param name="id">Id of the song</param>
+        /// <param name="songId">Id of the song</param>
         /// <returns>A Song Object</returns>
-        public static async Task<Song> GetSongbyId(string id)
+        public static async Task<Song> GetSongbyId(string songId)
         {
             using (var client = new HttpClient())
             {
-                var baseAddress = new Uri($"https://api.genius.com/songs/{id}");
+                var baseAddress = new Uri($"https://api.genius.com/songs/{songId}");
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", AuthorizationToken);
@@ -124,15 +124,15 @@ namespace Genius
         }
 
         /// <summary>
-        /// Gets Data for a specific artist using his/her Genius Id
+        /// Data for a specific artist.
         /// </summary>
-        /// <param name="id">ID of the artist</param>
+        /// <param name="artistId">ID of the artist </param>
         /// <returns>An Artist Object</returns>
-        public static async Task<Artist> GetArtistById(string id)
+        public static async Task<Artist> GetArtistById(string artistId)
         {
             using (var client = new HttpClient())
             {
-                var baseAddress = new Uri($"https://api.genius.com/artists/{id}");
+                var baseAddress = new Uri($"https://api.genius.com/artists/{artistId}");
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", AuthorizationToken);
@@ -144,6 +144,34 @@ namespace Genius
                     var jsonArtist = jToken.SelectToken("response").SelectToken("artist");
                     var artistObject = JsonConvert.DeserializeObject<Artist>(jsonArtist.ToString());
                     return artistObject;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Documents (songs) for the artist specified. By default, 20 items are returned for each request.
+        /// </summary>
+        /// <param name="artistId">ID of the artist. </param>
+        /// <param name="sort">	title (default) or popularity</param>
+        /// <param name="perPage">Number of results to return per request</param>
+        /// <param name="paginatedOffset">Paginated offset, (e.g., per_page=5&amp;page=3 returns songs 11–15)</param>
+        /// <returns>List of Songs</returns>
+        public static async Task<List<Song>> GetSongsbyArtist(string artistId, string sort = "title", string perPage = "", string paginatedOffset = "")
+        {
+            using (var client = new HttpClient())
+            {
+                var baseAddress = new Uri($"https://api.genius.com/artists/{artistId}/songs");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", AuthorizationToken);
+                var response = await client.GetAsync(baseAddress);
+                using (var content = response.Content)
+                {
+                    var result = await content.ReadAsStringAsync();
+                    var jToken = JToken.Parse(result);
+                    var jsonSongs = jToken.SelectToken("response").SelectToken("songs");
+                    var songsObject = JsonConvert.DeserializeObject<List<Song>>(jsonSongs.ToString());
+                    return songsObject;
                 }
             }
         }
