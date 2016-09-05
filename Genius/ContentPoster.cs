@@ -104,6 +104,12 @@ namespace Genius
             }
         }
 
+        /// <summary>
+        /// Deletes an annotation created by the authenticated user.
+        /// Requires scope: manage_annotation
+        /// </summary>
+        /// <param name="annotationId">Id of the annotation to be deleted</param>
+        /// <returns>Task</returns>
         public static async Task DeleteAnnotation(string annotationId)
         {
             using (var client = new HttpClient())
