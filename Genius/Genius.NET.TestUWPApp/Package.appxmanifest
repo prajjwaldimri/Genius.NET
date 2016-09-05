@@ -37,7 +37,6 @@
         Square44x44Logo="Assets\Square44x44Logo.png"
         Description="Genius.NET.TestUWPApp"
         BackgroundColor="transparent">
-        <uap:DefaultTile WartistIde310x150Logo="Assets\WartistIde310x150Logo.png"/>
         <uap:SplashScreen Image="Assets\SplashScreen.png" />
       </uap:VisualElements>
     </Application>

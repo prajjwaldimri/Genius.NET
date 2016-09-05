@@ -25,7 +25,7 @@ namespace Genius
         public FactTrack FactTrack { get; set; }
 
         [JsonProperty(PropertyName = "featured_video")]
-        public bool FeaturedVideo { get; set; }
+        public string FeaturedVideo { get; set; }
 
         [JsonProperty(PropertyName = "full_title")]
         public string FullTitle { get; set; }

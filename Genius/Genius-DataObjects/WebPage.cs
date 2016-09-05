@@ -13,11 +13,19 @@ namespace Genius
         [JsonProperty(PropertyName = "share_url")]
         public string ShareUrl { get; set; }
 
+        [JsonProperty(PropertyName = "title")]
         public string Title { get; set; }
         public string Url { get; set; }
 
         [JsonProperty(PropertyName = "annotation_count")]
         public string AnnotationCount { get; set; }
+
+        //Only in POST
+
+        [JsonProperty(PropertyName = "canonical_url")]
+        public string CanonicalUrl { get; set; }
+        [JsonProperty(PropertyName = "og_url")]
+        public string OgUrl { get; set; }
 
     }
 

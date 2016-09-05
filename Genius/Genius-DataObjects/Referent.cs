@@ -22,12 +22,14 @@ namespace Genius
         [JsonProperty(PropertyName = "api_path")]
         public string ApiPath { get; set; }
         public string Classification { get; set; }
-        public bool Featured { get; set; }
+        public string Featured { get; set; }
+
+        [JsonProperty(PropertyName = "fragment")]
         public string Fragment { get; set; }
         public string Id { get; set; }
 
         [JsonProperty(PropertyName = "is_description")]
-        public bool IsDescription { get; set; }
+        public string IsDescription { get; set; }
         public string Path { get; set; }
         public ReferentRange Range { get; set; }
 
@@ -39,6 +41,13 @@ namespace Genius
 
         [JsonProperty(PropertyName = "verified_annotator_ids")]
         public List<string> VerifiedAnnotatorIds { get; set; }
+
+        [JsonProperty(PropertyName = "raw_annotable_url")]
+
+        //Used in POST
+        public string RawAnnotableUrl { get; set; }
+        [JsonProperty(PropertyName = "context_for_display")]
+        public ContextForDisplay ContextForDisplay { get; set; }
     }
 
     /// <summary>
@@ -61,6 +70,14 @@ namespace Genius
         public string Before { get; set; }
         public string After { get; set; }
         public string Content { get; set; }
+    }
+
+    public class ContextForDisplay
+    {
+        [JsonProperty(PropertyName = "before_html")]
+        public string BeforeHtml { get; set; }
+        [JsonProperty(PropertyName = "after_html")]
+        public string AfterHtml { get; set; }
     }
 
     /// <summary>

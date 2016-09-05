@@ -28,10 +28,10 @@ namespace Genius
         public string InstagramName { get; set; }
 
         [JsonProperty(PropertyName = "is_meme_verified")]
-        public bool IsMemeVerified { get; set; }
+        public string IsMemeVerified { get; set; }
 
         [JsonProperty(PropertyName = "is_verified")]
-        public bool IsVerified { get; set; }
+        public string IsVerified { get; set; }
         public string Name { get; set; }
         public string Url { get; set; }
 

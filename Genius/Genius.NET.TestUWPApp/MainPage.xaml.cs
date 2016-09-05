@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -29,13 +30,14 @@ namespace Genius.NET.TestUWPApp
 
             Authenticator.ClientId = "CLIENT_ID";
             Authenticator.RedirectUri = "https://genius.com";
-            Authenticator.Scope = "me";
+            Authenticator.Scope = "me create_annotation manage_annotation vote";
             Authenticator.State = "default_state";
             Authenticator.ClientSecret = "ENTER_CLIENT_SECRET";
             var url = Authenticator.GetAuthenticationUrl();
+            var unescapedUrl = Uri.EscapeUriString(url.ToString());
             WebView.FrameContentLoading += web_FrameContentLoading;
             WebView.NavigationCompleted += web_NavigationCompleted;
-            WebView.Navigate(url);
+            WebView.NavigateToString(unescapedUrl);
         }
 
         private static void web_FrameContentLoading(WebView sender, WebViewContentLoadingEventArgs args)
@@ -45,10 +47,17 @@ namespace Genius.NET.TestUWPApp
 
         private static async void web_NavigationCompleted(WebView sender, WebViewNavigationCompletedEventArgs args)
         {
-            var uri = args.Uri.ToString();
-            if (uri.Contains("code="))
+            try
             {
-                await Authenticator.GetAccessToken(args.Uri);
+                var uri = args.Uri.ToString();
+                if (uri.Contains("code="))
+                {
+                    await Authenticator.GetAccessToken(args.Uri);
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e);
             }
         }
     }

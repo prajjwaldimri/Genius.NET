@@ -19,20 +19,22 @@ namespace Genius
         /// <summary>
         /// The Content of The Annotation
         /// </summary>
+
+        [JsonProperty(PropertyName = "body")]
         public AnnotationBody Body { get; set; }
         /// <summary>
         /// Total Number of Comments in Annotation
         /// </summary>
         [JsonProperty(PropertyName = "comment_count")]
         public string CommentCount { get; set; }
-        public bool Community { get; set; }
+        public string Community { get; set; }
         [JsonProperty(PropertyName = "has_voters")]
-        public bool HasVoters { get; set; }
+        public string HasVoters { get; set; }
         /// <summary>
         /// ID of The Annotation
         /// </summary>
         public string Id { get; set; }
-        public bool Pinned { get; set; }
+        public string Pinned { get; set; }
 
         [JsonProperty(PropertyName = "shared_url")]
         public string SharedUrl { get; set; }
@@ -42,7 +44,7 @@ namespace Genius
         /// Full URL to the referent on genius.com
         /// </summary>
         public string Url { get; set; }
-        public bool Verified { get; set; }
+        public string Verified { get; set; }
         /// <summary>
         /// Total vote score "upvotes and downvotes"
         /// </summary>
@@ -71,7 +73,12 @@ namespace Genius
     #region Classes for body element of Annotation
     public class AnnotationBody
     {
+        [JsonProperty(PropertyName = "dom")]
         public AnnotationDom Dom { get; set; }
+        [JsonProperty(PropertyName = "markdown")]
+        public string MarkDown { get; set; }
+        [JsonProperty(PropertyName = "plain")]
+        public string Plain { get; set; }
     }
 
     public class AnnotationDom
