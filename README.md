@@ -14,8 +14,10 @@ It is very easy to use.
 
 For example to retrieve a Song by Artist Id you can do:
 
+```C#
 ContentRetriever.AuthorizationToken = "<Authorization Token>";
 var song = ContentRetriever.GetSongsbyArtist("16775");
+```
 
 And it will return you a Song Object which contains all the fields provided by Genius.com
 
