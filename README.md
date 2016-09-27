@@ -8,4 +8,17 @@
 <a href="https://zenhub.com"><img src="https://raw.githubusercontent.com/ZenHubIO/support/master/zenhub-badge.png"></a>
 
 
-//Currently a work in progress. All contributions are welcome :)
+Genius.NET is an .NET C# library to access the [Genius API](https://docs.genius.com). It is a Portable Class Library that can be used for development on all the .NET platforms except Windows Silverlight.
+
+It is very easy to use. 
+
+For example to retrieve a Song by Artist Id you can do:
+
+ContentRetriever.AuthorizationToken = "<Authorization Token>";
+var song = ContentRetriever.GetSongsbyArtist("16775");
+
+And it will return you a Song Object which contains all the fields provided by Genius.com
+
+
+
+
