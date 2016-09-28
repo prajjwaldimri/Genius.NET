@@ -1,4 +1,6 @@
 # Genius.NET
+
+[![Join the chat at https://gitter.im/Genius-NET/Lobby](https://badges.gitter.im/Genius-NET/Lobby.svg)](https://gitter.im/Genius-NET/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 .NET library to access Genius API @ (https://www.genius.com)
 
 [![Build status](https://ci.appveyor.com/api/projects/status/mowrlrdoc4ri4q1j?svg=true)](https://ci.appveyor.com/project/prajjwaldimri/genius-net)
