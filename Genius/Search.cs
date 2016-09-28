@@ -25,10 +25,10 @@ namespace Genius
                 client.DefaultRequestHeaders.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", AuthenticationToken);
-                var response = await client.GetAsync(baseAddress);
+                var response = await client.GetAsync(baseAddress).ConfigureAwait(false);
                 using (var content = response.Content)
                 {
-                    var result = await content.ReadAsStringAsync();
+                    var result = await content.ReadAsStringAsync().ConfigureAwait(false);
                     var jToken = JToken.Parse(result);
                     var jsonHits = jToken.SelectToken("response").SelectToken("hits");
                     var hitsObject = JsonConvert.DeserializeObject<List<Hit>>(jsonHits.ToString());

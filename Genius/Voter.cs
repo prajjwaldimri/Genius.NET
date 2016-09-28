@@ -30,7 +30,7 @@ namespace Genius
                 var baseAddress = new Uri($"https://api.genius.com//annotations/{annotationId}/upvote");
                 client.DefaultRequestHeaders.Clear();
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", AuthorizationToken);
-                var response = await client.PutAsync(baseAddress, null);
+                var response = await client.PutAsync(baseAddress, null).ConfigureAwait(false);
             }
         }
 
@@ -46,7 +46,7 @@ namespace Genius
                 var baseAddress = new Uri($"https://api.genius.com//annotations/{annotationId}/downvote");
                 client.DefaultRequestHeaders.Clear();
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", AuthorizationToken);
-                var response = await client.PutAsync(baseAddress, null);
+                var response = await client.PutAsync(baseAddress, null).ConfigureAwait(false);
             }
         }
 
@@ -62,7 +62,7 @@ namespace Genius
                 var baseAddress = new Uri($"https://api.genius.com//annotations/{annotationId}/unvote");
                 client.DefaultRequestHeaders.Clear();
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", AuthorizationToken);
-                var response = await client.PutAsync(baseAddress, null);
+                var response = await client.PutAsync(baseAddress, null).ConfigureAwait(false);
             }
         }
     }

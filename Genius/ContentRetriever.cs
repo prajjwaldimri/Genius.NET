@@ -31,10 +31,10 @@ namespace Genius
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", AuthorizationToken);
-                var response = await client.GetAsync(baseAddress);
+                var response = await client.GetAsync(baseAddress).ConfigureAwait(false);
                 using (var content = response.Content)
                 {
-                    var result = await content.ReadAsStringAsync();
+                    var result = await content.ReadAsStringAsync().ConfigureAwait(false);
                     var jToken = JToken.Parse(result);
                     var jsonAnnotation = jToken.SelectToken("response").SelectToken("annotation");
                     var jsonReferent = jToken.SelectToken("response").SelectToken("referent");
@@ -62,10 +62,10 @@ namespace Genius
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", AuthorizationToken);
-                var response = await client.GetAsync(baseAddress);
+                var response = await client.GetAsync(baseAddress).ConfigureAwait(false);
                 using (var content = response.Content)
                 {
-                    var result = await content.ReadAsStringAsync();
+                    var result = await content.ReadAsStringAsync().ConfigureAwait(false);
                     var jToken = JToken.Parse(result);
                     var jsonReferents = jToken.SelectToken("response").SelectToken("referents");
                     var referentObject = JsonConvert.DeserializeObject<List<Referent>>(jsonReferents.ToString());
@@ -90,10 +90,10 @@ namespace Genius
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", AuthorizationToken);
-                var response = await client.GetAsync(baseAddress);
+                var response = await client.GetAsync(baseAddress).ConfigureAwait(false);
                 using (var content = response.Content)
                 {
-                    var result = await content.ReadAsStringAsync();
+                    var result = await content.ReadAsStringAsync().ConfigureAwait(false);
                     var jToken = JToken.Parse(result);
                     var jsonReferents = jToken.SelectToken("response").SelectToken("referents");
                     var referentObject = JsonConvert.DeserializeObject<List<Referent>>(jsonReferents.ToString());
@@ -116,10 +116,10 @@ namespace Genius
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", AuthorizationToken);
-                var response = await client.GetAsync(baseAddress);
+                var response = await client.GetAsync(baseAddress).ConfigureAwait(false);
                 using (var content = response.Content)
                 {
-                    var result = await content.ReadAsStringAsync();
+                    var result = await content.ReadAsStringAsync().ConfigureAwait(false);
                     var jToken = JToken.Parse(result);
                     var jsonSong = jToken.SelectToken("response").SelectToken("song");
                     var songObject = JsonConvert.DeserializeObject<Song>(jsonSong.ToString());
@@ -142,10 +142,10 @@ namespace Genius
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", AuthorizationToken);
-                var response = await client.GetAsync(baseAddress);
+                var response = await client.GetAsync(baseAddress).ConfigureAwait(false);
                 using (var content = response.Content)
                 {
-                    var result = await content.ReadAsStringAsync();
+                    var result = await content.ReadAsStringAsync().ConfigureAwait(false);
                     var jToken = JToken.Parse(result);
                     var jsonArtist = jToken.SelectToken("response").SelectToken("artist");
                     var artistObject = JsonConvert.DeserializeObject<Artist>(jsonArtist.ToString());
@@ -170,10 +170,10 @@ namespace Genius
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", AuthorizationToken);
-                var response = await client.GetAsync(baseAddress);
+                var response = await client.GetAsync(baseAddress).ConfigureAwait(false);
                 using (var content = response.Content)
                 {
-                    var result = await content.ReadAsStringAsync();
+                    var result = await content.ReadAsStringAsync().ConfigureAwait(false);
                     var jToken = JToken.Parse(result);
                     var jsonSongs = jToken.SelectToken("response").SelectToken("songs");
                     var songsObject = JsonConvert.DeserializeObject<List<Song>>(jsonSongs.ToString());
@@ -190,10 +190,10 @@ namespace Genius
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", AuthorizationToken);
-                var response = await client.GetAsync(baseAddress);
+                var response = await client.GetAsync(baseAddress).ConfigureAwait(false);
                 using (var content = response.Content)
                 {
-                    var result = await content.ReadAsStringAsync();
+                    var result = await content.ReadAsStringAsync().ConfigureAwait(false);
                     var jToken = JToken.Parse(result);
                     var jsonWebPage = jToken.SelectToken("response").SelectToken("web_page");
                     var webPageObject = JsonConvert.DeserializeObject<WebPage>(jsonWebPage.ToString());
@@ -211,10 +211,10 @@ namespace Genius
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", AuthorizationToken);
-                var response = await client.GetAsync(baseAddress);
+                var response = await client.GetAsync(baseAddress).ConfigureAwait(false);
                 using (var content = response.Content)
                 {
-                    var result = await content.ReadAsStringAsync();
+                    var result = await content.ReadAsStringAsync().ConfigureAwait(false);
                     var jToken = JToken.Parse(result);
                     var jsonUser = jToken.SelectToken("response").SelectToken("user");
                     var userObject = JsonConvert.DeserializeObject<User>(jsonUser.ToString());

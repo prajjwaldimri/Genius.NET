@@ -87,14 +87,14 @@ namespace Genius
                     response = await client.PostAsync(baseAddress,
                         new StringContent(JsonConvert.SerializeObject(annotationPaylod, Formatting.None,
                                 new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore }),
-                            Encoding.UTF8, "application/json"));
+                            Encoding.UTF8, "application/json")).ConfigureAwait(false);
                 }
                 else
                 {
                     response = await client.PutAsync(baseAddress,
                         new StringContent(JsonConvert.SerializeObject(annotationPaylod, Formatting.None,
                                 new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore }),
-                            Encoding.UTF8, "application/json"));
+                            Encoding.UTF8, "application/json")).ConfigureAwait(false);
                 }
 
                 if (!response.IsSuccessStatusCode) return null;
@@ -119,7 +119,7 @@ namespace Genius
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", AuthorizationToken);
 
-                await client.DeleteAsync(baseAddress);
+                await client.DeleteAsync(baseAddress).ConfigureAwait(false);
             }
         }
     }

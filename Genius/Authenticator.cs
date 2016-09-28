@@ -132,8 +132,7 @@ namespace Genius
                     var response =
                         await
                             client.PostAsync(baseAddress,
-                                new StringContent(requestBody, Encoding.UTF8, "application/json"))
-                                .ConfigureAwait(false);
+                                new StringContent(requestBody, Encoding.UTF8, "application/json")).ConfigureAwait(false);
                     response.EnsureSuccessStatusCode();
                     var accesstoken = await response.Content.ReadAsStringAsync();
                     var access = JsonConvert.DeserializeObject<AccessToken>(accesstoken);
