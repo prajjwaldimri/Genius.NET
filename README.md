@@ -1,6 +1,6 @@
 # Genius.NET
 
-.NET library to access Genius API @ (https://www.genius.com)
+.NET library to access Genius API @ (<https://www.genius.com>)
 
 [![Build status](https://ci.appveyor.com/api/projects/status/mowrlrdoc4ri4q1j?svg=true)](https://ci.appveyor.com/project/prajjwaldimri/genius-net)
 [![Join the chat at https://gitter.im/Genius-NET/Lobby](https://badges.gitter.im/Genius-NET/Lobby.svg)](https://gitter.im/Genius-NET/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
@@ -13,9 +13,22 @@
 
 Genius.NET is an .NET C# library to access the [Genius API](https://docs.genius.com). It is a Portable Class Library that can be used for development on all the .NET platforms except Windows Silverlight.
 
-It is very easy to use. 
+# Installation
+***
 
-For example to retrieve a Song by Artist Id you can do:
+To install Genius.NET, run the following command in the [Package Manager Console](https://docs.nuget.org/docs/start-here/using-the-package-manager-console)
+
+``` Nuget
+Install-Package Genius.NET
+```
+
+# Usage
+***
+
+Please read the [Wiki](https://github.com/prajjwaldimri/Genius.NET/wiki) for full instructions.
+
+
+To retrieve a Song by Artist Id:
 
 ```C#
 ContentRetriever.AuthorizationToken = "<Authorization Token>";
@@ -23,7 +36,3 @@ var song = ContentRetriever.GetSongsbyArtist("16775");
 ```
 
 And it will return you a Song Object which contains all the fields provided by Genius.com
-
-
-
-
