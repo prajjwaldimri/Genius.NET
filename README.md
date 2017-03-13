@@ -11,7 +11,7 @@
 <a href="https://zenhub.com"><img src="https://raw.githubusercontent.com/ZenHubIO/support/master/zenhub-badge.png"></a>
 
 
-Genius.NET is an .NET C# library to access the [Genius API](https://docs.genius.com). It is a Portable Class Library that can be used for development on all the .NET platforms except Windows Silverlight.
+Genius.NET is an .NET C# library to access the [Genius API](https://docs.genius.com). It is a Portable Class Library that targets [.Net Standard 1.1](https://docs.microsoft.com/en-us/dotnet/articles/standard/library)
 
 # Installation
 
