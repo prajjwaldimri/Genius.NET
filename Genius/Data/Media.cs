@@ -1,6 +1,6 @@
-﻿namespace Genius
+﻿namespace Genius.Data
 {
-    public class Media
+	public class Media
     {
         public bool Cinema { get; set; }
         public string Provider { get; set; }

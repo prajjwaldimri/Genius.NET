@@ -1,8 +1,8 @@
 ﻿using Newtonsoft.Json;
 
-namespace Genius
+namespace Genius.Data
 {
-    public class WebPage
+	public class WebPage
     {
         public string Domain { get; set; }
         public string Id { get; set; }
@@ -26,7 +26,6 @@ namespace Genius
         public string CanonicalUrl { get; set; }
         [JsonProperty(PropertyName = "og_url")]
         public string OgUrl { get; set; }
-
     }
 
 }

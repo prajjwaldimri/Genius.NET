@@ -1,18 +1,21 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace Genius
+namespace Genius.Data
 {
-    /// <summary>
-    /// An annotation is a piece of content about a part of a document. 
-    /// The document may be a song (hosted on Genius) or a web page (hosted anywhere). 
-    /// The part of a document that an annotation is attached to is called a referent.
-    /// Annotation data returned from the API includes both the substance of the annotation and the necessary information for displaying it in
-    /// its original context.
-    /// More here: https://docs.genius.com/#annotations-h2
-    /// </summary>
-    public class Annotation
+	/// <summary>
+	/// An annotation is a piece of content about a part of a document. 
+	/// The document may be a song (hosted on Genius) or a web page (hosted anywhere). 
+	/// The part of a document that an annotation is attached to is called a referent.
+	/// Annotation data returned from the API includes both the substance of the annotation and the necessary information for displaying it in
+	/// its original context.
+	/// More here: https://docs.genius.com/#annotations-h2
+	/// </summary>
+	public class Annotation
     {
+		/// <summary>
+		/// The API-path to the album.
+		/// </summary>
         [JsonProperty(PropertyName = "api_path")]
         public string ApiPath { get; set; }
         /// <summary>
@@ -27,22 +30,40 @@ namespace Genius
         [JsonProperty(PropertyName = "comment_count")]
         public string CommentCount { get; set; }
         public string Community { get; set; }
+		/// <summary>
+		/// Whether this annotation has voters or not.
+		/// </summary>
         [JsonProperty(PropertyName = "has_voters")]
         public string HasVoters { get; set; }
         /// <summary>
         /// ID of The Annotation
         /// </summary>
         public string Id { get; set; }
+		/// <summary>
+		/// The pinned annotation.
+		/// </summary>
         public string Pinned { get; set; }
 
+		/// <summary>
+		/// The shared url for this annotation.
+		/// </summary>
         [JsonProperty(PropertyName = "shared_url")]
         public string SharedUrl { get; set; }
+		/// <summary>
+		/// The source of this annotation.
+		/// </summary>
         public string Source { get; set; }
+		/// <summary>
+		/// The current state of this annotaiton.
+		/// </summary>
         public string State { get; set; }
         /// <summary>
         /// Full URL to the referent on genius.com
         /// </summary>
         public string Url { get; set; }
+		/// <summary>
+		/// Whether this annotation is verified or not.
+		/// </summary>
         public string Verified { get; set; }
         /// <summary>
         /// Total vote score "upvotes and downvotes"
@@ -55,16 +76,16 @@ namespace Genius
         /// </summary>
         public List<Author> Authors { get; set; }
 
-        [JsonProperty(PropertyName = "cosigned_by")]
-        /// <summary>
-        /// List of users who have cosigned this annotation
-        /// </summary>
+	    /// <summary>
+	    /// List of users who have cosigned this annotation
+	    /// </summary>
+		[JsonProperty(PropertyName = "cosigned_by")]
         public List<User> CosignedBy { get; set; }
 
-        [JsonProperty(PropertyName = "verified_by")]
-        /// <summary>
-        /// Verified User that created this annotation
-        /// </summary>
+	    /// <summary>
+	    /// Verified User that created this annotation
+	    /// </summary>
+		[JsonProperty(PropertyName = "verified_by")]
         public User VerifiedBy { get; set; }
 
     }
@@ -119,6 +140,4 @@ namespace Genius
     {
         public new List<object> Children { get; set; }
     }
-
-
 }

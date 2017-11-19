@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace Genius
+namespace Genius.Data
 {
     /// <summary>
     /// A song is a document hosted on Genius. It's usually music lyrics.
@@ -84,7 +84,6 @@ namespace Genius
 
         [JsonProperty(PropertyName = "writer_artists")]
         public List<Artist> WriterArtists { get; set; }
-
     }
 
     public class SongDescription
@@ -127,8 +126,5 @@ namespace Genius
         public string UnreviewedAnnotations { get; set; }
         [JsonProperty(PropertyName = "verified_annotations")]
         public string VerifiedAnnotations { get; set; }
-
     }
-
-
 }

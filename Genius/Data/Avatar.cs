@@ -1,6 +1,6 @@
-﻿namespace Genius
+﻿namespace Genius.Data
 {
-    public class Avatar
+	public class Avatar
     {
         public Tiny Tiny { get; set; }
         public Thumb Thumb { get; set; }

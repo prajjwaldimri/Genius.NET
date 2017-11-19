@@ -3,25 +3,20 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
+using Genius.Data;
 using Newtonsoft.Json;
 
 namespace Genius
 {
+	/// <summary>
+	/// Used to post content on behalf of the currently signed in user. 
+	/// </summary>
     public class ContentPoster
     {
-        /// <summary>
-        /// Many API requests accept a text_format query parameter that can be used to specify how text content is formatted.
-        /// The value for the parameter must be one or more of plain, html, and dom. 
-        /// The value returned will be an object with key-value pairs of formats and results:
-        ///
-        ///`plain` is just plain text, no markup
-        ///`html` is a string of unescaped HTML suitable for rendering by a browser
-        ///`dom` is a nested object representing and HTML DOM hierarchy that can be used to programmatically present structured content
-        /// </summary>
-        public static string TextFormat { get; set; }
-
-        public static string AuthorizationToken { get; set; }
-
+	    /// <summary>
+	    /// The token that is used for authorization.
+	    /// </summary>
+		public static string AuthorizationToken { get; set; }
 
         /// <summary>
         /// Creates a new annotation on a public web page. The returned value will be the new annotation object, 
@@ -122,12 +117,24 @@ namespace Genius
         }
     }
 
+	/// <summary>
+	/// The payload that is contained in annotations
+	/// </summary>
     public class AnnotationPaylod
     {
+		/// <summary>
+		/// The annotation itself.
+		/// </summary>
         [JsonProperty(PropertyName = "annotation")]
         public Annotation Annotation { get; set; }
+		/// <summary>
+		/// The referent.
+		/// </summary>
         [JsonProperty(PropertyName = "referent")]
         public Referent Referent { get; set; }
+		/// <summary>
+		/// The web page.
+		/// </summary>
         [JsonProperty(PropertyName = "web_page")]
         public WebPage WebPage { get; set; }
     }
