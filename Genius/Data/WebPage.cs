@@ -26,6 +26,7 @@ namespace Genius.Data
         public string CanonicalUrl { get; set; }
         [JsonProperty(PropertyName = "og_url")]
         public string OgUrl { get; set; }
+
     }
 
 }

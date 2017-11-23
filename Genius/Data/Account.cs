@@ -5,9 +5,6 @@
     /// </summary>
     public class Account
     {
-		/// <summary>
-		/// The user belonging to this account.
-		/// </summary>
         public User User { get; set; }
     }
 }

@@ -10,24 +10,15 @@ namespace Genius.Data
 	/// </summary>
 	public class Referent
     {
-		/// <summary>
-		/// The type of the referent.
-		/// </summary>
         [JsonProperty(PropertyName = "_type")]
         public string Type { get; set; }
 
-		/// <summary>
-		/// The id of the annotator.
-		/// </summary>
         [JsonProperty(PropertyName = "annotator_id")]
         public string AnnotatorId { get; set; }
 
         [JsonProperty(PropertyName = "annotator_login")]
         public string AnnotatorLogin { get; set; }
 
-		/// <summary>
-		/// The API-Path of this referent.
-		/// </summary>
         [JsonProperty(PropertyName = "api_path")]
         public string ApiPath { get; set; }
         public string Classification { get; set; }
