@@ -1,4 +1,4 @@
-﻿namespace Genius
+﻿namespace Genius.Data
 {
     /// <summary>
     /// Account information includes general contact information and Genius-specific details about a user.

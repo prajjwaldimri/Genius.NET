@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard1.1</TargetFramework>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <Version>1.1.0</Version>
+    <Version>2.0.0</Version>
     <Authors>Prajjwal</Authors>
     <Company></Company>
     <PackageId>Genius.NET</PackageId>
@@ -12,7 +12,7 @@
     <PackageProjectUrl>https://github.com/prajjwaldimri/Genius.NET</PackageProjectUrl>
     <RepositoryUrl>https://github.com/prajjwaldimri/Genius.NET</RepositoryUrl>
     <PackageTags>genius, genius-api, net, c-sharp</PackageTags>
-    <PackageReleaseNotes>Upgraded to target .NET Standard 1.1</PackageReleaseNotes>
+    <PackageReleaseNotes>Refactored the library to be object-oriented and the possibility for thread-safety.</PackageReleaseNotes>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

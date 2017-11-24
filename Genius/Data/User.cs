@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace Genius
+namespace Genius.Data
 {
-    public class User
+	public class User
     {
         [JsonProperty(PropertyName = "about_me")]
         public UserAboutMe AboutMe { get; set; }

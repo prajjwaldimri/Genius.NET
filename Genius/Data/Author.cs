@@ -1,6 +1,6 @@
-﻿namespace Genius
+﻿namespace Genius.Data
 {
-    public class Author
+	public class Author
     {
         public string Attribution { get; set; }
         public string Pinned_Role { get; set; }

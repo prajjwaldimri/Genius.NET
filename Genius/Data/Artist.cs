@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace Genius
+namespace Genius.Data
 {
-    public class Artist
+	public class Artist
     {
         [JsonProperty(PropertyName = "alternate_names")]
         public List<object> AlternateNames { get; set; }

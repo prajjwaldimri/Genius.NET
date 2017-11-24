@@ -1,8 +1,8 @@
 ﻿using Newtonsoft.Json;
 
-namespace Genius
+namespace Genius.Data
 {
-    public class Album
+	public class Album
     {
         [JsonProperty(PropertyName = "api_path")]
         public string ApiPath { get; set; }

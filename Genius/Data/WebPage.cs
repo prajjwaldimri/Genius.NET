@@ -1,8 +1,8 @@
 ﻿using Newtonsoft.Json;
 
-namespace Genius
+namespace Genius.Data
 {
-    public class WebPage
+	public class WebPage
     {
         public string Domain { get; set; }
         public string Id { get; set; }

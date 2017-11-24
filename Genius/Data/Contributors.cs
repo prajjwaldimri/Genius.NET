@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 
-namespace Genius
+namespace Genius.Data
 {
-    public class Contributor
+	public class Contributor
     {
         public List<string> Contributions { get; set; }
         public Artist Artist { get; set; }
