@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26228.4
+VisualStudioVersion = 15.0.27004.2009
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Genius", "Genius.csproj", "{39B24720-1D30-470E-80C0-39C9B67AE6A2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Genius", "Genius.csproj", "{39B24720-1D30-470E-80C0-39C9B67AE6A2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExampleApplication", "..\ExampleApplication\ExampleApplication.csproj", "{2B80BC9B-FE69-4CA2-B2CF-B8D5F8CDA815}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,8 +17,15 @@ Global
 		{39B24720-1D30-470E-80C0-39C9B67AE6A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{39B24720-1D30-470E-80C0-39C9B67AE6A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{39B24720-1D30-470E-80C0-39C9B67AE6A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B80BC9B-FE69-4CA2-B2CF-B8D5F8CDA815}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B80BC9B-FE69-4CA2-B2CF-B8D5F8CDA815}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B80BC9B-FE69-4CA2-B2CF-B8D5F8CDA815}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B80BC9B-FE69-4CA2-B2CF-B8D5F8CDA815}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A6E7A861-57CD-4FA0-8D82-D1363B91A082}
 	EndGlobalSection
 EndGlobal
