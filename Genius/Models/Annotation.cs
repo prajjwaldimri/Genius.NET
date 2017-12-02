@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace Genius
+namespace Genius.Models
 {
     /// <summary>
     /// An annotation is a piece of content about a part of a document. 

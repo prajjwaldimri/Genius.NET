@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Genius
+namespace Genius.Models
 {
     public class Contributor
     {

@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace Genius
+namespace Genius.Models
 {
     public class WebPage
     {

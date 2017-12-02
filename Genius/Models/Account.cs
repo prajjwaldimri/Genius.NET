@@ -1,7 +1,7 @@
-﻿namespace Genius
+﻿namespace Genius.Models
 {
     /// <summary>
-    /// Account information includes general contact information and Genius-specific details about a user.
+    ///     Account information includes general contact information and Genius-specific details about a user.
     /// </summary>
     public class Account
     {

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace Genius
+namespace Genius.Models
 {
     /// <summary>
     /// Referents are the sections of a piece of content to which annotations are attached. 

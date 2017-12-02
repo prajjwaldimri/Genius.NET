@@ -1,4 +1,4 @@
-﻿namespace Genius
+﻿namespace Genius.Models
 {
     public class Author
     {

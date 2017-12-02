@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace Genius
+namespace Genius.Models
 {
     /// <summary>
     /// A song is a document hosted on Genius. It's usually music lyrics.
