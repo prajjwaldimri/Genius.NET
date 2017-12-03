@@ -1,0 +1,204 @@
+{
+    "docs": [
+        {
+            "location": "/",
+            "text": "Welcome to Genius.NET\n\u00b6\n\n\nIf you have never seen the genius.com \nAPI\n, I recommend skimming through the \nAPI\n to get a general idea and familarity with API specific terms.\n\n\nIf you are new to Genius.NET, then please go ahead and start from the \ngetting started\n guide, which walks through configuring the basics.\n\n\nIf you are looking for real world examples, check out \nExampleApplication\n\n\nTo translate these docs, please create a pull-request on the repository.",
+            "title": "Welcome to Genius.NET"
+        },
+        {
+            "location": "/#welcome-to-geniusnet",
+            "text": "If you have never seen the genius.com  API , I recommend skimming through the  API  to get a general idea and familarity with API specific terms.  If you are new to Genius.NET, then please go ahead and start from the  getting started  guide, which walks through configuring the basics.  If you are looking for real world examples, check out  ExampleApplication  To translate these docs, please create a pull-request on the repository.",
+            "title": "Welcome to Genius.NET"
+        },
+        {
+            "location": "/getting-started/",
+            "text": "Getting Started\n\u00b6\n\n\nThe Genius.NET library provides a wrapper called \nGeniusClient\n around all the functionalities inside the library.\n\n\nJust create a new instance of \nGeniusClient\n and you are good to go:\n\n\n1\nvar\n \ngeniusClient\n \n=\n \nnew\n \nGeniusClient\n(\n\"API_ACCESS_TOKEN\"\n);\n\n\n\n\n\n\n\nAccess Token\n\u00b6\n\n\nThe \nAPI_ACCESS_TOKEN\n mentioned in the above code snippet is the access token you will get when any user authenticates using your application. \n\n\n\n\nNote\n\n\nIt is recommended to use OAuth2 authentication.\n\n\n\n\nYou can read more about OAuth2 and Genius Authentication over at \nGenius Docs\n\n\nRetrieve a Song\n\u00b6\n\n\nTo test whether or not the token is working, you can simply fetch a song using the code below:\n\n\n1\nvar\n \nsong\n \n=\n \ngeniusClient\n.\nSongsClient\n.\nGetSong\n(\nTextFormat\n.\nDom\n,\n \n\"378195\"\n);\n\n\n\n\n\n\n\n\n\nNote\n\n\n378195\n is the id of the song to be retrieved.\n\n\n\n\nHttpResponse\n\u00b6\n\n\nWhen you run the above code you will notice that instead of returning a \nSong\n object, the library returns an \nHttpResponse<Song>\n object. This is because every response from the Genius API includes two top level objects. A \nmeta\n field and a \nresponse\n field and \nHttpResponse<T>\n contains both the fields.\n\n\nmeta\n field contains http status messages and error messages (if any).\n\n\nresponse\n field contains the actual data that you want to retrieve.\n\n\nSo keep an eye on the \nMeta\n field in case of any errors.\n\n\nText Format\n\u00b6\n\n\nText Format is an required parameter in almost every method in Genius.NET.\n\n\nAccording to Genius API:\n\n\nMany API requests accept a text_format query parameter that can be used to specify how text content is formatted. The value for the parameter must be one or more of plain, html, and dom. The value returned will be an object with key-value pairs of formats and results:\n\n\n\n\n\n\nplain is just plain text, no markup\n\n\n\n\n\n\nhtml is a string of unescaped HTML suitable for rendering by a browser\n\n\n\n\n\n\ndom is a nested object representing and HTML DOM hierarchy that can be used to programmatically present structured content\n\n\n\n\n\n\n\n\nNote\n\n\nThe library currently supports dom only as it is the most flexible among the three.",
+            "title": "Getting Started"
+        },
+        {
+            "location": "/getting-started/#getting-started",
+            "text": "The Genius.NET library provides a wrapper called  GeniusClient  around all the functionalities inside the library.  Just create a new instance of  GeniusClient  and you are good to go:  1 var   geniusClient   =   new   GeniusClient ( \"API_ACCESS_TOKEN\" );",
+            "title": "Getting Started"
+        },
+        {
+            "location": "/getting-started/#access-token",
+            "text": "The  API_ACCESS_TOKEN  mentioned in the above code snippet is the access token you will get when any user authenticates using your application.    Note  It is recommended to use OAuth2 authentication.   You can read more about OAuth2 and Genius Authentication over at  Genius Docs",
+            "title": "Access Token"
+        },
+        {
+            "location": "/getting-started/#retrieve-a-song",
+            "text": "To test whether or not the token is working, you can simply fetch a song using the code below:  1 var   song   =   geniusClient . SongsClient . GetSong ( TextFormat . Dom ,   \"378195\" );     Note  378195  is the id of the song to be retrieved.",
+            "title": "Retrieve a Song"
+        },
+        {
+            "location": "/getting-started/#httpresponse",
+            "text": "When you run the above code you will notice that instead of returning a  Song  object, the library returns an  HttpResponse<Song>  object. This is because every response from the Genius API includes two top level objects. A  meta  field and a  response  field and  HttpResponse<T>  contains both the fields.  meta  field contains http status messages and error messages (if any).  response  field contains the actual data that you want to retrieve.  So keep an eye on the  Meta  field in case of any errors.",
+            "title": "HttpResponse"
+        },
+        {
+            "location": "/getting-started/#text-format",
+            "text": "Text Format is an required parameter in almost every method in Genius.NET.  According to Genius API:  Many API requests accept a text_format query parameter that can be used to specify how text content is formatted. The value for the parameter must be one or more of plain, html, and dom. The value returned will be an object with key-value pairs of formats and results:    plain is just plain text, no markup    html is a string of unescaped HTML suitable for rendering by a browser    dom is a nested object representing and HTML DOM hierarchy that can be used to programmatically present structured content     Note  The library currently supports dom only as it is the most flexible among the three.",
+            "title": "Text Format"
+        },
+        {
+            "location": "/annotations/",
+            "text": "Annotations\n\u00b6\n\n\nYou can interact with annotations on the Genius Server using \nAnnotationsClient\n. \n\n\nAnnotationsClient\n provides methods to Retrieve, Create, Update or Delete annotations.\n\n\nGetting the annotations\n\u00b6\n\n\n1\n \nvar\n \ngetAnnotation\n \n=\n \nawait\n \ngeniusClient\n.\nAnnotationsClient\n.\nGetAnnotation\n(\n\"ANNOTATION_ID\"\n,\n \nTextFormat\n.\nDom\n);\n\n\n\n\n\n\n\nCreating an annotation\n\u00b6\n\n\nTo create a new annotation, you have to first create an \nAnnotationPayload\n. This is the object which will be serialized and sent to genius servers and act as the data for the annotation.\n\n\n 1\n 2\n 3\n 4\n 5\n 6\n 7\n 8\n 9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\nvar\n \nannotationPayload\n \n=\n \nnew\n \nAnnotationPayload\n\n\n{\n\n    \nAnnotation\n \n=\n \nnew\n \nAnnotation\n \n{\nBody\n \n=\n \nnew\n \nAnnotationBody\n \n{\nMarkDown\n \n=\n \n\"hello **world!**\"\n}},\n\n    \nReferent\n \n=\n \nnew\n \nReferent\n\n    \n{\n\n        \nRawAnnotableUrl\n \n=\n \n\"http://seejohncode.com/2014/01/27/vim-commands-piping/\"\n,\n\n        \nFragment\n \n=\n \n\"execute commands\"\n,\n\n        \nContextForDisplay\n \n=\n \nnew\n \nContextForDisplay\n\n        \n{\n\n            \nBeforeHtml\n \n=\n \n\"You may know that you can \"\n,\n\n            \nAfterHtml\n \n=\n \n\" from inside of a vim, with a vim command:\"\n\n        \n}\n\n    \n},\n\n    \nWebPage\n \n=\n \nnew\n \nWebPage\n\n    \n{\n\n        \nCanonicalUrl\n \n=\n \nnull\n,\n\n        \nOgUrl\n \n=\n \nnull\n,\n\n        \nTitle\n \n=\n \n\"Secret of Mana\"\n\n    \n}\n\n\n};\n\n\nvar\n \npostAnnotation\n \n=\n \nawait\n \ngeniusClient\n.\nAnnotationsClient\n.\nCreateAnnotation\n(\nannotationPayload\n,\n \nTextFormat\n.\nDom\n);\n\n\n\n\n\n\n\n\n\nNote\n\n\nThese are very few of the fields which can be inputted to the \nAnnotationPayload\n.\n\n\n\n\nUpdating an annotation\n\u00b6\n\n\nTo update an annotation created by the authenticated user, you have to supply an \nAnnotationPayload\n similarly to above.\n\n\n1\nvar\n \nupdatedAnnotation\n \n=\n \nawait\n \ngeniusClient\n.\nAnnotationsClient\n.\nUpdateAnnotation\n(\npostAnnotation\n.\nResponse\n.\nId\n,\n \nannotationUpdatePayload\n,\n \nTextFormat\n.\nDom\n);\n\n\n\n\n\n\n\nDeleting an Annotation\n\u00b6\n\n\nUse the \nDeleteAnnotation\n method in \nAnnotationsClient\n to delete any annotation created by the authenticated user.\n\n\n1\nvar\n \ndeletedAnnotation\n \n=\n \nawait\n \ngeniusClient\n.\nAnnotationsClient\n.\nDeleteAnnotation\n(\npostAnnotation\n.\nResponse\n.\nId\n,\n \nTextFormat\n.\nDom\n);\n\n\n\n\n\n\n\nVoting on the annotations\n\u00b6\n\n\nUsers can Up-Vote, Down-Vote or Un-Vote any annotation on Genius. This can be done using the \nVoteClient\n in Genius.NET\n\n\nUpvoting an annotation\n\u00b6\n\n\n1\nawait\n \ngeniusClient\n.\nVoteClient\n.\nVote\n(\nVoteType\n.\nUpvote\n,\n \n\"Annotation_ID\"\n,\n \nTextFormat\n.\nDom\n);\n\n\n\n\n\n\n\nDownvoting an annotation\n\u00b6\n\n\n1\nawait\n \ngeniusClient\n.\nVoteClient\n.\nVote\n(\nVoteType\n.\nDownvote\n,\n \n\"Annotation_ID\"\n,\n \nTextFormat\n.\nDom\n);\n\n\n\n\n\n\n\nUnvoting an annotation\n\u00b6\n\n\n1\nawait\n \ngeniusClient\n.\nVoteClient\n.\nVote\n(\nVoteType\n.\nUnvote\n,\n \n\"Annotation_ID\"\n,\n \nTextFormat\n.\nDom\n);\n\n\n\n\n\n\n\n\n\nNote\n\n\nVoteType\n is an enumeration available in Genius.NET library.",
+            "title": "Annotations"
+        },
+        {
+            "location": "/annotations/#annotations",
+            "text": "You can interact with annotations on the Genius Server using  AnnotationsClient .   AnnotationsClient  provides methods to Retrieve, Create, Update or Delete annotations.",
+            "title": "Annotations"
+        },
+        {
+            "location": "/annotations/#getting-the-annotations",
+            "text": "1   var   getAnnotation   =   await   geniusClient . AnnotationsClient . GetAnnotation ( \"ANNOTATION_ID\" ,   TextFormat . Dom );",
+            "title": "Getting the annotations"
+        },
+        {
+            "location": "/annotations/#creating-an-annotation",
+            "text": "To create a new annotation, you have to first create an  AnnotationPayload . This is the object which will be serialized and sent to genius servers and act as the data for the annotation.   1\n 2\n 3\n 4\n 5\n 6\n 7\n 8\n 9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21 var   annotationPayload   =   new   AnnotationPayload  { \n     Annotation   =   new   Annotation   { Body   =   new   AnnotationBody   { MarkDown   =   \"hello **world!**\" }}, \n     Referent   =   new   Referent \n     { \n         RawAnnotableUrl   =   \"http://seejohncode.com/2014/01/27/vim-commands-piping/\" , \n         Fragment   =   \"execute commands\" , \n         ContextForDisplay   =   new   ContextForDisplay \n         { \n             BeforeHtml   =   \"You may know that you can \" , \n             AfterHtml   =   \" from inside of a vim, with a vim command:\" \n         } \n     }, \n     WebPage   =   new   WebPage \n     { \n         CanonicalUrl   =   null , \n         OgUrl   =   null , \n         Title   =   \"Secret of Mana\" \n     }  };  var   postAnnotation   =   await   geniusClient . AnnotationsClient . CreateAnnotation ( annotationPayload ,   TextFormat . Dom );     Note  These are very few of the fields which can be inputted to the  AnnotationPayload .",
+            "title": "Creating an annotation"
+        },
+        {
+            "location": "/annotations/#updating-an-annotation",
+            "text": "To update an annotation created by the authenticated user, you have to supply an  AnnotationPayload  similarly to above.  1 var   updatedAnnotation   =   await   geniusClient . AnnotationsClient . UpdateAnnotation ( postAnnotation . Response . Id ,   annotationUpdatePayload ,   TextFormat . Dom );",
+            "title": "Updating an annotation"
+        },
+        {
+            "location": "/annotations/#deleting-an-annotation",
+            "text": "Use the  DeleteAnnotation  method in  AnnotationsClient  to delete any annotation created by the authenticated user.  1 var   deletedAnnotation   =   await   geniusClient . AnnotationsClient . DeleteAnnotation ( postAnnotation . Response . Id ,   TextFormat . Dom );",
+            "title": "Deleting an Annotation"
+        },
+        {
+            "location": "/annotations/#voting-on-the-annotations",
+            "text": "Users can Up-Vote, Down-Vote or Un-Vote any annotation on Genius. This can be done using the  VoteClient  in Genius.NET",
+            "title": "Voting on the annotations"
+        },
+        {
+            "location": "/annotations/#upvoting-an-annotation",
+            "text": "1 await   geniusClient . VoteClient . Vote ( VoteType . Upvote ,   \"Annotation_ID\" ,   TextFormat . Dom );",
+            "title": "Upvoting an annotation"
+        },
+        {
+            "location": "/annotations/#downvoting-an-annotation",
+            "text": "1 await   geniusClient . VoteClient . Vote ( VoteType . Downvote ,   \"Annotation_ID\" ,   TextFormat . Dom );",
+            "title": "Downvoting an annotation"
+        },
+        {
+            "location": "/annotations/#unvoting-an-annotation",
+            "text": "1 await   geniusClient . VoteClient . Vote ( VoteType . Unvote ,   \"Annotation_ID\" ,   TextFormat . Dom );     Note  VoteType  is an enumeration available in Genius.NET library.",
+            "title": "Unvoting an annotation"
+        },
+        {
+            "location": "/referents/",
+            "text": "Referents\n\u00b6\n\n\nAccording to Genius API:\n\n\n\n\nReferents are the sections of a piece of content to which annotations are attached. Each referent is associated with a web page or a song and may have one or more annotations. Referents can be searched by the document they are attached to or by the user that created them.\n\n\nWhen a new annotation is created either a referent is created with it or that annotation is attached to an existing referent.\n\n\n\n\nGet a referent\n\u00b6\n\n\nYou can get a referent by a \nsong_id\n or \nweb_page_id\n but not both. So there are two separate functions that you can use here.\n\n\n1\nvar\n \nreferentBySongId\n \n=\n \nawait\n \ngeniusClient\n.\nReferentsClient\n.\nGetReferentBySongId\n(\nTextFormat\n.\nDom\n,\n \n\"Song_Id\"\n,\n \nCreated_by_id\n\", \"\nper_page\n\", \"\npage\n\");\n\n\n\n\n\n\n\nOR\n\u00b6\n\n\n1\nvar\n \nreferentByWebPageId\n \n=\n \nawait\n \ngeniusClient\n.\nReferentsClient\n.\nGetReferentByWebPageId\n(\nTextFormat\n.\nDom\n,\n \n\"Web_page_id\"\n);",
+            "title": "Referents"
+        },
+        {
+            "location": "/referents/#referents",
+            "text": "According to Genius API:   Referents are the sections of a piece of content to which annotations are attached. Each referent is associated with a web page or a song and may have one or more annotations. Referents can be searched by the document they are attached to or by the user that created them.  When a new annotation is created either a referent is created with it or that annotation is attached to an existing referent.",
+            "title": "Referents"
+        },
+        {
+            "location": "/referents/#get-a-referent",
+            "text": "You can get a referent by a  song_id  or  web_page_id  but not both. So there are two separate functions that you can use here.  1 var   referentBySongId   =   await   geniusClient . ReferentsClient . GetReferentBySongId ( TextFormat . Dom ,   \"Song_Id\" ,   Created_by_id \", \" per_page \", \" page \");",
+            "title": "Get a referent"
+        },
+        {
+            "location": "/referents/#or",
+            "text": "1 var   referentByWebPageId   =   await   geniusClient . ReferentsClient . GetReferentByWebPageId ( TextFormat . Dom ,   \"Web_page_id\" );",
+            "title": "OR"
+        },
+        {
+            "location": "/songs/",
+            "text": "Songs\n\u00b6\n\n\nAccording to Genius API:\n\n\n\n\nA song is a document hosted on Genius. It's usually music lyrics.\nData for a song includes details about the document itself and information about all the referents that are attached to it, including the text to which they refer.\n\n\n\n\nSongs are managed by \nSongsClient\n in Genius.NET\n\n\nGetting a Song\n\u00b6\n\n\n1\nvar\n \nsong\n \n=\n \ngeniusClient\n.\nSongsClient\n.\nGetSong\n(\nTextFormat\n.\nDom\n,\n \n\"SONG_ID\"\n);",
+            "title": "Songs"
+        },
+        {
+            "location": "/songs/#songs",
+            "text": "According to Genius API:   A song is a document hosted on Genius. It's usually music lyrics.\nData for a song includes details about the document itself and information about all the referents that are attached to it, including the text to which they refer.   Songs are managed by  SongsClient  in Genius.NET",
+            "title": "Songs"
+        },
+        {
+            "location": "/songs/#getting-a-song",
+            "text": "1 var   song   =   geniusClient . SongsClient . GetSong ( TextFormat . Dom ,   \"SONG_ID\" );",
+            "title": "Getting a Song"
+        },
+        {
+            "location": "/artists/",
+            "text": "Artists\n\u00b6\n\n\nAn artist is how Genius represents the creator of one or more songs (or other documents hosted on Genius). It's usually a musician or group of musicians.\n\n\nArtists are managed by the \nArtistsClient\n in Genius.NET\n\n\nGetting an artist using \nArtistID\n\u00b6\n\n\n1\nvar\n \nartistInfo\n \n=\n \ngeniusClient\n.\nArtistsClient\n.\nGetArtist\n(\nTextFormat\n.\nDom\n,\n \n\"ARTIST_ID\"\n);\n\n\n\n\n\n\n\nGetting all songs by an Artist\n\u00b6\n\n\n1\nvar\n \nsongsByArtist\n \n=\n \ngeniusClient\n.\nArtistsClient\n.\nGetSongsByArtist\n(\nTextFormat\n.\nDom\n,\n \n\"ARTIST_ID\"\n);",
+            "title": "Artists"
+        },
+        {
+            "location": "/artists/#artists",
+            "text": "An artist is how Genius represents the creator of one or more songs (or other documents hosted on Genius). It's usually a musician or group of musicians.  Artists are managed by the  ArtistsClient  in Genius.NET",
+            "title": "Artists"
+        },
+        {
+            "location": "/artists/#getting-an-artist-using-artistid",
+            "text": "1 var   artistInfo   =   geniusClient . ArtistsClient . GetArtist ( TextFormat . Dom ,   \"ARTIST_ID\" );",
+            "title": "Getting an artist using ArtistID"
+        },
+        {
+            "location": "/artists/#getting-all-songs-by-an-artist",
+            "text": "1 var   songsByArtist   =   geniusClient . ArtistsClient . GetSongsByArtist ( TextFormat . Dom ,   \"ARTIST_ID\" );",
+            "title": "Getting all songs by an Artist"
+        },
+        {
+            "location": "/webpages/",
+            "text": "Web-Pages\n\u00b6\n\n\n\n\nA web page is a single, publicly accessible page to which annotations may be attached. Web pages map 1-to-1 with unique, canonical URLs.\n\n\n\n\nWebPagesClient\n is used to retrieve webpages in Genius.NET\n\n\nGet/lookup a webpage\n\u00b6\n\n\n\n\nInformation about a web page retrieved by the page's full URL (including protocol). The returned data includes Genius's ID for the page, which may be used to look up associated referents with the /referents endpoint.\n\n\nData is only available for pages that already have at least one annotation.\n\n\nProvide as many of the following variants of the URL as possible:\n\n\n\n\n1\nvar\n \nwebPage\n \n=\n \ngeniusClient\n.\nWebPagesClient\n.\nGetWebPage\n(\nTextFormat\n.\nDom\n,\n \n\"URL\"\n);",
+            "title": "Web-Pages"
+        },
+        {
+            "location": "/webpages/#web-pages",
+            "text": "A web page is a single, publicly accessible page to which annotations may be attached. Web pages map 1-to-1 with unique, canonical URLs.   WebPagesClient  is used to retrieve webpages in Genius.NET",
+            "title": "Web-Pages"
+        },
+        {
+            "location": "/webpages/#getlookup-a-webpage",
+            "text": "Information about a web page retrieved by the page's full URL (including protocol). The returned data includes Genius's ID for the page, which may be used to look up associated referents with the /referents endpoint.  Data is only available for pages that already have at least one annotation.  Provide as many of the following variants of the URL as possible:   1 var   webPage   =   geniusClient . WebPagesClient . GetWebPage ( TextFormat . Dom ,   \"URL\" );",
+            "title": "Get/lookup a webpage"
+        },
+        {
+            "location": "/search/",
+            "text": "Search\n\u00b6\n\n\nSearch is managed by the \nSearchClient\n\n\nSearch for anything\n\u00b6\n\n\n1\nvar\n \nsearchResult\n \n=\n \nawait\n \ngeniusClient\n.\nSearchClient\n.\nSearch\n(\nTextFormat\n.\nDom\n,\n \n\"Kendrick%20Lamar\"\n);",
+            "title": "Search"
+        },
+        {
+            "location": "/search/#search",
+            "text": "Search is managed by the  SearchClient",
+            "title": "Search"
+        },
+        {
+            "location": "/search/#search-for-anything",
+            "text": "1 var   searchResult   =   await   geniusClient . SearchClient . Search ( TextFormat . Dom ,   \"Kendrick%20Lamar\" );",
+            "title": "Search for anything"
+        },
+        {
+            "location": "/account/",
+            "text": "Account\n\u00b6\n\n\nAccount information includes general contact information and Genius-specific details about the authenticated user.\n\n\nGetting the account information\n\u00b6\n\n\n1\nvar\n \naccountInfo\n \n=\n \ngeniusClient\n.\nAccountsClient\n.\nGetAccountInfo\n(\nTextFormat\n.\nDom\n);",
+            "title": "Account"
+        },
+        {
+            "location": "/account/#account",
+            "text": "Account information includes general contact information and Genius-specific details about the authenticated user.",
+            "title": "Account"
+        },
+        {
+            "location": "/account/#getting-the-account-information",
+            "text": "1 var   accountInfo   =   geniusClient . AccountsClient . GetAccountInfo ( TextFormat . Dom );",
+            "title": "Getting the account information"
+        },
+        {
+            "location": "/contributing/",
+            "text": "Contributing to Genius.NET\n\u00b6\n\n\nIf you found any bugs in the library then please \ncreate an issue\n in the repository.\n\n\nCreate an issue or message me before starting work on new features. This helps reduce conflicts in work (Most of the time devs start working on same problem).\n\n\nIt would be a great help if you can translate these docs in your native language. Visit \nthis link\n for more details.\n\n\n\n\nNote\n\n\nThanks for reading! Have a great day :)",
+            "title": "Contributing to Genius.NET"
+        },
+        {
+            "location": "/contributing/#contributing-to-geniusnet",
+            "text": "If you found any bugs in the library then please  create an issue  in the repository.  Create an issue or message me before starting work on new features. This helps reduce conflicts in work (Most of the time devs start working on same problem).  It would be a great help if you can translate these docs in your native language. Visit  this link  for more details.   Note  Thanks for reading! Have a great day :)",
+            "title": "Contributing to Genius.NET"
+        }
+    ]
+}
