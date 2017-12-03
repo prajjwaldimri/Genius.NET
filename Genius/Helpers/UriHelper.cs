@@ -20,16 +20,23 @@ namespace Genius.Helpers
         /// <param name="webPageId"></param>
         /// <param name="sort"></param>
         /// <param name="additionalUrl"></param>
+        /// <param name="rawAnnotatableUrl"></param>
+        /// <param name="canonicalUrl"></param>
+        /// <param name="ogUrl"></param>
         /// <returns></returns>
         public static Uri CreateUri<T>(string textFormat, string id = "", bool isVoteUri = false,
             VoteType voteType = VoteType.Unvote, string perPage = "", string page = "", string createdById = "",
-            string songId = "", string webPageId = "", string sort = "", string additionalUrl = "")
+            string songId = "", string webPageId = "", string sort = "", string additionalUrl = "",
+            string rawAnnotatableUrl = "", string canonicalUrl = "", string ogUrl = "")
         {
             // Checks if the parameters have started in the url
             var parameterStarted = false;
             var uriString = new StringBuilder("https://api.genius.com/");
 
-            uriString.Append(typeof(T).Name.ToLower() + "s");
+            if (typeof(T) == typeof(WebPage))
+                uriString.Append("web_pages");
+            else
+                uriString.Append(typeof(T).Name.ToLower() + "s");
 
             if (!string.IsNullOrWhiteSpace(id))
                 uriString.Append($"/{id}");
@@ -79,6 +86,27 @@ namespace Genius.Helpers
             {
                 uriString.Append(parameterStarted ? "&" : "?");
                 uriString.Append($"page={page}");
+                parameterStarted = true;
+            }
+
+            if (!string.IsNullOrWhiteSpace(rawAnnotatableUrl))
+            {
+                uriString.Append(parameterStarted ? "&" : "?");
+                uriString.Append($"raw_annotatable_url={rawAnnotatableUrl}");
+                parameterStarted = true;
+            }
+
+            if (!string.IsNullOrWhiteSpace(canonicalUrl))
+            {
+                uriString.Append(parameterStarted ? "&" : "?");
+                uriString.Append($"canonical_url={canonicalUrl}");
+                parameterStarted = true;
+            }
+
+            if (!string.IsNullOrWhiteSpace(ogUrl))
+            {
+                uriString.Append(parameterStarted ? "&" : "?");
+                uriString.Append($"og_url={ogUrl}");
                 parameterStarted = true;
             }
 
