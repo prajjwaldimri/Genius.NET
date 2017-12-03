@@ -9,6 +9,12 @@ namespace Genius.Clients
     /// </summary>
     public interface ISongsClient
     {
+        /// <summary>
+        ///     Gets Data for a specific song.
+        /// </summary>
+        /// <param name="textFormat">Format for text bodies related to the document</param>
+        /// <param name="songId">ID of the song</param>
+        /// <returns></returns>
         Task<HttpResponse<Song>> GetSong(TextFormat textFormat, string songId);
     }
 }

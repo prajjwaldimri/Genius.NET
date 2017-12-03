@@ -9,12 +9,14 @@ namespace Genius.Helpers
         /// <summary>
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        /// <param name="textFormat"></param>
+        /// <param name="textFormat">Format for text bodies related to the document</param>
         /// <param name="id"></param>
         /// <param name="isVoteUri"></param>
         /// <param name="voteType"></param>
-        /// <param name="perPage"></param>
-        /// <param name="page"></param>
+        /// <param name="perPage">Number of results to return per request</param>
+        /// <param name="page">
+        ///     Paginated offset (e.g., <![CDATA[per_page=5&page=3]]> returns songs 11-15)
+        /// </param>
         /// <param name="createdById"></param>
         /// <param name="songId"></param>
         /// <param name="webPageId"></param>

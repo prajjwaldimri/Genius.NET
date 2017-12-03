@@ -10,11 +10,13 @@ namespace Genius.Clients
     {
         private readonly IApiConnection _apiConnection;
 
+        /// <inheritdoc />
         public ReferentsClient(IApiConnection apiConnection)
         {
             _apiConnection = apiConnection;
         }
 
+        /// <inheritdoc />
         public async Task<HttpResponse<Referent>> GetReferentBySongId(TextFormat textFormat, string songId,
             string createdById = "", string perPage = "",
             string page = "")
@@ -24,6 +26,7 @@ namespace Genius.Clients
             return await _apiConnection.Get<Referent>(textFormat, uri: uri);
         }
 
+        /// <inheritdoc />
         public async Task<HttpResponse<Referent>> GetReferentByWebPageId(TextFormat textFormat, string webPageId,
             string createdById = "", string perPage = "",
             string page = "")

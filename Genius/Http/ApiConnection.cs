@@ -10,10 +10,6 @@ using Newtonsoft.Json.Linq;
 
 namespace Genius.Http
 {
-    /// <summary>
-    ///     A connection for making HTTP requests against URI Endpoints.
-    ///     Provides type-friendly Http methods.
-    /// </summary>
     internal class ApiConnection : IApiConnection
     {
         private readonly string _accessToken;
@@ -27,13 +23,7 @@ namespace Genius.Http
             _accessToken = accessToken;
         }
 
-        /// <summary>
-        ///     Votes on an annotation.
-        /// </summary>
-        /// <param name="textFormat"></param>
-        /// <param name="voteType">Upvote, Downvote or Unvote?</param>
-        /// <param name="annotationId">Votes are only allowed on annotations</param>
-        /// <returns></returns>
+
         public async Task<HttpResponse<Annotation>> Vote(TextFormat textFormat, VoteType voteType, string annotationId)
         {
             using (var client = new HttpClient())
@@ -59,6 +49,7 @@ namespace Genius.Http
                 }
             }
         }
+
 
         public async Task<HttpResponse<T>> Put<T>(TextFormat textFormat, string id, object payload, Uri uri = null)
         {
@@ -93,6 +84,7 @@ namespace Genius.Http
             }
         }
 
+
         public async Task<HttpResponse<T>> Delete<T>(TextFormat textFormat, string id, Uri uri = null)
         {
             using (var client = new HttpClient())
@@ -119,14 +111,7 @@ namespace Genius.Http
             }
         }
 
-        /// <summary>
-        ///     POST to Genius API
-        /// </summary>
-        /// <typeparam name="T">Type of object to post</typeparam>
-        /// <param name="textFormat"></param>
-        /// <param name="payload">The object to send in JSON form with the POST request.</param>
-        /// <param name="uri">Optional URI parameter to which to send HTTP Request</param>
-        /// <returns></returns>
+
         public async Task<HttpResponse<T>> Post<T>(TextFormat textFormat, object payload, Uri uri = null)
         {
             using (var client = new HttpClient())
@@ -161,17 +146,7 @@ namespace Genius.Http
             }
         }
 
-        /// <summary>
-        /// </summary>
-        /// <typeparam name="T">Type of Model</typeparam>
-        /// <param name="textFormat">Format of the text to be returned from the server</param>
-        /// <param name="id">Any type of id.</param>
-        /// <param name="uri">Uri to send HTTP Request to</param>
-        /// <param name="jsonArrayName">
-        ///     This parameter will be used as the name of the object inside response object when
-        ///     de-serializing response from server
-        /// </param>
-        /// <returns></returns>
+
         public async Task<HttpResponse<T>> Get<T>(TextFormat textFormat, string id = "", Uri uri = null,
             string jsonArrayName = "")
         {

@@ -9,11 +9,13 @@ namespace Genius.Clients
     {
         private readonly IApiConnection _apiConnection;
 
+        /// <inheritdoc />
         public VoteClient(IApiConnection apiConnection)
         {
             _apiConnection = apiConnection;
         }
 
+        /// <inheritdoc />
         public async Task<HttpResponse<Annotation>> Vote(VoteType voteType, string id, TextFormat textFormat)
         {
             return await _apiConnection.Vote(textFormat, voteType, id);
