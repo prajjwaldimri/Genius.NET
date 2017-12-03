@@ -8,12 +8,12 @@ namespace Genius.Clients
     /// <summary>
     ///     Annotation is a piece of content about a part of a document
     /// </summary>
-    public class AnnotationClient : IAnnotationClient
+    public class AnnotationsClient : IAnnotationsClient
     {
         private readonly IApiConnection _apiConnection;
 
         /// <param name="apiConnection">Instance of apiConnection</param>
-        public AnnotationClient(IApiConnection apiConnection)
+        public AnnotationsClient(IApiConnection apiConnection)
         {
             _apiConnection = apiConnection;
         }

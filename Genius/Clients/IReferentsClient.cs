@@ -7,7 +7,7 @@ namespace Genius.Clients
     ///     Referents are the sections of a piece of content to which annotations are attached.
     ///     https://docs.genius.com/#referents-h2
     /// </summary>
-    public interface IReferentClient
+    public interface IReferentsClient
     {
         Task<HttpResponse<Referent>> GetReferentBySongId(TextFormat textFormat, string songId, string createdById = "",
             string perPage = "", string page = "");

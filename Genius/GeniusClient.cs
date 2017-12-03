@@ -8,11 +8,11 @@ namespace Genius
     /// </summary>
     public class GeniusClient
     {
-        public readonly IAccountClient AccountClient;
-        public readonly IAnnotationClient AnnotationClient;
+        public readonly IAccountsClient AccountsClient;
+        public readonly IAnnotationsClient AnnotationsClient;
         public readonly IVoteClient VoteClient;
 
-        public IReferentClient ReferentClient;
+        public IReferentsClient ReferentsClient;
 
 
         /// <summary>
@@ -23,10 +23,10 @@ namespace Genius
         {
             IApiConnection apiConnection = new ApiConnection(accessToken);
 
-            AccountClient = new AccountClient(apiConnection);
-            AnnotationClient = new AnnotationClient(apiConnection);
+            AccountsClient = new AccountsClient(apiConnection);
+            AnnotationsClient = new AnnotationsClient(apiConnection);
             VoteClient = new VoteClient(apiConnection);
-            ReferentClient = new ReferentClient(apiConnection);
+            ReferentsClient = new ReferentsClient(apiConnection);
         }
     }
 }

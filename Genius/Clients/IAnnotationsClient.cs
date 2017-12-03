@@ -6,7 +6,7 @@ namespace Genius.Clients
     /// <summary>
     ///     https://docs.genius.com/#annotations-h2
     /// </summary>
-    public interface IAnnotationClient
+    public interface IAnnotationsClient
     {
         Task<HttpResponse<Annotation>> GetAnnotation(string annotationId, TextFormat textFormat);
 

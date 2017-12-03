@@ -9,11 +9,11 @@ namespace Genius.Clients
     /// <summary>
     ///     Gets information about genius user currently authenticated
     /// </summary>
-    public class AccountClient : IAccountClient
+    public class AccountsClient : IAccountsClient
     {
         private IApiConnection _apiConnection;
 
-        public AccountClient(IApiConnection apiConnection)
+        public AccountsClient(IApiConnection apiConnection)
         {
             _apiConnection = apiConnection;
         }

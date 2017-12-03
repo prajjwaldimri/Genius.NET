@@ -6,11 +6,11 @@ using Genius.Models;
 namespace Genius.Clients
 {
     /// <inheritdoc />
-    public class ReferentClient : IReferentClient
+    public class ReferentsClient : IReferentsClient
     {
         private readonly IApiConnection _apiConnection;
 
-        public ReferentClient(IApiConnection apiConnection)
+        public ReferentsClient(IApiConnection apiConnection)
         {
             _apiConnection = apiConnection;
         }

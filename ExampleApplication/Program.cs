@@ -20,7 +20,7 @@ namespace ExampleApplication
             #region Annotations
 
             // GET an annotation by Id
-            var getAnnotation = await geniusClient.AnnotationClient.GetAnnotation("10225840", TextFormat.Dom);
+            var getAnnotation = await geniusClient.AnnotationsClient.GetAnnotation("10225840", TextFormat.Dom);
 
 
             // Create/POST an annotation
@@ -45,7 +45,7 @@ namespace ExampleApplication
                 }
             };
             var postAnnotation =
-                await geniusClient.AnnotationClient.CreateAnnotation(annotationPayload, TextFormat.Dom);
+                await geniusClient.AnnotationsClient.CreateAnnotation(annotationPayload, TextFormat.Dom);
 
             // Update an annotation
 
@@ -55,14 +55,14 @@ namespace ExampleApplication
             };
 
             var updatedAnnotation =
-                await geniusClient.AnnotationClient.UpdateAnnotation(postAnnotation.Response.Id,
+                await geniusClient.AnnotationsClient.UpdateAnnotation(postAnnotation.Response.Id,
                     annotationUpdatePayload,
                     TextFormat.Dom);
 
             // Delete an annotation
 
             var deletedAnnotation =
-                await geniusClient.AnnotationClient.DeleteAnnotation(postAnnotation.Response.Id, TextFormat.Dom);
+                await geniusClient.AnnotationsClient.DeleteAnnotation(postAnnotation.Response.Id, TextFormat.Dom);
 
             #endregion
 
@@ -82,17 +82,17 @@ namespace ExampleApplication
             #region Referent
 
             var referentBySongId =
-                await geniusClient.ReferentClient.GetReferentBySongId(TextFormat.Dom, "Song_Id", "Created_by_id",
+                await geniusClient.ReferentsClient.GetReferentBySongId(TextFormat.Dom, "Song_Id", "Created_by_id",
                     "per_page", "page");
 
             var referentByWebPageId =
-                await geniusClient.ReferentClient.GetReferentByWebPageId(TextFormat.Dom, "Web_page_id");
+                await geniusClient.ReferentsClient.GetReferentByWebPageId(TextFormat.Dom, "Web_page_id");
 
             #endregion
 
 
             // Get account info of the authenticated user.
-            var accountInfo = await geniusClient.AccountClient.GetAccountInfo();
+            var accountInfo = await geniusClient.AccountsClient.GetAccountInfo();
         }
     }
 }
