@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard1.1</TargetFramework>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <Version>1.1.0</Version>
+    <Version>2.0.0</Version>
     <Authors>Prajjwal</Authors>
     <Company></Company>
     <PackageId>Genius.NET</PackageId>
@@ -11,8 +11,11 @@
     <Copyright>Copyright 2017</Copyright>
     <PackageProjectUrl>https://github.com/prajjwaldimri/Genius.NET</PackageProjectUrl>
     <RepositoryUrl>https://github.com/prajjwaldimri/Genius.NET</RepositoryUrl>
-    <PackageTags>genius, genius-api, net, c-sharp</PackageTags>
-    <PackageReleaseNotes>Upgraded to target .NET Standard 1.1</PackageReleaseNotes>
+    <PackageTags>genius, genius-api, net, c-sharp, net-core, standard</PackageTags>
+    <PackageReleaseNotes>Rewrote the complete library.</PackageReleaseNotes>
+    <ApplicationIcon>Genius_Logo.ico</ApplicationIcon>
+    <PackageIconUrl>https://images.genius.com/69333b682fca131dfc5cc94d072ab2f9.750x750x1.png</PackageIconUrl>
+    <RepositoryType>Git</RepositoryType>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
