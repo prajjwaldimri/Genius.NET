@@ -11,16 +11,18 @@ namespace Genius.Clients
     /// </summary>
     public class AccountsClient : IAccountsClient
     {
-        private IApiConnection _apiConnection;
+        private readonly IApiConnection _apiConnection;
 
         public AccountsClient(IApiConnection apiConnection)
         {
             _apiConnection = apiConnection;
         }
 
-        public Task<User> GetAccountInfo()
+
+        public async Task<HttpResponse<User>> GetAccountInfo(TextFormat textFormat)
         {
-            throw new NotImplementedException();
+            var uri = new Uri("https://api.genius.com/account");
+            return await _apiConnection.Get<User>(textFormat, uri: uri);
         }
     }
 }

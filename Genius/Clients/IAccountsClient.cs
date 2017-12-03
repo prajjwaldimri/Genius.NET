@@ -8,6 +8,6 @@ namespace Genius.Clients
     /// </summary>
     public interface IAccountsClient
     {
-        Task<User> GetAccountInfo();
+        Task<HttpResponse<User>> GetAccountInfo(TextFormat textFormat);
     }
 }

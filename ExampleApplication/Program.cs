@@ -15,7 +15,7 @@ namespace ExampleApplication
 
         private static async Task Examples()
         {
-            var geniusClient = new GeniusClient("_I0D0X7qB8e5XV11H7crr7TvpnlbWKexirmVBx6jdLcQCsZTWFbRICS4ZiIKpWB9");
+            var geniusClient = new GeniusClient("CLIENT_ACCESS_KEY");
 
             #region Annotations
 
@@ -90,9 +90,36 @@ namespace ExampleApplication
 
             #endregion
 
+            #region Songs
 
-            // Get account info of the authenticated user.
-            var accountInfo = await geniusClient.AccountsClient.GetAccountInfo();
+            var song = geniusClient.SongsClient.GetSong(TextFormat.Dom, "SONG_ID");
+
+            #endregion
+
+            #region Artists
+
+            var artistInfo = geniusClient.ArtistsClient.GetArtist(TextFormat.Dom, "ARTIST_ID");
+            var songsByArtist = geniusClient.ArtistsClient.GetSongsByArtist(TextFormat.Dom, "ARTIST_ID");
+
+            #endregion
+
+            #region WebPages
+
+            var webPage = geniusClient.WebPagesClient.GetWebPage(TextFormat.Dom, "URL");
+
+            #endregion
+
+            #region Search
+
+            var searchResult = geniusClient.SearchClient.Search(TextFormat.Dom, "Kendrick%20Lamar");
+
+            #endregion
+
+            #region Account
+
+            var accountInfo = geniusClient.AccountsClient.GetAccountInfo(TextFormat.Dom);
+
+            #endregion
         }
     }
 }
