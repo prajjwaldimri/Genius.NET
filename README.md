@@ -13,6 +13,9 @@
 
 Genius.NET is an .NET C# library to access the [Genius API](https://docs.genius.com). It is a Portable Class Library that targets [.Net Standard 1.1](https://docs.microsoft.com/en-us/dotnet/articles/standard/library)
 
+This project adheres to the Contributor Covenant [code of conduct](CODE_OF_CONDUCT.md).
+By participating, you are expected to uphold this code. Please report unacceptable behavior to prajjwaldimri@outlook.com
+
 ## Installation
 
 To install Genius.NET, run the following command in Nuget's [Package Manager Console](https://docs.nuget.org/docs/start-here/using-the-package-manager-console)
