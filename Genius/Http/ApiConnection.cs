@@ -1,4 +1,5 @@
-﻿using System.Net.Http;
+﻿using System;
+using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,12 +27,11 @@ namespace Genius.Http
             _accessToken = accessToken;
         }
 
-        public async Task<HttpResponse<T>> Get<T>(TextFormat textFormat, string id = "")
+        public async Task<HttpResponse<T>> Get<T>(TextFormat textFormat, string id = "", Uri uri = null)
         {
             using (var client = new HttpClient())
             {
-                var baseAddress =
-                    UriHelper.CreateUri<T>(textFormat.ToString().ToLower(), id);
+                var baseAddress = uri ?? UriHelper.CreateUri<T>(textFormat.ToString().ToLower(), id);
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 client.DefaultRequestHeaders.Authorization =
@@ -53,69 +53,10 @@ namespace Genius.Http
             }
         }
 
-        public async Task<HttpResponse<T>> Put<T>(TextFormat textFormat, string id, object payload)
-        {
-            using (var client = new HttpClient())
-            {
-                var baseAddress =
-                    UriHelper.CreateUri<T>(textFormat.ToString().ToLower(), id);
-
-                client.DefaultRequestHeaders.Accept.Clear();
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                client.DefaultRequestHeaders.Authorization =
-                    new AuthenticationHeaderValue("Bearer", _accessToken);
-
-                var response = await client.PutAsync(baseAddress,
-                    new StringContent(
-                        JsonConvert.SerializeObject(payload, Formatting.None,
-                            new JsonSerializerSettings {NullValueHandling = NullValueHandling.Ignore}), Encoding.UTF8,
-                        "application/json")).ConfigureAwait(false);
-
-                using (var content = response.Content)
-                {
-                    var result = await content.ReadAsStringAsync().ConfigureAwait(false);
-                    var jToken = JToken.Parse(result);
-                    var jsonResponse = jToken.SelectToken("response").SelectToken(typeof(T).Name.ToLower());
-                    var jsonMeta = jToken.SelectToken("meta");
-                    return
-                        new HttpResponse<T>
-                        {
-                            Meta = JsonConvert.DeserializeObject<Meta>(jsonMeta.ToString()),
-                            Response = JsonConvert.DeserializeObject<T>(jsonResponse.ToString())
-                        };
-                }
-            }
-        }
-
-        public async Task<HttpResponse<T>> Delete<T>(TextFormat textFormat, string id)
-        {
-            using (var client = new HttpClient())
-            {
-                var baseAddress = UriHelper.CreateUri<T>(textFormat.ToString().ToLower(), id);
-                client.DefaultRequestHeaders.Accept.Clear();
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _accessToken);
-
-                var response = await client.DeleteAsync(baseAddress).ConfigureAwait(false);
-                using (var content = response.Content)
-                {
-                    var result = await content.ReadAsStringAsync().ConfigureAwait(false);
-                    var jToken = JToken.Parse(result);
-                    var jsonResponse = jToken.SelectToken("response").SelectToken(typeof(T).Name.ToLower());
-                    var jsonMeta = jToken.SelectToken("meta");
-                    return
-                        new HttpResponse<T>
-                        {
-                            Meta = JsonConvert.DeserializeObject<Meta>(jsonMeta.ToString()),
-                            Response = JsonConvert.DeserializeObject<T>(jsonResponse.ToString())
-                        };
-                }
-            }
-        }
-
         /// <summary>
         ///     Votes on an annotation.
         /// </summary>
+        /// <param name="textFormat"></param>
         /// <param name="voteType">Upvote, Downvote or Unvote?</param>
         /// <param name="annotationId">Votes are only allowed on annotations</param>
         /// <returns></returns>
@@ -145,19 +86,78 @@ namespace Genius.Http
             }
         }
 
+        public async Task<HttpResponse<T>> Put<T>(TextFormat textFormat, string id, object payload, Uri uri = null)
+        {
+            using (var client = new HttpClient())
+            {
+                var baseAddress = uri ?? UriHelper.CreateUri<T>(textFormat.ToString().ToLower(), id);
+
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.Authorization =
+                    new AuthenticationHeaderValue("Bearer", _accessToken);
+
+                var response = await client.PutAsync(baseAddress,
+                    new StringContent(
+                        JsonConvert.SerializeObject(payload, Formatting.None,
+                            new JsonSerializerSettings {NullValueHandling = NullValueHandling.Ignore}), Encoding.UTF8,
+                        "application/json")).ConfigureAwait(false);
+
+                using (var content = response.Content)
+                {
+                    var result = await content.ReadAsStringAsync().ConfigureAwait(false);
+                    var jToken = JToken.Parse(result);
+                    var jsonResponse = jToken.SelectToken("response").SelectToken(typeof(T).Name.ToLower());
+                    var jsonMeta = jToken.SelectToken("meta");
+                    return
+                        new HttpResponse<T>
+                        {
+                            Meta = JsonConvert.DeserializeObject<Meta>(jsonMeta.ToString()),
+                            Response = JsonConvert.DeserializeObject<T>(jsonResponse.ToString())
+                        };
+                }
+            }
+        }
+
+        public async Task<HttpResponse<T>> Delete<T>(TextFormat textFormat, string id, Uri uri = null)
+        {
+            using (var client = new HttpClient())
+            {
+                var baseAddress = uri ?? UriHelper.CreateUri<T>(textFormat.ToString().ToLower(), id);
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _accessToken);
+
+                var response = await client.DeleteAsync(baseAddress).ConfigureAwait(false);
+                using (var content = response.Content)
+                {
+                    var result = await content.ReadAsStringAsync().ConfigureAwait(false);
+                    var jToken = JToken.Parse(result);
+                    var jsonResponse = jToken.SelectToken("response").SelectToken(typeof(T).Name.ToLower());
+                    var jsonMeta = jToken.SelectToken("meta");
+                    return
+                        new HttpResponse<T>
+                        {
+                            Meta = JsonConvert.DeserializeObject<Meta>(jsonMeta.ToString()),
+                            Response = JsonConvert.DeserializeObject<T>(jsonResponse.ToString())
+                        };
+                }
+            }
+        }
+
         /// <summary>
         ///     POST to Genius API
         /// </summary>
         /// <typeparam name="T">Type of object to post</typeparam>
         /// <param name="textFormat"></param>
         /// <param name="payload">The object to send in JSON form with the POST request.</param>
+        /// <param name="uri">Optional URI parameter to which to send HTTP Request</param>
         /// <returns></returns>
-        public async Task<HttpResponse<T>> Post<T>(TextFormat textFormat, object payload)
+        public async Task<HttpResponse<T>> Post<T>(TextFormat textFormat, object payload, Uri uri = null)
         {
             using (var client = new HttpClient())
             {
-                var baseAddress =
-                    UriHelper.CreateUri<T>(textFormat.ToString().ToLower());
+                var baseAddress = uri ?? UriHelper.CreateUri<T>(textFormat.ToString().ToLower());
 
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));

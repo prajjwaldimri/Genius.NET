@@ -12,6 +12,8 @@ namespace Genius
         public readonly IAnnotationClient AnnotationClient;
         public readonly IVoteClient VoteClient;
 
+        public IReferentClient ReferentClient;
+
 
         /// <summary>
         ///     Creates a new instance of GeniusClient
@@ -24,6 +26,7 @@ namespace Genius
             AccountClient = new AccountClient(apiConnection);
             AnnotationClient = new AnnotationClient(apiConnection);
             VoteClient = new VoteClient(apiConnection);
+            ReferentClient = new ReferentClient(apiConnection);
         }
     }
 }

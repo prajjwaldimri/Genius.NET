@@ -79,6 +79,13 @@ namespace ExampleApplication
 
             #endregion
 
+            #region Referent
+
+            var referentBySongId =
+                await geniusClient.ReferentClient.GetReferentBySongId(TextFormat.Dom, "123456", "123", "20", "10");
+
+            #endregion
+
 
             // Get account info of the authenticated user.
             var accountInfo = await geniusClient.AccountClient.GetAccountInfo();
