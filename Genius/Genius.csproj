@@ -16,10 +16,15 @@
     <ApplicationIcon>Genius_Logo.ico</ApplicationIcon>
     <PackageIconUrl>https://images.genius.com/69333b682fca131dfc5cc94d072ab2f9.750x750x1.png</PackageIconUrl>
     <RepositoryType>Git</RepositoryType>
+    <PackageLicenseUrl>https://raw.githubusercontent.com/prajjwaldimri/Genius.NET/master/LICENSE</PackageLicenseUrl>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DocumentationFile>bin\Debug\netstandard1.1\Genius.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile></DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
