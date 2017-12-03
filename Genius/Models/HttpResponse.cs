@@ -20,13 +20,16 @@
         public T Response { get; set; }
     }
 
-    /// <summary>
-    ///     https://docs.genius.com/#/response-format-h1
-    /// </summary>
+    /// https://docs.genius.com/#/response-format-h1
     public enum TextFormat
     {
-        plain,
-        html,
-        dom
+        /// Is just plain text, no markup
+        Plain,
+
+        /// is a string of unescaped HTML suitable for HTML browsers
+        Html,
+
+        /// is a nested object representing HTML DOM hierarchy.
+        Dom
     }
 }

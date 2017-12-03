@@ -13,11 +13,12 @@ namespace Genius
     {
         public static string AuthorizationToken { get; set; }
         public static string TextFormat { get; set; }
+
         /// <summary>
-        /// Returns object containing Annotation and Referent returned by "GET /annotations/:artistId"
-        /// Annotation data returned from the API includes both the substance of the annotation and the necessary
-        /// information for displaying it in its original context.
-        /// For more info see https://docs.genius.com/#annotations-h2
+        ///     Returns object containing Annotation and Referent returned by "GET /annotations/:artistId"
+        ///     Annotation data returned from the API includes both the substance of the annotation and the necessary
+        ///     information for displaying it in its original context.
+        ///     For more info see https://docs.genius.com/#annotations-h2
         /// </summary>
         /// <param name="annotationId">Id for the Annotation</param>
         /// <returns></returns>
@@ -26,10 +27,12 @@ namespace Genius
             using (var client = new HttpClient())
             {
                 TextFormat = "dom";
-                var baseAddress = new Uri($"https://api.genius.com/annotations/{annotationId}?text_format={TextFormat}");
+                var baseAddress =
+                    new Uri($"https://api.genius.com/annotations/{annotationId}?text_format={TextFormat}");
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", AuthorizationToken);
+                client.DefaultRequestHeaders.Authorization =
+                    new AuthenticationHeaderValue("Bearer", AuthorizationToken);
                 var response = await client.GetAsync(baseAddress).ConfigureAwait(false);
                 using (var content = response.Content)
                 {
@@ -39,15 +42,14 @@ namespace Genius
                     var jsonReferent = jToken.SelectToken("response").SelectToken("referent");
                     var annotationObject = JsonConvert.DeserializeObject<Annotation>(jsonAnnotation.ToString());
                     var referentObject = JsonConvert.DeserializeObject<Referent>(jsonReferent.ToString());
-                    return new GetAnnotationResult { Annotation = annotationObject, Referent = referentObject };
+                    return new GetAnnotationResult {Annotation = annotationObject, Referent = referentObject};
                 }
             }
         }
 
-        //TODO: Add Per-page and paginated offset
         /// <summary>
-        /// Gets Referents using SongId Or UserId
-        /// You may pass only one of song_id and web_page_id, not both.
+        ///     Gets Referents using SongId Or UserId
+        ///     You may pass only one of song_id and web_page_id, not both.
         /// </summary>
         /// <param name="songId">ID of a song to get referents for</param>
         /// <param name="createdById">ID of a user to get referents for</param>
@@ -57,10 +59,13 @@ namespace Genius
             using (var client = new HttpClient())
             {
                 TextFormat = "dom";
-                var baseAddress = new Uri($"https://api.genius.com/referents?text_format={TextFormat}&song_id={songId}&created_by_id={createdById}");
+                var baseAddress =
+                    new Uri(
+                        $"https://api.genius.com/referents?text_format={TextFormat}&song_id={songId}&created_by_id={createdById}");
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", AuthorizationToken);
+                client.DefaultRequestHeaders.Authorization =
+                    new AuthenticationHeaderValue("Bearer", AuthorizationToken);
                 var response = await client.GetAsync(baseAddress).ConfigureAwait(false);
                 using (var content = response.Content)
                 {
@@ -74,8 +79,8 @@ namespace Genius
         }
 
         /// <summary>
-        /// Gets Referents using WebPageId or UserId
-        /// You may pass only one of song_id and web_page_id, not both.
+        ///     Gets Referents using WebPageId or UserId
+        ///     You may pass only one of song_id and web_page_id, not both.
         /// </summary>
         /// <param name="webPageId">ID of a web page to get referents for</param>
         /// <param name="createdById">ID of a user to get referents for</param>
@@ -85,10 +90,13 @@ namespace Genius
             using (var client = new HttpClient())
             {
                 TextFormat = "dom";
-                var baseAddress = new Uri($"https://api.genius.com/referents?text_format={TextFormat}&created_by_id={createdById}&web_page_id={webPageId}");
+                var baseAddress =
+                    new Uri(
+                        $"https://api.genius.com/referents?text_format={TextFormat}&created_by_id={createdById}&web_page_id={webPageId}");
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", AuthorizationToken);
+                client.DefaultRequestHeaders.Authorization =
+                    new AuthenticationHeaderValue("Bearer", AuthorizationToken);
                 var response = await client.GetAsync(baseAddress).ConfigureAwait(false);
                 using (var content = response.Content)
                 {
@@ -102,7 +110,7 @@ namespace Genius
         }
 
         /// <summary>
-        /// Gets Data for a specific Song
+        ///     Gets Data for a specific Song
         /// </summary>
         /// <param name="songId">Id of the song</param>
         /// <returns>A Song Object</returns>
@@ -114,7 +122,8 @@ namespace Genius
                 var baseAddress = new Uri($"https://api.genius.com/songs/{songId}?text_format={TextFormat}");
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", AuthorizationToken);
+                client.DefaultRequestHeaders.Authorization =
+                    new AuthenticationHeaderValue("Bearer", AuthorizationToken);
                 var response = await client.GetAsync(baseAddress).ConfigureAwait(false);
                 using (var content = response.Content)
                 {
@@ -128,7 +137,7 @@ namespace Genius
         }
 
         /// <summary>
-        /// Data for a specific artist.
+        ///     Data for a specific artist.
         /// </summary>
         /// <param name="artistId">ID of the artist </param>
         /// <returns>An Artist Object</returns>
@@ -140,7 +149,8 @@ namespace Genius
                 var baseAddress = new Uri($"https://api.genius.com/artists/{artistId}?text_format={TextFormat}");
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", AuthorizationToken);
+                client.DefaultRequestHeaders.Authorization =
+                    new AuthenticationHeaderValue("Bearer", AuthorizationToken);
                 var response = await client.GetAsync(baseAddress).ConfigureAwait(false);
                 using (var content = response.Content)
                 {
@@ -154,21 +164,23 @@ namespace Genius
         }
 
         /// <summary>
-        /// Documents (songs) for the artist specified. By default, 20 items are returned for each request.
+        ///     Documents (songs) for the artist specified. By default, 20 items are returned for each request.
         /// </summary>
         /// <param name="artistId">ID of the artist. </param>
         /// <param name="sort">	title (default) or popularity</param>
         /// <param name="perPage">Number of results to return per request</param>
         /// <param name="paginatedOffset">Paginated offset, (e.g., per_page=5&amp;page=3 returns songs 11–15)</param>
         /// <returns>List of Songs</returns>
-        public static async Task<List<Song>> GetSongsbyArtist(string artistId, string sort = "title", string perPage = "", string paginatedOffset = "")
+        public static async Task<List<Song>> GetSongsbyArtist(string artistId, string sort = "title",
+            string perPage = "", string paginatedOffset = "")
         {
             using (var client = new HttpClient())
             {
                 var baseAddress = new Uri($"https://api.genius.com/artists/{artistId}/songs");
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", AuthorizationToken);
+                client.DefaultRequestHeaders.Authorization =
+                    new AuthenticationHeaderValue("Bearer", AuthorizationToken);
                 var response = await client.GetAsync(baseAddress).ConfigureAwait(false);
                 using (var content = response.Content)
                 {
@@ -181,14 +193,18 @@ namespace Genius
             }
         }
 
-        public static async Task<WebPage> GetWebPagebyUrl(string rawAnnotableUrl, string canonicalUrl = "", string ogUrl = "")
+        public static async Task<WebPage> GetWebPagebyUrl(string rawAnnotableUrl, string canonicalUrl = "",
+            string ogUrl = "")
         {
             using (var client = new HttpClient())
             {
-                var baseAddress = new Uri($"https://api.genius.com/web_pages/lookup?raw_annotatable_url={rawAnnotableUrl}&canoncial_url={canonicalUrl}&og_url={ogUrl}");
+                var baseAddress =
+                    new Uri(
+                        $"https://api.genius.com/web_pages/lookup?raw_annotatable_url={rawAnnotableUrl}&canoncial_url={canonicalUrl}&og_url={ogUrl}");
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", AuthorizationToken);
+                client.DefaultRequestHeaders.Authorization =
+                    new AuthenticationHeaderValue("Bearer", AuthorizationToken);
                 var response = await client.GetAsync(baseAddress).ConfigureAwait(false);
                 using (var content = response.Content)
                 {
@@ -209,7 +225,8 @@ namespace Genius
                 var baseAddress = new Uri($"https://api.genius.com/account?text_format={TextFormat}");
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", AuthorizationToken);
+                client.DefaultRequestHeaders.Authorization =
+                    new AuthenticationHeaderValue("Bearer", AuthorizationToken);
                 var response = await client.GetAsync(baseAddress).ConfigureAwait(false);
                 using (var content = response.Content)
                 {
@@ -224,7 +241,7 @@ namespace Genius
     }
 
     /// <summary>
-    /// Stores result returned from GetAnnotation Method in the form of Annotation and Referent Classes
+    ///     Stores result returned from GetAnnotation Method in the form of Annotation and Referent Classes
     /// </summary>
     public class GetAnnotationResult
     {

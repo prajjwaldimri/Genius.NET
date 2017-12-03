@@ -3,6 +3,9 @@ using Newtonsoft.Json;
 
 namespace Genius.Models
 {
+    /// <summary>
+    ///     A simple user at Genius.com
+    /// </summary>
     public class User
     {
         [JsonProperty(PropertyName = "about_me")]
@@ -13,6 +16,7 @@ namespace Genius.Models
 
         [JsonProperty(PropertyName = "available_identity_providers")]
         public List<object> AvailableIdentityProviders { get; set; }
+
         public Avatar Avatar { get; set; }
 
         [JsonProperty(PropertyName = "custom_header_image_url")]
@@ -31,12 +35,14 @@ namespace Genius.Models
 
         [JsonProperty(PropertyName = "human_readable_role_for_display")]
         public string HumanReadableRoleForDisplay { get; set; }
+
         public string Id { get; set; }
         public List<UserIdentities> Identities { get; set; }
         public string Iq { get; set; }
 
         [JsonProperty(PropertyName = "iq_for_display")]
         public string IqForDisplay { get; set; }
+
         public string Login { get; set; }
         public string Name { get; set; }
 
@@ -82,6 +88,7 @@ namespace Genius.Models
         [JsonProperty(PropertyName = "created_community_annotation")]
         public string CreatedCommunityAnnotation { get; set; }
     }
+
     public class UserStats
     {
         [JsonProperty(PropertyName = "all_activities_count")]
@@ -108,6 +115,7 @@ namespace Genius.Models
         [JsonProperty(PropertyName = "transcriptions_count")]
         public string TranscriptionsCount { get; set; }
     }
+
     public class UserPreferences
     {
         [JsonProperty(PropertyName = "mention_notifications")]
@@ -130,8 +138,8 @@ namespace Genius.Models
 
         [JsonProperty(PropertyName = "editorial_suggestion_notifications")]
         public bool EditorialSuggestionNotifications { get; set; }
-
     }
+
     public class UserIdentities
     {
         public string Id { get; set; }
@@ -141,10 +149,12 @@ namespace Genius.Models
         [JsonProperty(PropertyName = "custom_properties")]
         public string CustomProperties { get; set; }
     }
+
     public class UserAboutMe
     {
         public SongandUserAnnotationDom Dom { get; set; }
     }
+
     public class CurrentUserMetadata
     {
         public CurrentUserInteractions Interactions { get; set; }
@@ -153,6 +163,7 @@ namespace Genius.Models
     }
 
     #region Sub-classes for CurrentUserMetadataClass
+
     public class CurrentUserInteractions
     {
         public bool Pyong { get; set; }
@@ -164,5 +175,6 @@ namespace Genius.Models
         [JsonProperty(PropertyName = "pinned_role")]
         public string PinnedRole { get; set; }
     }
+
     #endregion
 }

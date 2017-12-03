@@ -1,4 +1,7 @@
-﻿namespace Genius
+﻿using Genius.Clients;
+using Genius.Http;
+
+namespace Genius
 {
     /// <summary>
     ///     A client for Genius API
@@ -6,17 +9,27 @@
     public class GeniusClient
     {
         /// <summary>
+        ///     https://docs.genius.com/#/authentication-h1
+        /// </summary>
+        private readonly string _accessToken;
+
+        private readonly IApiConnection _apiConnection;
+
+        public readonly IAccountClient AccountClient;
+        public IAnnotationClient AnnotationClient;
+
+
+        /// <summary>
         ///     Creates a new instance of GeniusClient
         /// </summary>
         /// <param name="accessToken">Access Token to make authorized requests.</param>
         public GeniusClient(string accessToken)
         {
-            AccessToken = accessToken;
-        }
+            _accessToken = accessToken;
+            _apiConnection = new ApiConnection(_accessToken);
 
-        /// <summary>
-        ///     https://docs.genius.com/#/authentication-h1
-        /// </summary>
-        public string AccessToken { get; set; }
+            AccountClient = new AccountClient(_apiConnection);
+            AnnotationClient = new AnnotationClient(_apiConnection);
+        }
     }
 }

@@ -64,7 +64,7 @@ namespace Genius
                 {
                     baseAddress = new Uri("https://api.genius.com/annotations");
                 }
-                var annotationPaylod = new AnnotationPaylod
+                var annotationPaylod = new AnnotationPayload
                 {
                     Annotation = new Annotation { Body = new AnnotationBody { MarkDown = markdown } },
                     Referent = new Referent
@@ -123,7 +123,7 @@ namespace Genius
         }
     }
 
-    public class AnnotationPaylod
+    public class AnnotationPayload
     {
         [JsonProperty(PropertyName = "annotation")]
         public Annotation Annotation { get; set; }
