@@ -29,8 +29,6 @@ Please read the [Wiki](https://github.com/prajjwaldimri/Genius.NET/wiki) for ful
 To retrieve a Song by Artist Id:
 
 ```C#
-ContentRetriever.AuthorizationToken = "<Authorization Token>";
-var song = ContentRetriever.GetSongsbyArtist("16775");
+var geniusClient = new GeniusClient("Access_Token");
+var song = geniusClient.ArtistsClient.GetSongsByArtist(TextFormat.Dom, "ARTIST_ID");
 ```
-
-And it will return you a Song Object which contains all the fields provided by Genius.com

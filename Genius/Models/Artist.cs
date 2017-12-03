@@ -1,8 +1,13 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace Genius
+namespace Genius.Models
 {
+    /// <summary>
+    ///     An artist is how Genius represents the creator of one or more songs (or other documents hosted on Genius).
+    ///     It's usually a musician or group of musicians.
+    ///     https://docs.genius.com/#artists-h2
+    /// </summary>
     public class Artist
     {
         [JsonProperty(PropertyName = "alternate_names")]
@@ -19,6 +24,7 @@ namespace Genius
 
         [JsonProperty(PropertyName = "header_image_url")]
         public string HeaderImageUrl { get; set; }
+
         public string Id { get; set; }
 
         [JsonProperty(PropertyName = "image_url")]
@@ -32,18 +38,19 @@ namespace Genius
 
         [JsonProperty(PropertyName = "is_verified")]
         public string IsVerified { get; set; }
+
         public string Name { get; set; }
         public string Url { get; set; }
 
         [JsonProperty(PropertyName = "current_user_metadata")]
         public CurrentUserMetadata CurrentUserMetadata { get; set; }
+
         public string Iq { get; set; }
 
         [JsonProperty(PropertyName = "description_annotation")]
         public SongReferent DescriptionAnnotation { get; set; }
 
         public User User { get; set; }
-
     }
 
     public class ArtistDescription

@@ -1,5 +1,8 @@
-﻿namespace Genius
+﻿namespace Genius.Models
 {
+    /// <summary>
+    ///     Media items associated with a song.
+    /// </summary>
     public class Media
     {
         public bool Cinema { get; set; }

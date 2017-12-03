@@ -1,12 +1,11 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace Genius
+namespace Genius.Models
 {
     /// <summary>
-    /// Referents are the sections of a piece of content to which annotations are attached. 
-    /// Each referent is associated with a web page or a song and may have one or more annotations. 
-    /// Referents can be searched by the document they are attached to or by the user that created them.
+    ///     Referents are the sections of a piece of content to which annotations are attached.
+    ///     https://docs.genius.com/#!#referents-h2
     /// </summary>
     public class Referent
     {
@@ -21,20 +20,24 @@ namespace Genius
 
         [JsonProperty(PropertyName = "api_path")]
         public string ApiPath { get; set; }
+
         public string Classification { get; set; }
         public string Featured { get; set; }
 
         [JsonProperty(PropertyName = "fragment")]
         public string Fragment { get; set; }
+
         public string Id { get; set; }
 
         [JsonProperty(PropertyName = "is_description")]
         public string IsDescription { get; set; }
+
         public string Path { get; set; }
         public ReferentRange Range { get; set; }
 
         [JsonProperty(PropertyName = "song_id")]
         public string SongId { get; set; }
+
         public string Url { get; set; }
         public List<Annotation> Annotations { get; set; }
         public Annotatable Annotatable { get; set; }
@@ -42,16 +45,17 @@ namespace Genius
         [JsonProperty(PropertyName = "verified_annotator_ids")]
         public List<string> VerifiedAnnotatorIds { get; set; }
 
-        [JsonProperty(PropertyName = "raw_annotable_url")]
+        [JsonProperty(PropertyName = "raw_annotatable_url")]
 
         //Used in POST
         public string RawAnnotableUrl { get; set; }
+
         [JsonProperty(PropertyName = "context_for_display")]
         public ContextForDisplay ContextForDisplay { get; set; }
     }
 
     /// <summary>
-    /// A Variation of Referent to be used by Song Class
+    ///     A Variation of Referent to be used by Song Class
     /// </summary>
     public class SongReferent : Referent
     {
@@ -59,7 +63,7 @@ namespace Genius
     }
 
     /// <summary>
-    /// Information for anchoring the referent in the source text
+    ///     Information for anchoring the referent in the source text
     /// </summary>
     public class ReferentRange
     {
@@ -76,12 +80,13 @@ namespace Genius
     {
         [JsonProperty(PropertyName = "before_html")]
         public string BeforeHtml { get; set; }
+
         [JsonProperty(PropertyName = "after_html")]
         public string AfterHtml { get; set; }
     }
 
     /// <summary>
-    /// Meta-data about the annotated document
+    ///     Meta-data about the annotated document
     /// </summary>
     public class Annotatable
     {
@@ -96,12 +101,10 @@ namespace Genius
     }
 
     /// <summary>
-    /// Plural Referent Class
+    ///     Plural Referent Class
     /// </summary>
     public class Referents
     {
         public List<Referent> Referent { get; set; }
     }
-
 }
-

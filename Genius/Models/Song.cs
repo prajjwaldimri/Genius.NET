@@ -1,12 +1,11 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace Genius
+namespace Genius.Models
 {
     /// <summary>
-    /// A song is a document hosted on Genius. It's usually music lyrics.
-    /// Data for a song includes details about the document itself and information about all the referents that are attached to it,
-    /// including the text to which they refer.
+    ///     A song is a document hosted on Genius. It's usually music lyrics.
+    ///     https://docs.genius.com/#!#songs-h2
     /// </summary>
     public class Song
     {
@@ -61,6 +60,7 @@ namespace Genius
 
         [JsonProperty(PropertyName = "current_user_metadata")]
         public CurrentUserMetadata CurrentUserMetadata { get; set; }
+
         public Album Album { get; set; }
 
         [JsonProperty(PropertyName = "description_annotation")]
@@ -68,6 +68,7 @@ namespace Genius
 
         [JsonProperty(PropertyName = "featured_artists")]
         public List<Artist> FeaturedArtists { get; set; }
+
         public List<Media> Media { get; set; }
 
         [JsonProperty(PropertyName = "primary_artist")]
@@ -84,7 +85,6 @@ namespace Genius
 
         [JsonProperty(PropertyName = "writer_artists")]
         public List<Artist> WriterArtists { get; set; }
-
     }
 
     public class SongDescription
@@ -117,18 +117,20 @@ namespace Genius
     {
         [JsonProperty(PropertyName = "accepted_annotations")]
         public string AcceptedAnnotations { get; set; }
+
         public string Contributors { get; set; }
         public bool Hot { get; set; }
+
         [JsonProperty(PropertyName = "iq_earners")]
         public string IqEarners { get; set; }
+
         public string PageViews { get; set; }
         public string Transcribers { get; set; }
+
         [JsonProperty(PropertyName = "unreviewed_annotations")]
         public string UnreviewedAnnotations { get; set; }
+
         [JsonProperty(PropertyName = "verified_annotations")]
         public string VerifiedAnnotations { get; set; }
-
     }
-
-
 }
