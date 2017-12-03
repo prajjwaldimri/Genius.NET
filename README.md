@@ -26,7 +26,7 @@ Install-Package Genius.NET
 
 ## Usage
 
-Please read the [Wiki](https://github.com/prajjwaldimri/Genius.NET/wiki) for full instructions.
+Please read the [DOCS](http://prajjwaldimri.github.io/Genius.NET) for complete instructions.
 
 
 To retrieve a Song by Artist Id:

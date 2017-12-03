@@ -1,0 +1,40 @@
+pages:
+  - Home: 
+    - 'index.md'
+    - 'getting-started.md'
+  - Features:
+    - 'annotations.md'
+    - 'referents.md'
+    - 'songs.md'
+    - 'artists.md'
+    - 'webpages.md'
+    - 'search.md'
+    - 'account.md'
+  - 'contributing.md'
+
+site_name: Genius.NET Documentation
+site_description: Documentation for Genius.NET library.
+site_author: Prajjwal Dimri
+repo_name: prajjwaldimri/Genius.NET
+repo_url: https://github.com/prajjwaldimri/Genius.NET
+theme: 
+  name: 'material'
+  palette:
+    primary: 'indigo'
+    accent: 'amber'
+  logo: 'img/favicon.ico'
+  favicon: 'img/favicon.ico'
+extra:
+   social:
+     - type: 'github'
+       link: 'https://github.com/prajjwaldimri'
+     - type: 'twitter'
+       link: 'https://twitter.com/prajjwaldimri'
+     - type: 'globe'
+       link: 'http://prajjwaldimri.me'
+markdown_extensions:
+  - admonition
+  - codehilite:
+      linenums: true
+  - toc:
+      permalink: true
