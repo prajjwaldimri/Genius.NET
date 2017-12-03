@@ -10,6 +10,7 @@ namespace Genius.Clients
     {
         private readonly IApiConnection _apiConnection;
 
+        /// <inheritdoc />
         public WebPagesClient(IApiConnection apiConnection)
         {
             _apiConnection = apiConnection;

@@ -12,7 +12,7 @@ namespace Genius.Clients
         /// <summary>
         ///     Gets data for a web page
         /// </summary>
-        /// <param name="textFormat"></param>
+        /// <param name="textFormat">Format for text bodies related to the document</param>
         /// <param name="rawAnnotatableUrl">The URL as it would appear in browser</param>
         /// <param name="canonicalUrl">The URL as specified by an appropriate <link /> tag.</param>
         /// <param name="ogUrl">The URL as specified by an og:url <meta /> tag in a page's <head /></param>

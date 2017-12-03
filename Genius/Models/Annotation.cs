@@ -67,16 +67,16 @@ namespace Genius.Models
         /// </summary>
         public List<Author> Authors { get; set; }
 
-        [JsonProperty(PropertyName = "cosigned_by")]
         /// <summary>
-        /// List of users who have cosigned this annotation
+        ///     List of users who have cosigned this annotation
         /// </summary>
+        [JsonProperty(PropertyName = "cosigned_by")]
         public List<User> CosignedBy { get; set; }
 
-        [JsonProperty(PropertyName = "verified_by")]
         /// <summary>
-        /// Verified User that created this annotation
+        ///     Verified User that created this annotation
         /// </summary>
+        [JsonProperty(PropertyName = "verified_by")]
         public User VerifiedBy { get; set; }
     }
 
@@ -122,9 +122,9 @@ namespace Genius.Models
         public new SongAnnotationBody Body { get; set; }
     }
 
-    /* Derived Classes of Annotation Body because the body component for annotations is different when we are calling API using Song ID.
-     *  
-     */
+    // Derived Classes of Annotation Body because the body component for annotations is
+    // different when we are calling API using Song ID.
+
     public class SongAnnotationBody : AnnotationBody
     {
         public new SongandUserAnnotationDom Dom { get; set; }
@@ -140,6 +140,9 @@ namespace Genius.Models
         public new List<object> Children { get; set; }
     }
 
+    /// <summary>
+    ///     Types of vote on Annotation
+    /// </summary>
     public enum VoteType
     {
         Upvote,

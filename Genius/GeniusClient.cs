@@ -8,16 +8,6 @@ namespace Genius
     /// </summary>
     public class GeniusClient
     {
-        public readonly IAccountsClient AccountsClient;
-        public readonly IAnnotationsClient AnnotationsClient;
-        public readonly IArtistsClient ArtistsClient;
-        public readonly IReferentsClient ReferentsClient;
-        public readonly ISearchClient SearchClient;
-        public readonly ISongsClient SongsClient;
-        public readonly IVoteClient VoteClient;
-        public readonly IWebPagesClient WebPagesClient;
-
-
         /// <summary>
         ///     Creates a new instance of GeniusClient
         /// </summary>
@@ -35,5 +25,48 @@ namespace Genius
             SearchClient = new SearchClient(apiConnection);
             WebPagesClient = new WebPagesClient(apiConnection);
         }
+
+        #region Clients
+
+        /// <summary>
+        /// </summary>
+        public readonly IAccountsClient AccountsClient;
+
+        /// <summary>
+        ///     Clients for operations on Annotations.
+        /// </summary>
+        public readonly IAnnotationsClient AnnotationsClient;
+
+        /// <summary>
+        ///     Clients for operations related to Genius Artists.
+        /// </summary>
+        public readonly IArtistsClient ArtistsClient;
+
+        /// <summary>
+        ///     Clients for Referents related operations.
+        /// </summary>
+        public readonly IReferentsClient ReferentsClient;
+
+        /// <summary>
+        ///     Client for Searching Genius Database.
+        /// </summary>
+        public readonly ISearchClient SearchClient;
+
+        /// <summary>
+        ///     Client for operations related to Genius Songs.
+        /// </summary>
+        public readonly ISongsClient SongsClient;
+
+        /// <summary>
+        ///     Performs voting related operations like up-voting, down-voting and un-voting.
+        /// </summary>
+        public readonly IVoteClient VoteClient;
+
+        /// <summary>
+        ///     Clients for operations on Genius WebPages.
+        /// </summary>
+        public readonly IWebPagesClient WebPagesClient;
+
+        #endregion
     }
 }

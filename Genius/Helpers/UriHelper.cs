@@ -7,28 +7,32 @@ namespace Genius.Helpers
     internal static class UriHelper
     {
         /// <summary>
+        ///     A helper method which can create URI for multiple types of requests.
         /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="textFormat"></param>
-        /// <param name="id"></param>
-        /// <param name="isVoteUri"></param>
-        /// <param name="voteType"></param>
-        /// <param name="perPage"></param>
-        /// <param name="page"></param>
-        /// <param name="createdById"></param>
-        /// <param name="songId"></param>
-        /// <param name="webPageId"></param>
-        /// <param name="sort"></param>
-        /// <param name="additionalUrl"></param>
-        /// <param name="rawAnnotatableUrl"></param>
-        /// <param name="canonicalUrl"></param>
-        /// <param name="ogUrl"></param>
-        /// <returns></returns>
+        /// <typeparam name="T">Type of model for which to create the URI</typeparam>
+        /// <param name="textFormat">Format for text bodies related to the document</param>
+        /// <param name="id">Any id to add to the Uri</param>
+        /// <param name="isVoteUri">Is the uri is being created for voting or not</param>
+        /// <param name="voteType">Type of vote to add to the uri</param>
+        /// <param name="perPage">Number of results to return per request</param>
+        /// <param name="page">
+        ///     Paginated offset (e.g., <![CDATA[per_page=5&page=3]]> returns songs 11-15)
+        /// </param>
+        /// <param name="createdById">Id of a user to get referents for</param>
+        /// <param name="songId">Id of a song</param>
+        /// <param name="webPageId">Id of a web-page</param>
+        /// <param name="sort">title(default) or popularity</param>
+        /// <param name="additionalUrl">Any other manual additions to the url</param>
+        /// <param name="rawAnnotatableUrl">The url as it would appear in a browser.</param>
+        /// <param name="canonicalUrl">The URL as specified by appropriate tags.</param>
+        /// <param name="ogUrl">The URl as specified by an og:url tag</param>
+        /// <returns>An URI</returns>
         public static Uri CreateUri<T>(string textFormat, string id = "", bool isVoteUri = false,
             VoteType voteType = VoteType.Unvote, string perPage = "", string page = "", string createdById = "",
             string songId = "", string webPageId = "", string sort = "", string additionalUrl = "",
             string rawAnnotatableUrl = "", string canonicalUrl = "", string ogUrl = "")
         {
+            //TODO: This function is very large and unmaintainable. Consider refactoring this.
             // Checks if the parameters have started in the url
             var parameterStarted = false;
             var uriString = new StringBuilder("https://api.genius.com/");

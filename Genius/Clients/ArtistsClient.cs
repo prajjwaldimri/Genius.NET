@@ -11,16 +11,21 @@ namespace Genius.Clients
     {
         private readonly IApiConnection _apiConnection;
 
+        /// <summary>
+        /// </summary>
+        /// <param name="apiConnection"></param>
         public ArtistsClient(IApiConnection apiConnection)
         {
             _apiConnection = apiConnection;
         }
 
+        /// <inheritdoc />
         public async Task<HttpResponse<Artist>> GetArtist(TextFormat textFormat, string artistId)
         {
             return await _apiConnection.Get<Artist>(textFormat, artistId);
         }
 
+        /// <inheritdoc />
         public async Task<HttpResponse<List<Song>>> GetSongsByArtist(TextFormat textFormat, string artistId,
             string sort = "", string perPage = "", string page = "")
         {

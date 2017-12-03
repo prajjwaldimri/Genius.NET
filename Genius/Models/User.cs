@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 namespace Genius.Models
 {
     /// <summary>
-    ///     A simple user at Genius.com
+    ///     Any simple user at Genius.com
     /// </summary>
     public class User
     {
