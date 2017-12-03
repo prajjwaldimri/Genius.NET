@@ -68,6 +68,15 @@ namespace ExampleApplication
 
             #region Voting
 
+            // Upvote
+            await geniusClient.VoteClient.Vote(VoteType.Upvote, "Annotation_ID", TextFormat.Dom);
+
+            //Downvote
+            await geniusClient.VoteClient.Vote(VoteType.Downvote, "Annotation_ID", TextFormat.Dom);
+
+            //UnVote (Remove the vote)
+            await geniusClient.VoteClient.Vote(VoteType.Unvote, "Annotation_ID", TextFormat.Dom);
+
             #endregion
 
 

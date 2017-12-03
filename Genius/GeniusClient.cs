@@ -8,15 +8,9 @@ namespace Genius
     /// </summary>
     public class GeniusClient
     {
-        /// <summary>
-        ///     https://docs.genius.com/#/authentication-h1
-        /// </summary>
-        private readonly string _accessToken;
-
-        private readonly IApiConnection _apiConnection;
-
         public readonly IAccountClient AccountClient;
-        public IAnnotationClient AnnotationClient;
+        public readonly IAnnotationClient AnnotationClient;
+        public readonly IVoteClient VoteClient;
 
 
         /// <summary>
@@ -25,11 +19,11 @@ namespace Genius
         /// <param name="accessToken">Access Token to make authorized requests.</param>
         public GeniusClient(string accessToken)
         {
-            _accessToken = accessToken;
-            _apiConnection = new ApiConnection(_accessToken);
+            IApiConnection apiConnection = new ApiConnection(accessToken);
 
-            AccountClient = new AccountClient(_apiConnection);
-            AnnotationClient = new AnnotationClient(_apiConnection);
+            AccountClient = new AccountClient(apiConnection);
+            AnnotationClient = new AnnotationClient(apiConnection);
+            VoteClient = new VoteClient(apiConnection);
         }
     }
 }
