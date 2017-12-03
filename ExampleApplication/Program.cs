@@ -82,7 +82,11 @@ namespace ExampleApplication
             #region Referent
 
             var referentBySongId =
-                await geniusClient.ReferentClient.GetReferentBySongId(TextFormat.Dom, "123456", "123", "20", "10");
+                await geniusClient.ReferentClient.GetReferentBySongId(TextFormat.Dom, "Song_Id", "Created_by_id",
+                    "per_page", "page");
+
+            var referentByWebPageId =
+                await geniusClient.ReferentClient.GetReferentByWebPageId(TextFormat.Dom, "Web_page_id");
 
             #endregion
 
