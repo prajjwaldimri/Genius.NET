@@ -2,6 +2,9 @@
 
 namespace Genius.Models
 {
+    /// <summary>
+    ///     Contributors of a song.
+    /// </summary>
     public class Contributor
     {
         public List<string> Contributions { get; set; }

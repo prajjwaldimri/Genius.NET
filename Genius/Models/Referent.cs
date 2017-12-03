@@ -5,8 +5,7 @@ namespace Genius.Models
 {
     /// <summary>
     ///     Referents are the sections of a piece of content to which annotations are attached.
-    ///     Each referent is associated with a web page or a song and may have one or more annotations.
-    ///     Referents can be searched by the document they are attached to or by the user that created them.
+    ///     https://docs.genius.com/#!#referents-h2
     /// </summary>
     public class Referent
     {
