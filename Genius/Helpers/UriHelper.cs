@@ -18,10 +18,12 @@ namespace Genius.Helpers
         /// <param name="createdById"></param>
         /// <param name="songId"></param>
         /// <param name="webPageId"></param>
+        /// <param name="sort"></param>
+        /// <param name="additionalUrl"></param>
         /// <returns></returns>
         public static Uri CreateUri<T>(string textFormat, string id = "", bool isVoteUri = false,
             VoteType voteType = VoteType.Unvote, string perPage = "", string page = "", string createdById = "",
-            string songId = "", string webPageId = "")
+            string songId = "", string webPageId = "", string sort = "", string additionalUrl = "")
         {
             // Checks if the parameters have started in the url
             var parameterStarted = false;
@@ -34,6 +36,9 @@ namespace Genius.Helpers
 
             if (isVoteUri)
                 uriString.Append($"/{voteType.ToString().ToLower()}");
+
+            if (!string.IsNullOrWhiteSpace(additionalUrl))
+                uriString.Append($"{additionalUrl}");
 
 
             if (!string.IsNullOrWhiteSpace(createdById))
@@ -53,6 +58,13 @@ namespace Genius.Helpers
             {
                 uriString.Append(parameterStarted ? "&" : "?");
                 uriString.Append($"web_page_id={webPageId}");
+                parameterStarted = true;
+            }
+
+            if (!string.IsNullOrWhiteSpace(sort))
+            {
+                uriString.Append(parameterStarted ? "&" : "?");
+                uriString.Append($"sort={sort}");
                 parameterStarted = true;
             }
 

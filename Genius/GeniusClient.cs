@@ -10,9 +10,10 @@ namespace Genius
     {
         public readonly IAccountsClient AccountsClient;
         public readonly IAnnotationsClient AnnotationsClient;
+        public readonly IArtistsClient ArtistsClient;
+        public readonly IReferentsClient ReferentsClient;
+        public readonly ISongsClient SongsClient;
         public readonly IVoteClient VoteClient;
-
-        public IReferentsClient ReferentsClient;
 
 
         /// <summary>
@@ -25,8 +26,10 @@ namespace Genius
 
             AccountsClient = new AccountsClient(apiConnection);
             AnnotationsClient = new AnnotationsClient(apiConnection);
+            ArtistsClient = new ArtistsClient(apiConnection);
             VoteClient = new VoteClient(apiConnection);
             ReferentsClient = new ReferentsClient(apiConnection);
+            SongsClient = new SongsClient(apiConnection);
         }
     }
 }

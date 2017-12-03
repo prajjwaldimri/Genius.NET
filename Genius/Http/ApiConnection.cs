@@ -27,32 +27,6 @@ namespace Genius.Http
             _accessToken = accessToken;
         }
 
-        public async Task<HttpResponse<T>> Get<T>(TextFormat textFormat, string id = "", Uri uri = null)
-        {
-            using (var client = new HttpClient())
-            {
-                var baseAddress = uri ?? UriHelper.CreateUri<T>(textFormat.ToString().ToLower(), id);
-                client.DefaultRequestHeaders.Accept.Clear();
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                client.DefaultRequestHeaders.Authorization =
-                    new AuthenticationHeaderValue("Bearer", _accessToken);
-                var response = await client.GetAsync(baseAddress).ConfigureAwait(false);
-                using (var content = response.Content)
-                {
-                    var result = await content.ReadAsStringAsync().ConfigureAwait(false);
-                    var jToken = JToken.Parse(result);
-                    var jsonResponse = jToken.SelectToken("response").SelectToken(typeof(T).Name.ToLower());
-                    var jsonMeta = jToken.SelectToken("meta");
-                    return
-                        new HttpResponse<T>
-                        {
-                            Meta = JsonConvert.DeserializeObject<Meta>(jsonMeta.ToString()),
-                            Response = JsonConvert.DeserializeObject<T>(jsonResponse.ToString())
-                        };
-                }
-            }
-        }
-
         /// <summary>
         ///     Votes on an annotation.
         /// </summary>
@@ -177,6 +151,47 @@ namespace Genius.Http
                     var jsonResponse = jToken.SelectToken("response").SelectToken(typeof(T).Name.ToLower());
                     var jsonMeta = jToken.SelectToken("meta");
 
+                    return
+                        new HttpResponse<T>
+                        {
+                            Meta = JsonConvert.DeserializeObject<Meta>(jsonMeta.ToString()),
+                            Response = JsonConvert.DeserializeObject<T>(jsonResponse.ToString())
+                        };
+                }
+            }
+        }
+
+        /// <summary>
+        /// </summary>
+        /// <typeparam name="T">Type of Model</typeparam>
+        /// <param name="textFormat">Format of the text to be returned from the server</param>
+        /// <param name="id">Any type of id.</param>
+        /// <param name="uri">Uri to send HTTP Request to</param>
+        /// <param name="jsonArrayName">
+        ///     This parameter will be used as the name of the object inside response object when
+        ///     de-serializing response from server
+        /// </param>
+        /// <returns></returns>
+        public async Task<HttpResponse<T>> Get<T>(TextFormat textFormat, string id = "", Uri uri = null,
+            string jsonArrayName = "")
+        {
+            using (var client = new HttpClient())
+            {
+                var baseAddress = uri ?? UriHelper.CreateUri<T>(textFormat.ToString().ToLower(), id);
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.Authorization =
+                    new AuthenticationHeaderValue("Bearer", _accessToken);
+                var response = await client.GetAsync(baseAddress).ConfigureAwait(false);
+                using (var content = response.Content)
+                {
+                    var result = await content.ReadAsStringAsync().ConfigureAwait(false);
+                    var jToken = JToken.Parse(result);
+                    var jsonResponse = jToken.SelectToken("response").SelectToken(
+                        string.IsNullOrWhiteSpace(jsonArrayName)
+                            ? typeof(T).Name.ToLower()
+                            : jsonArrayName);
+                    var jsonMeta = jToken.SelectToken("meta");
                     return
                         new HttpResponse<T>
                         {

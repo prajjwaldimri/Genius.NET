@@ -15,7 +15,7 @@ namespace ExampleApplication
 
         private static async Task Examples()
         {
-            var geniusClient = new GeniusClient("CLIENT_ACCESS_TOKEN");
+            var geniusClient = new GeniusClient("_I0D0X7qB8e5XV11H7crr7TvpnlbWKexirmVBx6jdLcQCsZTWFbRICS4ZiIKpWB9");
 
             #region Annotations
 
