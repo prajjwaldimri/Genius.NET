@@ -24,6 +24,7 @@ namespace Genius
             SongsClient = new SongsClient(apiConnection);
             SearchClient = new SearchClient(apiConnection);
             WebPagesClient = new WebPagesClient(apiConnection);
+            LyricsClient = new LyricsClient(apiConnection);
         }
 
         #region Clients
@@ -66,6 +67,11 @@ namespace Genius
         ///     Clients for operations on Genius WebPages.
         /// </summary>
         public readonly IWebPagesClient WebPagesClient;
+
+        /// <summary>
+        ///     Clients for gathering lyrics.
+        /// </summary>
+        public readonly ILyricsClient LyricsClient;
 
         #endregion
     }
