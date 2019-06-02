@@ -1,3 +1,7 @@
+# Fork Changes
+Lyrics
+   - Add the ability to search/retrieve lyrics for a song
+
 # Genius.NET
 
 .NET library to access Genius API @ (<https://www.genius.com>)
