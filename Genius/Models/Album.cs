@@ -9,7 +9,7 @@ namespace Genius.Models
         public string ApiPath { get; set; }
 
         [JsonProperty(PropertyName = "comment_count")]
-        public int CommentCount { get; set; }
+        public int? CommentCount { get; set; }
 
         [JsonProperty(PropertyName = "cover_art_url")]
         public string CoverArtUrl { get; set; }
@@ -31,7 +31,7 @@ namespace Genius.Models
         public string Name { get; set; }
 
         [JsonProperty(PropertyName = "pyongs_count")]
-        public int PyongsCount { get; set; }
+        public int? PyongsCount { get; set; }
 
         [JsonProperty(PropertyName = "release_date")]
         public string ReleaseDate { get; set; }
@@ -45,7 +45,7 @@ namespace Genius.Models
         public CurrentUserMetadata CurrentUserMetadata { get; set; }
 
         [JsonProperty(PropertyName = "song_pageviews")]
-        public int SongPageviews { get; set; }
+        public int? SongPageviews { get; set; }
 
         public Artist Artist { get; set; }
 
