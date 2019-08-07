@@ -9,7 +9,7 @@ namespace Genius.Models
     /// </summary>
     public class Referent
     {
-        [JsonProperty(PropertyName = "_type")]
+        [JsonProperty("_type")]
         public string Type { get; set; }
 
         public string AnnotatorId { get; set; }
@@ -41,12 +41,12 @@ namespace Genius.Models
     {
         public string Start { get; set; }
     
-        [JsonProperty(PropertyName = "startoffset")]
+        [JsonProperty("startoffset")]
         public string StartOffset { get; set; }
         
         public string End { get; set; }
         
-        [JsonProperty(PropertyName = "endoffset")]
+        [JsonProperty("endoffset")]
         public string EndOffset { get; set; }
         
         public string Before { get; set; }

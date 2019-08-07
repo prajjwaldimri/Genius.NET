@@ -83,7 +83,7 @@ namespace Genius.Models
         public bool? Hot { get; set; }
         public int? IqEarners { get; set; }
 
-        [JsonProperty(PropertyName = "pageviews")]
+        [JsonProperty("pageviews")]
         public int? PageViews { get; set; }
 
         public int? Transcribers { get; set; }

@@ -75,7 +75,7 @@ namespace Genius.Models
     {
         public AnnotationDom Dom { get; set; }
 
-        [JsonProperty(PropertyName = "markdown")]
+        [JsonProperty("markdown")]
         public string MarkDown { get; set; }
 
         public string Plain { get; set; }
