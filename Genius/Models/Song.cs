@@ -162,7 +162,11 @@ namespace Genius.Models
 
     /// <summary>
     ///     Keys can currently take the following values:
-    ///      
+    ///      samples, sampled_in,
+    ///      interpolates, interpolated_bym
+    ///      cover_of, covered_by,
+    ///      remix_of, remixed_by,
+    ///      live_version_of, performed_live_as
     /// </summary>
     [JsonConverter(typeof(SongRelationshipCollectionConverter))]
     public class SongRelationshipCollection : Dictionary<string, List<Song>>
