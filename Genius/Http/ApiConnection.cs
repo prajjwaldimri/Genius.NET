@@ -7,6 +7,7 @@ using Genius.Helpers;
 using Genius.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using Newtonsoft.Json.Serialization;
 
 namespace Genius.Http
 {
@@ -40,11 +41,19 @@ namespace Genius.Http
                     var jToken = JToken.Parse(result);
                     var jsonResponse = jToken.SelectToken("response").SelectToken("annotation");
                     var jsonMeta = jToken.SelectToken("meta");
+
+                    var serializer = new JsonSerializer
+                    {
+                        ContractResolver = new CamelCasePropertyNamesContractResolver
+                        {
+                            NamingStrategy = new SnakeCaseNamingStrategy()
+                        }
+                    };
                     return
                         new HttpResponse<Annotation>
                         {
-                            Meta = jsonMeta.ToObject<Meta>(),
-                            Response = jsonResponse.ToObject<Annotation>()
+                            Meta = jsonMeta.ToObject<Meta>(serializer),
+                            Response = jsonResponse.ToObject<Annotation>(serializer)
                         };
                 }
             }
@@ -74,11 +83,19 @@ namespace Genius.Http
                     var jToken = JToken.Parse(result);
                     var jsonResponse = jToken.SelectToken("response").SelectToken(typeof(T).Name.ToLower());
                     var jsonMeta = jToken.SelectToken("meta");
+
+                    var serializer = new JsonSerializer
+                    {
+                        ContractResolver = new CamelCasePropertyNamesContractResolver
+                        {
+                            NamingStrategy = new SnakeCaseNamingStrategy()
+                        }
+                    };
                     return
                         new HttpResponse<T>
                         {
-                            Meta = jsonMeta.ToObject<Meta>(),
-                            Response = jsonResponse.ToObject<T>()
+                            Meta = jsonMeta.ToObject<Meta>(serializer),
+                            Response = jsonResponse.ToObject<T>(serializer)
                         };
                 }
             }
@@ -101,11 +118,19 @@ namespace Genius.Http
                     var jToken = JToken.Parse(result);
                     var jsonResponse = jToken.SelectToken("response").SelectToken(typeof(T).Name.ToLower());
                     var jsonMeta = jToken.SelectToken("meta");
+
+                    var serializer = new JsonSerializer
+                    {
+                        ContractResolver = new CamelCasePropertyNamesContractResolver
+                        {
+                            NamingStrategy = new SnakeCaseNamingStrategy()
+                        }
+                    };
                     return
                         new HttpResponse<T>
                         {
-                            Meta = jsonMeta.ToObject<Meta>(),
-                            Response = jsonResponse.ToObject<T>()
+                            Meta = jsonMeta.ToObject<Meta>(serializer),
+                            Response = jsonResponse.ToObject<T>(serializer)
                         };
                 }
             }
@@ -136,11 +161,18 @@ namespace Genius.Http
                     var jsonResponse = jToken.SelectToken("response").SelectToken(typeof(T).Name.ToLower());
                     var jsonMeta = jToken.SelectToken("meta");
 
+                    var serializer = new JsonSerializer
+                    {
+                        ContractResolver = new CamelCasePropertyNamesContractResolver
+                        {
+                            NamingStrategy = new SnakeCaseNamingStrategy()
+                        }
+                    };
                     return
                         new HttpResponse<T>
                         {
-                            Meta = jsonMeta.ToObject<Meta>(),
-                            Response = jsonResponse.ToObject<T>()
+                            Meta = jsonMeta.ToObject<Meta>(serializer),
+                            Response = jsonResponse.ToObject<T>(serializer)
                         };
                 }
             }
@@ -167,11 +199,19 @@ namespace Genius.Http
                             ? typeof(T).Name.ToLower()
                             : jsonArrayName);
                     var jsonMeta = jToken.SelectToken("meta");
+
+                    var serializer = new JsonSerializer
+                    {
+                        ContractResolver = new CamelCasePropertyNamesContractResolver
+                        {
+                            NamingStrategy = new SnakeCaseNamingStrategy()
+                        }
+                    };
                     return
                         new HttpResponse<T>
                         {
-                            Meta = jsonMeta.ToObject<Meta>(),
-                            Response = jsonResponse.ToObject<T>()
+                            Meta = jsonMeta.ToObject<Meta>(serializer),
+                            Response = jsonResponse.ToObject<T>(serializer)
                         };
                 }
             }

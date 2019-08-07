@@ -13,106 +13,43 @@ namespace Genius.Models
     /// </summary>
     public class Song
     {
-        [JsonProperty(PropertyName = "annotation_count")]
         public int? AnnotationCount { get; set; }
-
-        [JsonProperty(PropertyName = "api_path")]
         public string ApiPath { get; set; }
-
-        [JsonProperty(PropertyName = "apple_music_id")]
         public string AppleMusicId { get; set; }
-
-        [JsonProperty(PropertyName = "apple_music_player_url")]
         public string AppleMusicPlayerUrl { get; set; }
-
         public SongDescription Description { get; set; }
-
-        [JsonProperty(PropertyName = "embed_content")]
         public string EmbedContent { get; set; }
-
-        [JsonProperty(PropertyName = "fact_track")]
         public FactTrack FactTrack { get; set; }
-
-        [JsonProperty(PropertyName = "featured_video")]
         public bool? FeaturedVideo { get; set; }
-
-        [JsonProperty(PropertyName = "full_title")]
         public string FullTitle { get; set; }
-
-        [JsonProperty(PropertyName = "header_image_thumbnail_url")]
         public string HeaderImageThumbnailUrl { get; set; }
-
-        [JsonProperty(PropertyName = "header_image_url")]
         public string HeaderImageUrl { get; set; }
-
         public string Id { get; set; }
-
-        [JsonProperty(PropertyName = "lyrics_owner_id")]
         public string LyricsOwnerId { get; set; }
-
-        [JsonProperty(PropertyName = "lyrics_state")]
         public string LyricsState { get; set; }
-
         public string Path { get; set; }
-
-        [JsonProperty(PropertyName = "pyongs_count")]
         public int? PyongsCount { get; set; }
-
-        [JsonProperty(PropertyName = "recording_location")]
         public string RecordingLocation { get; set; }
-
-        [JsonProperty(PropertyName = "release_date")]
         public string ReleaseDate { get; set; }
-
-        [JsonProperty(PropertyName = "song_art_image_thumbnail_url")]
         public string SongArtImageThumbnailUrl { get; set; }
-
-        [JsonProperty(PropertyName = "song_art_image_url")]
         public string SongArtImageUrl { get; set; }
-
         public SongStats Stats { get; set; }
         public string Title { get; set; }
-        
-        [JsonProperty(PropertyName = "title_with_featured")]
         public string TitleWithFeatured { get; set; }
-        
         public string Url { get; set; }
-
-        [JsonProperty(PropertyName = "current_user_metadata")]
         public CurrentUserMetadata CurrentUserMetadata { get; set; }
-
         public Album Album { get; set; }
-
-        [JsonProperty(PropertyName = "custom_performances")]
         public PerformanceCollection CustomPerformances { get; set; }
-
-        [JsonProperty(PropertyName = "description_annotation")]
-        public SongReferent DescriptionAnnotation { get; set; }
-
-        [JsonProperty(PropertyName = "featured_artists")]
+        public Referent DescriptionAnnotation { get; set; }
         public List<Artist> FeaturedArtists { get; set; }
-
         public List<Media> Media { get; set; }
-
-        [JsonProperty(PropertyName = "primary_artist")]
         public Artist PrimaryArtist { get; set; }
-
-        [JsonProperty(PropertyName = "producer_artists")]
         public List<Artist> ProducerArtists { get; set; }
-
-        [JsonProperty(PropertyName = "song_relationships")]
         public SongRelationshipCollection SongRelationships { get; set; }
-
-        [JsonProperty(PropertyName = "verified_annotations_by")]
         public List<User> VerifiedAnnotationsBy { get; set; }
-
-        [JsonProperty(PropertyName = "verified_contributors")]
         public List<Contributor> VerifiedContributors { get; set; }
-
-        [JsonProperty(PropertyName = "writer_artists")]
         public List<Artist> WriterArtists { get; set; }
     }
-
     public class SongDescription
     {
         public SongDom Dom { get; set; }
@@ -141,22 +78,16 @@ namespace Genius.Models
 
     public class SongStats
     {
-        [JsonProperty(PropertyName = "accepted_annotations")]
         public int? AcceptedAnnotations { get; set; }
-
         public int? Contributors { get; set; }
         public bool? Hot { get; set; }
-
-        [JsonProperty(PropertyName = "iq_earners")]
         public int? IqEarners { get; set; }
 
+        [JsonProperty(PropertyName = "pageviews")]
         public int? PageViews { get; set; }
+
         public int? Transcribers { get; set; }
-
-        [JsonProperty(PropertyName = "unreviewed_annotations")]
         public int? UnreviewedAnnotations { get; set; }
-
-        [JsonProperty(PropertyName = "verified_annotations")]
         public int? VerifiedAnnotations { get; set; }
     }
 
@@ -185,7 +116,6 @@ namespace Genius.Models
                 select new SongRelationship {Type = relationship.Key, Songs = relationship.Value};
             serializer.Serialize(writer, list);
         }
-
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
             var list = JToken.Load(reader).ToObject<List<SongRelationship>>(serializer);
@@ -194,7 +124,6 @@ namespace Genius.Models
                 dict.Add(relationship.Type, relationship.Songs);
             return dict;
         }
-
         public override bool CanConvert(Type objectType)
             => typeof(SongRelationshipCollection).GetTypeInfo().IsAssignableFrom(objectType.GetTypeInfo());
 
