@@ -43,8 +43,8 @@ namespace Genius.Http
                     return
                         new HttpResponse<Annotation>
                         {
-                            Meta = JsonConvert.DeserializeObject<Meta>(jsonMeta.ToString()),
-                            Response = JsonConvert.DeserializeObject<Annotation>(jsonResponse.ToString())
+                            Meta = jsonMeta.ToObject<Meta>(),
+                            Response = jsonResponse.ToObject<Annotation>()
                         };
                 }
             }
@@ -77,8 +77,8 @@ namespace Genius.Http
                     return
                         new HttpResponse<T>
                         {
-                            Meta = JsonConvert.DeserializeObject<Meta>(jsonMeta.ToString()),
-                            Response = JsonConvert.DeserializeObject<T>(jsonResponse.ToString())
+                            Meta = jsonMeta.ToObject<Meta>(),
+                            Response = jsonResponse.ToObject<T>()
                         };
                 }
             }
@@ -104,8 +104,8 @@ namespace Genius.Http
                     return
                         new HttpResponse<T>
                         {
-                            Meta = JsonConvert.DeserializeObject<Meta>(jsonMeta.ToString()),
-                            Response = JsonConvert.DeserializeObject<T>(jsonResponse.ToString())
+                            Meta = jsonMeta.ToObject<Meta>(),
+                            Response = jsonResponse.ToObject<T>()
                         };
                 }
             }
@@ -139,8 +139,8 @@ namespace Genius.Http
                     return
                         new HttpResponse<T>
                         {
-                            Meta = JsonConvert.DeserializeObject<Meta>(jsonMeta.ToString()),
-                            Response = JsonConvert.DeserializeObject<T>(jsonResponse.ToString())
+                            Meta = jsonMeta.ToObject<Meta>(),
+                            Response = jsonResponse.ToObject<T>()
                         };
                 }
             }
@@ -170,8 +170,8 @@ namespace Genius.Http
                     return
                         new HttpResponse<T>
                         {
-                            Meta = JsonConvert.DeserializeObject<Meta>(jsonMeta.ToString()),
-                            Response = JsonConvert.DeserializeObject<T>(jsonResponse.ToString())
+                            Meta = jsonMeta.ToObject<Meta>(),
+                            Response = jsonResponse.ToObject<T>()
                         };
                 }
             }
