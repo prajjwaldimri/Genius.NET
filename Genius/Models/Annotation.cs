@@ -28,19 +28,19 @@ namespace Genius.Models
         ///     Total Number of Comments in Annotation
         /// </summary>
         [JsonProperty(PropertyName = "comment_count")]
-        public string CommentCount { get; set; }
+        public int? CommentCount { get; set; }
 
-        public string Community { get; set; }
+        public bool? Community { get; set; }
 
         [JsonProperty(PropertyName = "has_voters")]
-        public string HasVoters { get; set; }
+        public bool? HasVoters { get; set; }
 
         /// <summary>
         ///     ID of The Annotation
         /// </summary>
         public string Id { get; set; }
 
-        public string Pinned { get; set; }
+        public bool? Pinned { get; set; }
 
         [JsonProperty(PropertyName = "shared_url")]
         public string SharedUrl { get; set; }
@@ -53,14 +53,14 @@ namespace Genius.Models
         /// </summary>
         public string Url { get; set; }
 
-        public string Verified { get; set; }
+        public bool? Verified { get; set; }
 
         /// <summary>
         ///     Total vote score "upvotes and downvotes"
         /// </summary>
 
         [JsonProperty(PropertyName = "votes_total")]
-        public string VotesTotal { get; set; }
+        public int? VotesTotal { get; set; }
 
         /// <summary>
         ///     List of users who contributed to this annotation

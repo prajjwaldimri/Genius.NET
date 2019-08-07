@@ -30,7 +30,7 @@ namespace Genius.Models
         public string Id { get; set; }
 
         [JsonProperty(PropertyName = "is_description")]
-        public string IsDescription { get; set; }
+        public bool? IsDescription { get; set; }
 
         public string Path { get; set; }
         public ReferentRange Range { get; set; }

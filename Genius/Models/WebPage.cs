@@ -23,7 +23,7 @@ namespace Genius.Models
         public string Url { get; set; }
 
         [JsonProperty(PropertyName = "annotation_count")]
-        public string AnnotationCount { get; set; }
+        public int? AnnotationCount { get; set; }
 
         //Only in POST
 

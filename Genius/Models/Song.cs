@@ -14,7 +14,7 @@ namespace Genius.Models
     public class Song
     {
         [JsonProperty(PropertyName = "annotation_count")]
-        public string AnnotationCount { get; set; }
+        public int? AnnotationCount { get; set; }
 
         [JsonProperty(PropertyName = "api_path")]
         public string ApiPath { get; set; }
@@ -34,7 +34,7 @@ namespace Genius.Models
         public FactTrack FactTrack { get; set; }
 
         [JsonProperty(PropertyName = "featured_video")]
-        public string FeaturedVideo { get; set; }
+        public bool? FeaturedVideo { get; set; }
 
         [JsonProperty(PropertyName = "full_title")]
         public string FullTitle { get; set; }
@@ -56,7 +56,7 @@ namespace Genius.Models
         public string Path { get; set; }
 
         [JsonProperty(PropertyName = "pyongs_count")]
-        public string PyongsCount { get; set; }
+        public int? PyongsCount { get; set; }
 
         [JsonProperty(PropertyName = "recording_location")]
         public string RecordingLocation { get; set; }
@@ -142,22 +142,22 @@ namespace Genius.Models
     public class SongStats
     {
         [JsonProperty(PropertyName = "accepted_annotations")]
-        public string AcceptedAnnotations { get; set; }
+        public int? AcceptedAnnotations { get; set; }
 
-        public string Contributors { get; set; }
-        public bool Hot { get; set; }
+        public int? Contributors { get; set; }
+        public bool? Hot { get; set; }
 
         [JsonProperty(PropertyName = "iq_earners")]
-        public string IqEarners { get; set; }
+        public int? IqEarners { get; set; }
 
-        public string PageViews { get; set; }
-        public string Transcribers { get; set; }
+        public int? PageViews { get; set; }
+        public int? Transcribers { get; set; }
 
         [JsonProperty(PropertyName = "unreviewed_annotations")]
-        public string UnreviewedAnnotations { get; set; }
+        public int? UnreviewedAnnotations { get; set; }
 
         [JsonProperty(PropertyName = "verified_annotations")]
-        public string VerifiedAnnotations { get; set; }
+        public int? VerifiedAnnotations { get; set; }
     }
 
     /// <summary>

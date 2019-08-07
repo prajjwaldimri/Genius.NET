@@ -25,10 +25,10 @@ namespace Genius.Models
         public string Email { get; set; }
 
         [JsonProperty(PropertyName = "followed_users_count")]
-        public string FollowedUsersCount { get; set; }
+        public int? FollowedUsersCount { get; set; }
 
         [JsonProperty(PropertyName = "followers_count")]
-        public string FollowersCount { get; set; }
+        public int? FollowersCount { get; set; }
 
         [JsonProperty(PropertyName = "header_image_url")]
         public string HeaderImageUrl { get; set; }
@@ -38,7 +38,7 @@ namespace Genius.Models
 
         public string Id { get; set; }
         public List<UserIdentities> Identities { get; set; }
-        public string Iq { get; set; }
+        public int? Iq { get; set; }
 
         [JsonProperty(PropertyName = "iq_for_display")]
         public string IqForDisplay { get; set; }
@@ -92,28 +92,28 @@ namespace Genius.Models
     public class UserStats
     {
         [JsonProperty(PropertyName = "all_activities_count")]
-        public string AllActivitiesCount { get; set; }
+        public int? AllActivitiesCount { get; set; }
 
         [JsonProperty(PropertyName = "annotations_count")]
-        public string AnnotationsCount { get; set; }
+        public int? AnnotationsCount { get; set; }
 
         [JsonProperty(PropertyName = "answers_count")]
-        public string AnswersCount { get; set; }
+        public int? AnswersCount { get; set; }
 
         [JsonProperty(PropertyName = "comments_count")]
-        public string CommentsCount { get; set; }
+        public int? CommentsCount { get; set; }
 
         [JsonProperty(PropertyName = "forum_posts_count")]
-        public string ForumPostsCount { get; set; }
+        public int? ForumPostsCount { get; set; }
 
         [JsonProperty(PropertyName = "pyongs_count")]
-        public string PyongsCount { get; set; }
+        public int? PyongsCount { get; set; }
 
         [JsonProperty(PropertyName = "questions_count")]
-        public string QuestionsCount { get; set; }
+        public int? QuestionsCount { get; set; }
 
         [JsonProperty(PropertyName = "transcriptions_count")]
-        public string TranscriptionsCount { get; set; }
+        public int? TranscriptionsCount { get; set; }
     }
 
     public class UserPreferences
@@ -166,8 +166,8 @@ namespace Genius.Models
 
     public class CurrentUserInteractions
     {
-        public bool Pyong { get; set; }
-        public bool Following { get; set; }
+        public bool? Pyong { get; set; }
+        public bool? Following { get; set; }
     }
 
     public class CurrentUserRelationships

@@ -34,10 +34,10 @@ namespace Genius.Models
         public string InstagramName { get; set; }
 
         [JsonProperty(PropertyName = "is_meme_verified")]
-        public string IsMemeVerified { get; set; }
+        public bool? IsMemeVerified { get; set; }
 
         [JsonProperty(PropertyName = "is_verified")]
-        public string IsVerified { get; set; }
+        public bool? IsVerified { get; set; }
 
         public string Name { get; set; }
         public string Url { get; set; }
@@ -45,7 +45,7 @@ namespace Genius.Models
         [JsonProperty(PropertyName = "current_user_metadata")]
         public CurrentUserMetadata CurrentUserMetadata { get; set; }
 
-        public string Iq { get; set; }
+        public int? Iq { get; set; }
 
         [JsonProperty(PropertyName = "description_annotation")]
         public SongReferent DescriptionAnnotation { get; set; }
