@@ -1,5 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Genius.Models
 {
@@ -9,84 +13,43 @@ namespace Genius.Models
     /// </summary>
     public class Song
     {
-        [JsonProperty(PropertyName = "annotation_count")]
-        public string AnnotationCount { get; set; }
-
-        [JsonProperty(PropertyName = "api_path")]
+        public int? AnnotationCount { get; set; }
         public string ApiPath { get; set; }
-
+        public string AppleMusicId { get; set; }
+        public string AppleMusicPlayerUrl { get; set; }
         public SongDescription Description { get; set; }
-
-        [JsonProperty(PropertyName = "embed_content")]
         public string EmbedContent { get; set; }
-
-        [JsonProperty(PropertyName = "fact_track")]
         public FactTrack FactTrack { get; set; }
-
-        [JsonProperty(PropertyName = "featured_video")]
-        public string FeaturedVideo { get; set; }
-
-        [JsonProperty(PropertyName = "full_title")]
+        public bool? FeaturedVideo { get; set; }
         public string FullTitle { get; set; }
-
-        [JsonProperty(PropertyName = "header_image_thumbnail_url")]
         public string HeaderImageThumbnailUrl { get; set; }
-
-        [JsonProperty(PropertyName = "header_image_url")]
         public string HeaderImageUrl { get; set; }
-
         public string Id { get; set; }
-
-        [JsonProperty(PropertyName = "lyrics_owner_id")]
         public string LyricsOwnerId { get; set; }
-
+        public string LyricsState { get; set; }
         public string Path { get; set; }
-
-        [JsonProperty(PropertyName = "pyongs_count")]
-        public string PyongsCount { get; set; }
-
-        [JsonProperty(PropertyName = "recording_location")]
+        public int? PyongsCount { get; set; }
         public string RecordingLocation { get; set; }
-
-        [JsonProperty(PropertyName = "release_date")]
         public string ReleaseDate { get; set; }
-
-        [JsonProperty(PropertyName = "song_art_image_url")]
+        public string SongArtImageThumbnailUrl { get; set; }
         public string SongArtImageUrl { get; set; }
-
         public SongStats Stats { get; set; }
         public string Title { get; set; }
+        public string TitleWithFeatured { get; set; }
         public string Url { get; set; }
-
-        [JsonProperty(PropertyName = "current_user_metadata")]
         public CurrentUserMetadata CurrentUserMetadata { get; set; }
-
         public Album Album { get; set; }
-
-        [JsonProperty(PropertyName = "description_annotation")]
-        public SongReferent DescriptionAnnotation { get; set; }
-
-        [JsonProperty(PropertyName = "featured_artists")]
+        public PerformanceCollection CustomPerformances { get; set; }
+        public Referent DescriptionAnnotation { get; set; }
         public List<Artist> FeaturedArtists { get; set; }
-
         public List<Media> Media { get; set; }
-
-        [JsonProperty(PropertyName = "primary_artist")]
         public Artist PrimaryArtist { get; set; }
-
-        [JsonProperty(PropertyName = "producer_artists")]
         public List<Artist> ProducerArtists { get; set; }
-
-        [JsonProperty(PropertyName = "verified_annotations_by")]
+        public SongRelationshipCollection SongRelationships { get; set; }
         public List<User> VerifiedAnnotationsBy { get; set; }
-
-        [JsonProperty(PropertyName = "verified_contributors")]
         public List<Contributor> VerifiedContributors { get; set; }
-
-        [JsonProperty(PropertyName = "writer_artists")]
         public List<Artist> WriterArtists { get; set; }
     }
-
     public class SongDescription
     {
         public SongDom Dom { get; set; }
@@ -115,22 +78,59 @@ namespace Genius.Models
 
     public class SongStats
     {
-        [JsonProperty(PropertyName = "accepted_annotations")]
-        public string AcceptedAnnotations { get; set; }
+        public int? AcceptedAnnotations { get; set; }
+        public int? Contributors { get; set; }
+        public bool? Hot { get; set; }
+        public int? IqEarners { get; set; }
 
-        public string Contributors { get; set; }
-        public bool Hot { get; set; }
+        [JsonProperty("pageviews")]
+        public int? PageViews { get; set; }
 
-        [JsonProperty(PropertyName = "iq_earners")]
-        public string IqEarners { get; set; }
+        public int? Transcribers { get; set; }
+        public int? UnreviewedAnnotations { get; set; }
+        public int? VerifiedAnnotations { get; set; }
+    }
 
-        public string PageViews { get; set; }
-        public string Transcribers { get; set; }
+    /// <summary>
+    ///     Keys can currently take the following values:
+    ///      samples, sampled_in,
+    ///      interpolates, interpolated_bym
+    ///      cover_of, covered_by,
+    ///      remix_of, remixed_by,
+    ///      live_version_of, performed_live_as
+    /// </summary>
+    [JsonConverter(typeof(SongRelationshipCollectionConverter))]
+    public class SongRelationshipCollection : Dictionary<string, List<Song>>
+    {
+        public SongRelationshipCollection() { }
+        public SongRelationshipCollection(IDictionary<string, List<Song>> dictionary) : base(dictionary) { }
+        public SongRelationshipCollection(int capacity) : base(capacity) { }
+    }
 
-        [JsonProperty(PropertyName = "unreviewed_annotations")]
-        public string UnreviewedAnnotations { get; set; }
+    class SongRelationshipCollectionConverter : JsonConverter
+    {
+        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
+        {
+            var dict = (SongRelationshipCollection) value;
+            var list = from relationship in dict
+                select new SongRelationship {Type = relationship.Key, Songs = relationship.Value};
+            serializer.Serialize(writer, list);
+        }
+        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+        {
+            var list = JToken.Load(reader).ToObject<List<SongRelationship>>(serializer);
+            var dict = new SongRelationshipCollection(list.Count);
+            foreach (var relationship in list)
+                dict.Add(relationship.Type, relationship.Songs);
+            return dict;
+        }
+        public override bool CanConvert(Type objectType)
+            => typeof(SongRelationshipCollection).GetTypeInfo().IsAssignableFrom(objectType.GetTypeInfo());
 
-        [JsonProperty(PropertyName = "verified_annotations")]
-        public string VerifiedAnnotations { get; set; }
+        class SongRelationship
+        {
+            public string Type  { get; set; }
+            public List<Song> Songs { get; set; }
+        }
     }
 }

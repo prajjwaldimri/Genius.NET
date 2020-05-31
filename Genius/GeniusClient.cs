@@ -17,6 +17,7 @@ namespace Genius
             IApiConnection apiConnection = new ApiConnection(accessToken);
 
             AccountsClient = new AccountsClient(apiConnection);
+            AlbumsClient = new AlbumsClient(apiConnection);
             AnnotationsClient = new AnnotationsClient(apiConnection);
             ArtistsClient = new ArtistsClient(apiConnection);
             VoteClient = new VoteClient(apiConnection);
@@ -31,6 +32,10 @@ namespace Genius
         /// <summary>
         /// </summary>
         public readonly IAccountsClient AccountsClient;
+
+        /// <summary>
+        /// </summary>
+        public readonly IAlbumsClient AlbumsClient;
 
         /// <summary>
         ///     Clients for operations on Annotations.

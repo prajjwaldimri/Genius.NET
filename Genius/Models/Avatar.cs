@@ -1,4 +1,6 @@
-﻿namespace Genius.Models
+﻿using Newtonsoft.Json;
+
+namespace Genius.Models
 {
     /// <summary>
     ///     Avatar of any user.

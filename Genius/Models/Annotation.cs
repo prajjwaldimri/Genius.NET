@@ -14,37 +14,29 @@ namespace Genius.Models
     /// </summary>
     public class Annotation
     {
-        [JsonProperty(PropertyName = "api_path")]
         public string ApiPath { get; set; }
 
         /// <summary>
         ///     The Content of The Annotation
         /// </summary>
 
-        [JsonProperty(PropertyName = "body")]
         public AnnotationBody Body { get; set; }
 
         /// <summary>
         ///     Total Number of Comments in Annotation
         /// </summary>
-        [JsonProperty(PropertyName = "comment_count")]
-        public string CommentCount { get; set; }
+        public int? CommentCount { get; set; }
 
-        public string Community { get; set; }
-
-        [JsonProperty(PropertyName = "has_voters")]
-        public string HasVoters { get; set; }
+        public bool? Community { get; set; }
+        public bool? HasVoters { get; set; }
 
         /// <summary>
         ///     ID of The Annotation
         /// </summary>
         public string Id { get; set; }
 
-        public string Pinned { get; set; }
-
-        [JsonProperty(PropertyName = "shared_url")]
+        public bool? Pinned { get; set; }
         public string SharedUrl { get; set; }
-
         public string Source { get; set; }
         public string State { get; set; }
 
@@ -53,14 +45,13 @@ namespace Genius.Models
         /// </summary>
         public string Url { get; set; }
 
-        public string Verified { get; set; }
+        public bool? Verified { get; set; }
 
         /// <summary>
         ///     Total vote score "upvotes and downvotes"
         /// </summary>
 
-        [JsonProperty(PropertyName = "votes_total")]
-        public string VotesTotal { get; set; }
+        public int? VotesTotal { get; set; }
 
         /// <summary>
         ///     List of users who contributed to this annotation
@@ -70,13 +61,11 @@ namespace Genius.Models
         /// <summary>
         ///     List of users who have cosigned this annotation
         /// </summary>
-        [JsonProperty(PropertyName = "cosigned_by")]
         public List<User> CosignedBy { get; set; }
 
         /// <summary>
         ///     Verified User that created this annotation
         /// </summary>
-        [JsonProperty(PropertyName = "verified_by")]
         public User VerifiedBy { get; set; }
     }
 
@@ -84,31 +73,23 @@ namespace Genius.Models
 
     public class AnnotationBody
     {
-        [JsonProperty(PropertyName = "dom")]
         public AnnotationDom Dom { get; set; }
 
-        [JsonProperty(PropertyName = "markdown")]
+        [JsonProperty("markdown")]
         public string MarkDown { get; set; }
 
-        [JsonProperty(PropertyName = "plain")]
         public string Plain { get; set; }
     }
 
     public class AnnotationDom
     {
-        [JsonProperty(PropertyName = "tag")]
         public string Tag { get; set; }
-
-        [JsonProperty(PropertyName = "children")]
         public AnnotationChild[] Children { get; set; }
     }
 
     public class AnnotationChild
     {
-        [JsonProperty(PropertyName = "tag")]
         public string Tag { get; set; }
-
-        [JsonProperty(PropertyName = "children")]
         public object[] Children { get; set; }
     }
 
@@ -129,12 +110,10 @@ namespace Genius.Models
     {
         public new SongandUserAnnotationDom Dom { get; set; }
     }
-
     public class SongandUserAnnotationDom : AnnotationDom
     {
         public new List<SongandUserAnnotationChild> Children { get; set; }
     }
-
     public class SongandUserAnnotationChild : AnnotationChild
     {
         public new List<object> Children { get; set; }
