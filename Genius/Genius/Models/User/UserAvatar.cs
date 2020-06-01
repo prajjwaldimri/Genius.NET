@@ -1,4 +1,5 @@
 ﻿using Jil;
+// ReSharper disable ClassNeverInstantiated.Global
 
 namespace Genius.Models.User
 {
