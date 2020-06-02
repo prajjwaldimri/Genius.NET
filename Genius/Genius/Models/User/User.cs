@@ -6,6 +6,8 @@ namespace Genius.Models.User
 {
   public class User
   {
+    [JilDirective(Name="about_me")] public UserAboutMe AboutMe { get; set; }
+    
     [JilDirective(Name = "api_path")] public string ApiPath { get; set; }
 
     [JilDirective(Name = "available_identity_providers")]

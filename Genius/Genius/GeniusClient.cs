@@ -5,11 +5,12 @@ using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using Genius.Core;
 using Genius.Models;
+using Genius.Models.Response;
 using Jil;
 
 namespace Genius
 {
-  public class GeniusClient
+  public class GeniusClient : IGeniusClient
   {
     public GeniusClient(string apiKey)
     {
@@ -26,14 +27,15 @@ namespace Genius
       try
       {
         var client = new HttpClient();
-        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", ApiKey);
+        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer",
+          ApiKey);
 
 
-        var content = await client.GetStringAsync("https://api.genius.com/account");
+        var content = await client.GetStringAsync("https://api.genius.com/annotations/10225840");
 
         using (var input = new StringReader(content))
         {
-          var result = JSON.Deserialize<Account>(input);
+          var result = JSON.Deserialize<AnnotationResponse>(input);
           Console.WriteLine(result);
         }
       }

@@ -4,6 +4,6 @@ namespace Genius.Core
 {
   public interface IGeniusClient
   {
-    IAccountClient Account { get; }
+    
   }
 }
