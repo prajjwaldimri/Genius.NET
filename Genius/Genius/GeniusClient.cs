@@ -9,6 +9,7 @@ namespace Genius
   {
     public IAccountClient AccountClient;
     public IAnnotationClient AnnotationClient;
+    public IReferentClient ReferentClient;
 
     /// <summary>
     /// Start by making an instance of GeniusClient.
@@ -23,6 +24,8 @@ namespace Genius
       // Inject all the necessary client services
       AccountClient = new AccountClient(geniusHttpClient);
       AnnotationClient = new AnnotationClient(geniusHttpClient);
+      ReferentClient = new ReferentClient(geniusHttpClient);
+      
     }
   }
 }
