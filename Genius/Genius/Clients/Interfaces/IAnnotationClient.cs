@@ -13,7 +13,7 @@ namespace Genius.Clients.Interfaces
     /// <summary>
     /// Gets data for a specific annotation.
     /// </summary>
-    /// <param name="annotationId">ID of the annotation </param>
+    /// <param name="annotationId">ID of the annotation</param>
     /// <returns>An object containing server status and annotation</returns>
     Task<AnnotationResponse> GetAnnotation(ulong annotationId);
 
@@ -31,12 +31,32 @@ namespace Genius.Clients.Interfaces
     /// <returns>An object containing server status and annotation</returns>
     Task<AnnotationResponse> UpdateAnnotation(AnnotationPayload annotationPayload);
 
+    /// <summary>
+    /// Deletes an annotation created by the authenticated user.
+    /// </summary>
+    /// <param name="annotationId">ID of the annotation</param>
+    /// <returns>An object containing server status and annotation</returns>
     Task<AnnotationResponse> DeleteAnnotation(ulong annotationId);
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="annotationId">ID of the annotation</param>
+    /// <returns>An object containing server status and annotation</returns>
     Task<AnnotationResponse> UpVoteAnnotation(ulong annotationId);
 
+    /// <summary>
+    /// Votes positively for the annotation on behalf of the authenticated user.
+    /// </summary>
+    /// <param name="annotationId">ID of the annotation</param>
+    /// <returns>An object containing server status and annotation</returns>
     Task<AnnotationResponse> DownVoteAnnotation(ulong annotationId);
 
+    /// <summary>
+    /// Votes negatively for the annotation on behalf of the authenticated user.
+    /// </summary>
+    /// <param name="annotationId">ID of the annotation</param>
+    /// <returns>An object containing server status and annotation</returns>
     Task<AnnotationResponse> UnVoteAnnotation(ulong annotationId);
   }
 }
