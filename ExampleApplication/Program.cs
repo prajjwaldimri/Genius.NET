@@ -1,125 +1,78 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Genius;
-using Genius.Models;
+using Genius.Models.Annotation;
+using Genius.Models.Referent;
 
 namespace ExampleApplication
 {
-    internal class Program
+  class Program
+  {
+    public static async Task Main(string[] args)
     {
-        private static void Main(string[] args)
-        {
-            Examples().Wait();
-            Console.ReadLine();
-        }
+      try
+      {
+        // Genius.NET doesn't provide OAuth related wrappers.
+        var client = new GeniusClient("API_KEY");
+        
+        // GET /annotations/:id
+        var annotation = await client.AnnotationClient.GetAnnotation(10225840);
 
-        private static async Task Examples()
-        {
-            var geniusClient = new GeniusClient("CLIENT_ACCESS_KEY");
+        // POST /annotations
+        var newAnnotation = await client.AnnotationClient.PostAnnotation(
+          new AnnotationPayload("hello **world!**",
+            new ReferentPayload("http://seejohncode.com/2014/01/27/vim-commands-piping/",
+              "execute commands",
+              new ContextForDisplay("You may know that you can",
+                " from inside of vim, with a vim command:")),
+            new WebPagePayload(title: "Secret of Mana")));
 
-            #region Annotations
+        // PUT /annotations 
+        var updatedAnnotation = await client.AnnotationClient.UpdateAnnotation(
+          new AnnotationPayload("hello **world!**",
+            new ReferentPayload("http://seejohncode.com/2014/01/27/vim-commands-piping/",
+              "execute commands",
+              new ContextForDisplay("You may know that you can",
+                " from inside of vim, with a vim command:")),
+            new WebPagePayload(title: "Secret of Mana")));
 
-            // GET an annotation by Id
-            var getAnnotation = await geniusClient.AnnotationsClient.GetAnnotation("10225840", TextFormat.Dom);
+        // DELETE /annotations/:id
+        var deletedAnnotation = await client.AnnotationClient.DeleteAnnotation(10225840);
 
+        // PUT /annotations/:id/upvote
+        var upvotedAnnotation = await client.AnnotationClient.UpVoteAnnotation(10225840);
 
-            // Create/POST an annotation
-            var annotationPayload = new AnnotationPayload
-            {
-                Annotation = new Annotation {Body = new AnnotationBody {MarkDown = "hello **world!**"}},
-                Referent = new Referent
-                {
-                    RawAnnotableUrl = "http://seejohncode.com/2014/01/27/vim-commands-piping/",
-                    Fragment = "execute commands",
-                    ContextForDisplay = new ContextForDisplay
-                    {
-                        BeforeHtml = "You may know that you can ",
-                        AfterHtml = " from inside of a vim, with a vim command:"
-                    }
-                },
-                WebPage = new WebPage
-                {
-                    CanonicalUrl = null,
-                    OgUrl = null,
-                    Title = "Secret of Mana"
-                }
-            };
-            var postAnnotation =
-                await geniusClient.AnnotationsClient.CreateAnnotation(annotationPayload, TextFormat.Dom);
+        // PUT /annotations/:id/downvote
+        var downvotedAnnotation = await client.AnnotationClient.DownVoteAnnotation(10225840);
 
-            // Update an annotation
+        // PUT /annotations/:id/unvote
+        var unvotedAnnotation = await client.AnnotationClient.UnVoteAnnotation(10225840);
 
-            var annotationUpdatePayload = new AnnotationPayload
-            {
-                Annotation = new Annotation {Body = new AnnotationBody {MarkDown = "hello **world!** is very generic"}}
-            };
+        // GET /account
+        var user = await client.AccountClient.GetAccount();
 
-            var updatedAnnotation =
-                await geniusClient.AnnotationsClient.UpdateAnnotation(postAnnotation.Response.Id,
-                    annotationUpdatePayload,
-                    TextFormat.Dom);
-
-            // Delete an annotation
-
-            var deletedAnnotation =
-                await geniusClient.AnnotationsClient.DeleteAnnotation(postAnnotation.Response.Id, TextFormat.Dom);
-
-            #endregion
-
-            #region Voting
-
-            // Upvote
-            await geniusClient.VoteClient.Vote(VoteType.Upvote, "Annotation_ID", TextFormat.Dom);
-
-            //Downvote
-            await geniusClient.VoteClient.Vote(VoteType.Downvote, "Annotation_ID", TextFormat.Dom);
-
-            //UnVote (Remove the vote)
-            await geniusClient.VoteClient.Vote(VoteType.Unvote, "Annotation_ID", TextFormat.Dom);
-
-            #endregion
-
-            #region Referent
-
-            var referentBySongId =
-                await geniusClient.ReferentsClient.GetReferentBySongId(TextFormat.Dom, "Song_Id", "Created_by_id",
-                    "per_page", "page");
-
-            var referentByWebPageId =
-                await geniusClient.ReferentsClient.GetReferentByWebPageId(TextFormat.Dom, "Web_page_id");
-
-            #endregion
-
-            #region Songs
-
-            var song = geniusClient.SongsClient.GetSong(TextFormat.Dom, "SONG_ID");
-
-            #endregion
-
-            #region Artists
-
-            var artistInfo = geniusClient.ArtistsClient.GetArtist(TextFormat.Dom, "ARTIST_ID");
-            var songsByArtist = geniusClient.ArtistsClient.GetSongsByArtist(TextFormat.Dom, "ARTIST_ID");
-
-            #endregion
-
-            #region WebPages
-
-            var webPage = geniusClient.WebPagesClient.GetWebPage(TextFormat.Dom, "URL");
-
-            #endregion
-
-            #region Search
-
-            var searchResult = geniusClient.SearchClient.Search(TextFormat.Dom, "Kendrick%20Lamar");
-
-            #endregion
-
-            #region Account
-
-            var accountInfo = geniusClient.AccountsClient.GetAccountInfo(TextFormat.Dom);
-
-            #endregion
-        }
+        // GET /referents
+        var referent = await client.ReferentClient.GetReferent(webPageId: "10347");
+        
+        // GET /songs/:id
+        var song = await client.SongClient.GetSong(378195);
+        
+        // GET /artists/:id
+        var artist = client.ArtistClient.GetArtist(16775);
+        
+        // GET /artists/:id/songs
+        var artistsSongs = await client.ArtistClient.GetArtistsSongs(16775, sort: "title");
+        
+        // GET /web_pages/lookup
+        var webPage = await client.WebPageClient.GetWebPage(Uri.EscapeUriString("https://docs.genius.com"));
+        
+        // GET /search
+        var search = client.SearchClient.Search("Kendrick Lamar");
+      }
+      catch (Exception e)
+      {
+        Console.WriteLine(e);
+      }
     }
+  }
 }
