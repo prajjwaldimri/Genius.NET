@@ -1,48 +1,28 @@
-﻿using System;
-using System.IO;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Threading.Tasks;
+﻿using Genius.Clients;
+using Genius.Clients.Interfaces;
 using Genius.Core;
-using Genius.Models;
-using Genius.Models.Response;
-using Jil;
+using Genius.Http;
 
 namespace Genius
 {
   public class GeniusClient : IGeniusClient
   {
-    public GeniusClient(string apiKey)
-    {
-      ApiKey = apiKey;
-    }
+    public IAccountClient AccountClient;
+    public IAnnotationClient AnnotationClient;
 
     /// <summary>
-    /// See: http://genius.com/api-clients
+    /// Start by making an instance of GeniusClient.
     /// </summary>
-    public string ApiKey { get; }
-
-    public async Task Test()
+    /// <param name="apiKey">See: http://genius.com/api-clients"</param>
+    public GeniusClient(string apiKey)
     {
-      try
-      {
-        var client = new HttpClient();
-        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer",
-          ApiKey);
+      // Initialize Genius Client
+      IGeniusRestClient geniusHttpClient = GeniusRestClient.Instance;
+      geniusHttpClient.SetApiKey(apiKey);
 
-
-        var content = await client.GetStringAsync("https://api.genius.com/annotations/10225840");
-
-        using (var input = new StringReader(content))
-        {
-          var result = JSON.Deserialize<AnnotationResponse>(input);
-          Console.WriteLine(result);
-        }
-      }
-      catch (Exception error)
-      {
-        Console.WriteLine(error);
-      }
+      // Inject all the necessary client services
+      AccountClient = new AccountClient(geniusHttpClient);
+      AnnotationClient = new AnnotationClient(geniusHttpClient);
     }
   }
 }
