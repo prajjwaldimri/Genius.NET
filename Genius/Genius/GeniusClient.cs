@@ -9,7 +9,11 @@ namespace Genius
   {
     public IAccountClient AccountClient;
     public IAnnotationClient AnnotationClient;
+    public IArtistClient ArtistClient;
     public IReferentClient ReferentClient;
+    public ISearchClient SearchClient;
+    public ISongClient SongClient;
+    public IWebPageClient WebPageClient;
 
     /// <summary>
     /// Start by making an instance of GeniusClient.
@@ -25,7 +29,10 @@ namespace Genius
       AccountClient = new AccountClient(geniusHttpClient);
       AnnotationClient = new AnnotationClient(geniusHttpClient);
       ReferentClient = new ReferentClient(geniusHttpClient);
-      
+      SongClient = new SongClient(geniusHttpClient);
+      ArtistClient = new ArtistClient(geniusHttpClient);
+      SearchClient = new SearchClient(geniusHttpClient);
+      WebPageClient = new WebPageClient(geniusHttpClient);
     }
   }
 }

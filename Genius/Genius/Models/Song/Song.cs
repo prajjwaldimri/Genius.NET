@@ -19,7 +19,7 @@ namespace Genius.Models.Song
     [JilDirective(Name = "apple_music_player_url")]
     public string AppleMusicPlayerUrl { get; set; }
 
-    [JilDirective(Name = "description")] public SongDescription Description { get; set; }
+    [JilDirective(Name = "description")] public HtmlFormat Description { get; set; }
 
     [JilDirective(Name = "embed_content")] public string EmbedContent { get; set; }
 
@@ -46,7 +46,7 @@ namespace Genius.Models.Song
 
     [JilDirective(Name = "path")] public string Path { get; set; }
 
-    [JilDirective(Name = "pyongs_count")] public ulong PyongsCount { get; set; }
+    [JilDirective(Name = "pyongs_count")] public ulong? PyongsCount { get; set; }
 
     [JilDirective(Name = "recording_location")]
     public string RecordingLocation { get; set; }

@@ -20,7 +20,7 @@ namespace Genius.Clients
 
     public async Task<AnnotationResponse> GetAnnotation(ulong annotationId)
     {
-      var response = await _geniusRestClient.GetASync("/annotations/" + annotationId);
+      var response = await _geniusRestClient.GetASync("/annotations/" + annotationId + "?text_format=html");
 
       using (var input = new StringReader(response))
       {
@@ -41,7 +41,7 @@ namespace Genius.Clients
       {
         JSON.Serialize(annotationPayload, output);
         var response = await _geniusRestClient.PostASync("/annotations/",
-          output.ToString());
+          output.ToString() + "?text_format=html");
 
         using (var input = new StringReader(response))
         {
@@ -63,7 +63,7 @@ namespace Genius.Clients
       {
         JSON.Serialize(annotationPayload, output);
         var response = await _geniusRestClient.PostASync("/annotations/",
-          output.ToString());
+          output.ToString() + "?text_format=html");
 
         using (var input = new StringReader(response))
         {
@@ -81,7 +81,7 @@ namespace Genius.Clients
 
     public async Task<AnnotationResponse> DeleteAnnotation(ulong annotationId)
     {
-      var response = await _geniusRestClient.DeleteASync("/annotations/" + annotationId);
+      var response = await _geniusRestClient.DeleteASync("/annotations/" + annotationId + "?text_format=html");
 
       using (var input = new StringReader(response))
       {
@@ -99,7 +99,7 @@ namespace Genius.Clients
     public async Task<AnnotationResponse> UpVoteAnnotation(ulong annotationId)
     {
       var response = await _geniusRestClient.PutASync("/annotations/" + annotationId
-                                                                      + "/upvote");
+                                                                      + "/upvote" + "?text_format=html");
 
       using (var input = new StringReader(response))
       {
@@ -117,7 +117,7 @@ namespace Genius.Clients
     public async Task<AnnotationResponse> DownVoteAnnotation(ulong annotationId)
     {
       var response = await _geniusRestClient.PutASync("/annotations/" + annotationId
-                                                                      + "/downvote");
+                                                                      + "/downvote" + "?text_format=html");
 
       using (var input = new StringReader(response))
       {
@@ -135,7 +135,7 @@ namespace Genius.Clients
     public async Task<AnnotationResponse> UnVoteAnnotation(ulong annotationId)
     {
       var response = await _geniusRestClient.PutASync("/annotations/" + annotationId
-                                                                      + "/unvote");
+                                                                      + "/unvote" + "?text_format=html");
 
       using (var input = new StringReader(response))
       {

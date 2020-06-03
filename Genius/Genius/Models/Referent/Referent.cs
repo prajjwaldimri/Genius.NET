@@ -32,7 +32,7 @@ namespace Genius.Models.Referent
     
     [JilDirective(Name = "range")] public ReferentRange Range { get; set; }
     
-    [JilDirective(Name = "song_id")] public string SongId { get; set; }
+    [JilDirective(Name = "song_id")] public ulong? SongId { get; set; }
     
     [JilDirective(Name = "url")] public string Url { get; set; }
     

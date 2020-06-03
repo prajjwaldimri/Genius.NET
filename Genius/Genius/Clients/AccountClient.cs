@@ -18,7 +18,7 @@ namespace Genius.Clients
 
     public async Task<AccountResponse> GetAccount()
     {
-      var response = await _geniusRestClient.GetASync("/account");
+      var response = await _geniusRestClient.GetASync("/account?text_format=html");
 
       using (var input = new StringReader(response))
       {

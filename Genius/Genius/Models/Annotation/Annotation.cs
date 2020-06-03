@@ -10,7 +10,7 @@ namespace Genius.Models.Annotation
   {
     [JilDirective(Name = "api_path")] public string ApiPath { get; set; }
 
-    [JilDirective(Name = "body")] public Dom Body { get; set; }
+    [JilDirective(Name = "body")] public HtmlFormat Body { get; set; }
 
     [JilDirective(Name = "comment_count")] public ulong CommentCount { get; set; }
 

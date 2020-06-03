@@ -12,7 +12,7 @@ namespace Genius.Models.Artist
 
     [JilDirective(Name = "api_path")] public string ApiPath { get; set; }
 
-    [JilDirective(Name = "description")] public ArtistDescription Description { get; set; }
+    [JilDirective(Name = "description")] public HtmlFormat Description { get; set; }
 
     [JilDirective(Name = "facebook_name")] public string FacebookName { get; set; }
 
