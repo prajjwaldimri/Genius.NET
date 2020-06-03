@@ -2,7 +2,7 @@
 
 .NET library to access Genius API @ (<https://www.genius.com>)
 
-[![NuGet](https://img.shields.io/nuget/v/Genius.NET.svg?maxAge=2592000&style=for-the-badge&logo=nuget)](https://www.nuget.org/packages/Genius.NET)
+[![NuGet](https://img.shields.io/nuget/v/Genius.svg?maxAge=2592000&style=for-the-badge&logo=nuget)](https://www.nuget.org/packages/Genius.NET)
 [![GitHub issues](https://img.shields.io/github/issues/prajjwaldimri/Genius.NET.svg?maxAge=2592000&style=for-the-badge&logo=github)](https://github.com/prajjwaldimri/Genius.NET/issues)
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000&style=for-the-badge)](https://github.com/prajjwaldimri/Genius.NET/blob/master/LICENSE)
 [![Contact](https://img.shields.io/badge/contact-@prajjwaldimri-642C90.svg?style=for-the-badge&logo=telegram)](https://t.me/prajjwaldimri)
@@ -19,7 +19,7 @@ By participating, you are expected to uphold this code. Please report unacceptab
 To install Genius.NET, run the following command in Nuget's [Package Manager Console](https://docs.nuget.org/docs/start-here/using-the-package-manager-console)
 
 ``` Nuget
-Install-Package Genius.NET
+Install-Package Genius
 ```
 
 ## Usage
