@@ -19,7 +19,7 @@ By participating, you are expected to uphold this code. Please report unacceptab
 To install Genius.NET, run the following command in Nuget's [Package Manager Console](https://docs.nuget.org/docs/start-here/using-the-package-manager-console)
 
 ``` Nuget
-Install-Package Genius
+Install-Package Genius.NET
 ```
 
 ## Usage
