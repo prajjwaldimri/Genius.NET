@@ -13,6 +13,7 @@
         <RepositoryType>Git</RepositoryType>
         <PackageTags>Genius, Lyrics</PackageTags>
         <PackageReleaseNotes>Another rewrite of library.</PackageReleaseNotes>
+        <PackageId>Genius.NET</PackageId>
     </PropertyGroup>
 
     <ItemGroup>

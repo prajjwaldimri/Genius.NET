@@ -86,7 +86,7 @@ namespace Genius.Models.Song
     public List<Artist.Artist> FeaturedArtists { get; set; }
 
     [JilDirective(Name = "lyrics_marked_complete_by")]
-    public string LyricsMarkedCompleteBy { get; set; }
+    public User.User LyricsMarkedCompleteBy { get; set; }
 
     [JilDirective(Name = "media")] public List<Media> Media { get; set; }
 
