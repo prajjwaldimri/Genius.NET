@@ -2,7 +2,7 @@
 
 .NET library to access Genius API @ (<https://www.genius.com>)
 
-[![NuGet](https://img.shields.io/nuget/v/Genius.svg?maxAge=2592000&style=for-the-badge&logo=nuget)](https://www.nuget.org/packages/Genius.NET)
+[![NuGet](https://img.shields.io/nuget/v/Genius.NET.svg?maxAge=2592000&style=for-the-badge&logo=nuget)](https://www.nuget.org/packages/Genius.NET)
 [![GitHub issues](https://img.shields.io/github/issues/prajjwaldimri/Genius.NET.svg?maxAge=2592000&style=for-the-badge&logo=github)](https://github.com/prajjwaldimri/Genius.NET/issues)
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000&style=for-the-badge)](https://github.com/prajjwaldimri/Genius.NET/blob/master/LICENSE)
 [![Contact](https://img.shields.io/badge/contact-@prajjwaldimri-642C90.svg?style=for-the-badge&logo=telegram)](https://t.me/prajjwaldimri)
