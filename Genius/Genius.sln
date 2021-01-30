@@ -1,8 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Genius", "Genius\Genius.csproj", "{406A05C3-DAEC-4B4B-A171-6AC36AA34AEF}"
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30907.101
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Genius", "Genius\Genius.csproj", "{406A05C3-DAEC-4B4B-A171-6AC36AA34AEF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExampleApplication", "..\ExampleApplication\ExampleApplication.csproj", "{2B96F2D1-CE31-4145-A677-F2AF969AA9A2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExampleApplication", "..\ExampleApplication\ExampleApplication.csproj", "{2B96F2D1-CE31-4145-A677-F2AF969AA9A2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "..\Tests\Tests\Tests.csproj", "{5B857ACA-EC2F-42E8-B5FF-11B9B775E19C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,5 +23,15 @@ Global
 		{2B96F2D1-CE31-4145-A677-F2AF969AA9A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2B96F2D1-CE31-4145-A677-F2AF969AA9A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2B96F2D1-CE31-4145-A677-F2AF969AA9A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B857ACA-EC2F-42E8-B5FF-11B9B775E19C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B857ACA-EC2F-42E8-B5FF-11B9B775E19C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B857ACA-EC2F-42E8-B5FF-11B9B775E19C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B857ACA-EC2F-42E8-B5FF-11B9B775E19C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {03F34441-D098-4217-9789-333FB1AABB58}
 	EndGlobalSection
 EndGlobal
