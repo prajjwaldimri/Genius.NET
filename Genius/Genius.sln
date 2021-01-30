@@ -1,8 +1,5 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30907.101
-MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Genius", "Genius\Genius.csproj", "{406A05C3-DAEC-4B4B-A171-6AC36AA34AEF}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExampleApplication", "..\ExampleApplication\ExampleApplication.csproj", "{2B96F2D1-CE31-4145-A677-F2AF969AA9A2}"
