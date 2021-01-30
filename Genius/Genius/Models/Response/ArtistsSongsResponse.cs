@@ -16,6 +16,6 @@ namespace Genius.Models.Response
   {
     [JilDirective(Name = "songs")] public List<Song.Song> Songs { get; set; }
     
-    [JilDirective(Name = "next_page")] public ulong NextPage { get; set; }
+    [JilDirective(Name = "next_page")] public ulong? NextPage { get; set; }
   }
 }
