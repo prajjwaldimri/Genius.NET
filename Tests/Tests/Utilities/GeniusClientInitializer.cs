@@ -1,8 +1,5 @@
 ﻿using Genius;
-using System;
-using System.Collections.Generic;
 using System.Configuration;
-using System.Text;
 
 namespace Tests.Utilities
 {

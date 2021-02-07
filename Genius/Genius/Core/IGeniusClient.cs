@@ -1,8 +1,6 @@
-﻿using Genius.Clients.Interfaces;
-
-namespace Genius.Core
+﻿namespace Genius.Core
 {
-  public interface IGeniusClient
+    public interface IGeniusClient
   {
     
   }

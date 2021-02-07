@@ -1,6 +1,5 @@
 using Genius;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Configuration;
 using System.Threading.Tasks;
 using Tests.Models;
 using Tests.Utilities;

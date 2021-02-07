@@ -1,7 +1,6 @@
 ﻿// ReSharper disable ClassNeverInstantiated.Global
 
 using System.Collections.Generic;
-using Genius.Models.User;
 using Jil;
 
 namespace Genius.Models.Song

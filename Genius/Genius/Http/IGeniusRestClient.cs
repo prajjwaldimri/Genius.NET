@@ -1,12 +1,11 @@
-﻿using System.Net.Http;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 
 namespace Genius.Http
 {
-  /// <summary>
-  /// Also see: https://docs.microsoft.com/en-us/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests
-  /// </summary>
-  public interface IGeniusRestClient
+    /// <summary>
+    /// Also see: https://docs.microsoft.com/en-us/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests
+    /// </summary>
+    public interface IGeniusRestClient
   {
     /// <summary>
     /// Sends GET request to endpoint.

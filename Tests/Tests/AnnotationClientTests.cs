@@ -1,10 +1,6 @@
 ﻿using Genius;
 using Genius.Models.Response;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Text;
 using System.Threading.Tasks;
 using Tests.Models;
 using Tests.Utilities;
