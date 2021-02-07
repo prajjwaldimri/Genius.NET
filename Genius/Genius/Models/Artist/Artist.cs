@@ -16,11 +16,11 @@ namespace Genius.Models.Artist
 
     [JilDirective(Name = "facebook_name")] public string FacebookName { get; set; }
 
-    [JilDirective(Name = "followers_count")] public ulong FollowersCount { get; set; }
+    [JilDirective(Name = "followers_count")] public ulong? FollowersCount { get; set; }
 
     [JilDirective(Name = "header_image_url")] public string HeaderImageUrl { get; set; }
 
-    [JilDirective(Name = "id")] public ulong Id { get; set; }
+    [JilDirective(Name = "id")] public ulong? Id { get; set; }
 
     [JilDirective(Name = "image_url")] public string ImageUrl { get; set; }
 
@@ -40,7 +40,7 @@ namespace Genius.Models.Artist
 
     [JilDirective(Name = "current_user_metadata")] public UserMetadata CurrentUserMetadata { get; set; }
 
-    [JilDirective(Name = "iq")] public ulong Iq { get; set; }
+    [JilDirective(Name = "iq")] public ulong? Iq { get; set; }
 
     [JilDirective(Name = "description_annotation")] public Referent.Referent DescriptionAnnotation { get; set; }
 
