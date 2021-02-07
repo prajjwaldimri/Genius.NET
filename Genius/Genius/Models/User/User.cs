@@ -6,7 +6,7 @@ namespace Genius.Models.User
 {
   public class User
   {
-    [JilDirective(Name="about_me")] public HtmlFormat AboutMe { get; set; }
+    [JilDirective(Name="about_me")] public string AboutMe { get; set; }
     
     [JilDirective(Name = "api_path")] public string ApiPath { get; set; }
 
@@ -21,10 +21,10 @@ namespace Genius.Models.User
     [JilDirective(Name = "email")] public string Email { get; set; }
 
     [JilDirective(Name = "followed_users_count")]
-    public ulong FollowedUsersCount { get; set; }
+    public ulong? FollowedUsersCount { get; set; }
 
     [JilDirective(Name = "followers_count")]
-    public ulong FollowersCount { get; set; }
+    public ulong? FollowersCount { get; set; }
 
     [JilDirective(Name = "header_image_url")]
     public string HeaderImageUrl { get; set; }
@@ -32,11 +32,11 @@ namespace Genius.Models.User
     [JilDirective(Name = "human_readable_role_for_display")]
     public string HumanReadableRoleForDisplay { get; set; }
 
-    [JilDirective(Name = "id")] public ulong Id { get; set; }
+    [JilDirective(Name = "id")] public ulong? Id { get; set; }
 
     [JilDirective(Name = "identities")] public List<Identity> Identities { get; set; }
 
-    [JilDirective(Name = "iq")] public ulong Iq { get; set; }
+    [JilDirective(Name = "iq")] public ulong? Iq { get; set; }
 
     [JilDirective(Name = "iq_for_display")]
     public string IqForDisplay { get; set; }
@@ -56,16 +56,16 @@ namespace Genius.Models.User
     public List<string> RolesForDisplay { get; set; }
 
     [JilDirective(Name = "unread_groups_inbox_count")]
-    public ulong UnreadGroupsInboxCount { get; set; }
+    public ulong? UnreadGroupsInboxCount { get; set; }
 
     [JilDirective(Name = "unread_main_activity_inbox_count")]
-    public ulong UnreadMainActivityInboxCount { get; set; }
+    public ulong? UnreadMainActivityInboxCount { get; set; }
 
     [JilDirective(Name = "unread_messages_count")]
-    public ulong UnreadMessagesCount { get; set; }
+    public ulong? UnreadMessagesCount { get; set; }
 
     [JilDirective(Name = "unread_news_feed_inbox_count")]
-    public ulong UnreadNewsFeedInboxCount { get; set; }
+    public ulong? UnreadNewsFeedInboxCount { get; set; }
 
     [JilDirective(Name = "url")] public string Url { get; set; }
 
