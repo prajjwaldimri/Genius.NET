@@ -7,27 +7,27 @@ using Tests.Utilities;
 
 namespace Tests
 {
-    [TestClass]
-    public class SongClientTests
+  [TestClass]
+  public class SongClientTests
+  {
+    private static GeniusClient _geniusClient;
+    private static TestInputData _inputData;
+
+    [ClassInitialize()]
+    public static void ClassInit(TestContext context)
     {
-        private static GeniusClient _geniusClient;
-        private static TestInputData _inputData;
-
-        [ClassInitialize()]
-        public static void ClassInit(TestContext context)
-        {
-            _geniusClient = GeniusClientInitializer.GetClient();
-            _inputData = TestInputData.GetFromJsonFile();
-        }
-
-        [TestMethod]
-        public async Task GetSongs()
-        {
-            foreach (ulong songId in _inputData.Songs)
-            {
-                SongResponse song = await _geniusClient.SongClient.GetSong(songId);
-                Assert.IsNotNull(song.Response.Song);
-            }
-        }
+      _geniusClient = GeniusClientInitializer.GetClient();
+      _inputData = TestInputData.GetFromJsonFile();
     }
+
+    [TestMethod]
+    public async Task GetSongs()
+    {
+      foreach (ulong songId in _inputData.Songs)
+      {
+        SongResponse song = await _geniusClient.SongClient.GetSong(songId);
+        Assert.IsNotNull(song.Response.Song);
+      }
+    }
+  }
 }

@@ -7,27 +7,27 @@ using Tests.Utilities;
 
 namespace Tests
 {
-    [TestClass]
-    public class AnnotationClientTests
+  [TestClass]
+  public class AnnotationClientTests
+  {
+    private static GeniusClient _geniusClient;
+    private static TestInputData _inputData;
+
+    [ClassInitialize()]
+    public static void ClassInit(TestContext context)
     {
-        private static GeniusClient _geniusClient;
-        private static TestInputData _inputData;
-
-        [ClassInitialize()]
-        public static void ClassInit(TestContext context)
-        {
-            _geniusClient = GeniusClientInitializer.GetClient();
-            _inputData = TestInputData.GetFromJsonFile();
-        }
-
-        [TestMethod]
-        public async Task GetAnnotation()
-        {
-            foreach(ulong annotationId in _inputData.Annotations)
-            {
-                AnnotationResponse annotationResponse = await _geniusClient.AnnotationClient.GetAnnotation(annotationId);
-                Assert.IsNotNull(annotationResponse);
-            }           
-        }
+      _geniusClient = GeniusClientInitializer.GetClient();
+      _inputData = TestInputData.GetFromJsonFile();
     }
+
+    [TestMethod]
+    public async Task GetAnnotation()
+    {
+      foreach(ulong annotationId in _inputData.Annotations)
+      {
+        AnnotationResponse annotationResponse = await _geniusClient.AnnotationClient.GetAnnotation(annotationId);
+        Assert.IsNotNull(annotationResponse);
+      }           
+    }
+  }
 }
