@@ -86,7 +86,7 @@ namespace Genius.Models.Song
     public SongCurrentUserMetadata CurrentUserMetadata { get; set; }
 
     [JilDirective("album")]
-    public object Album { get; set; }
+    public Album Album { get; set; }
 
     [JilDirective("custom_performances")]
     public List<CustomPerformance> CustomPerformances { get; set; }
