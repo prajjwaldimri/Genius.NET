@@ -27,7 +27,7 @@ namespace Genius.Clients
         if (artistResponse.Meta.Status >= 400)
         {
           throw new HttpRequestException(artistResponse.Meta.Status +
-                                         artistResponse.Meta.Message);
+                           artistResponse.Meta.Message);
         }
 
         return artistResponse;
@@ -57,7 +57,7 @@ namespace Genius.Clients
         if (artistsSongsResponse.Meta.Status >= 400)
         {
           throw new HttpRequestException(artistsSongsResponse.Meta.Status +
-                                         artistsSongsResponse.Meta.Message);
+                           artistsSongsResponse.Meta.Message);
         }
 
         return artistsSongsResponse;

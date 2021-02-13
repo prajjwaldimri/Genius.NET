@@ -35,7 +35,7 @@ namespace Genius.Models.Annotation
 
     [JilDirective(Name = "verified")] public bool Verified { get; set; }
 
-    [JilDirective(Name = "votes_total")] public ulong VotesTotal { get; set; }
+    [JilDirective(Name = "votes_total")] public long VotesTotal { get; set; }
 
     [JilDirective(Name = "current_user_metadata")]
     public UserMetadata CurrentUserMetadata { get; set; }

@@ -1,11 +1,10 @@
 ﻿// ReSharper disable ClassNeverInstantiated.Global
 
-using System.Collections.Generic;
 using Jil;
 
 namespace Genius.Models
 {
-  public class WebPage
+    public class WebPage
   {
     [JilDirective(Name = "api_path")] public string ApiPath { get; set; }
 
